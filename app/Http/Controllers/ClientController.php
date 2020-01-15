@@ -13,7 +13,7 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client.index');
+        return view('client.catalog.index');
     }
 
     /**
@@ -23,6 +23,6 @@ class ClientController extends Controller
      */
     public function item()
     {
-        return view('client.item');
+        return view('client.item.index');
     }
 }
