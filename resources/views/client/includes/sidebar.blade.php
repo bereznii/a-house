@@ -1,6 +1,8 @@
 <div class="col-lg-3">
 
-    <h1 class="my-4">"LOGO"</h1>
+    <div class="form-group">
+        <img style="width: 100%" src="{{ asset('storage/logo.png') }}" alt="logo">
+    </div>
 
     <div class="form-group">
         <div class="input-group">

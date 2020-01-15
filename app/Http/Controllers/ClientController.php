@@ -25,4 +25,24 @@ class ClientController extends Controller
     {
         return view('client.item.index');
     }
+
+    /**
+     * Return client about page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function about()
+    {
+        return view('client.about.index');
+    }
+
+    /**
+     * Return client about page.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function contact()
+    {
+        return view('client.contact.index');
+    }
 }
