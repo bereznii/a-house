@@ -23,20 +23,20 @@
     <hr>
 
     <div class="form-group">
-        <label for="exampleFormControlSelect1">Модель:</label>
-        <select class="form-control" id="exampleFormControlSelect1">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+    <label for="exampleFormControlSelect2">Марка:</label>
+        <select class="form-control" id="exampleFormControlSelect2">
+            <option>BMW</option>
+            <option>Audi</option>
+            <option>Mercedes</option>
+            <option>Renault</option>
+            <option>Skoda</option>
         </select>
     </div>
 
     <div class="form-group">
-    <label for="exampleFormControlSelect2">Марка:</label>
-        <select class="form-control" id="exampleFormControlSelect2">
-            <option>1</option>
+        <label for="exampleFormControlSelect1">Модель:</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+            <option>M5 E60</option>
             <option>2</option>
             <option>3</option>
             <option>4</option>
@@ -47,11 +47,13 @@
     <div class="form-group">
         <label for="exampleFormControlSelect3">Тип стекла:</label>
         <select class="form-control" id="exampleFormControlSelect3">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
+            <option>Лобовое</option>
+            <option>Заднее</option>
+            <option>Правое переднее</option>
+            <option>Правое заднее</option>
+            <option>Левое переднее</option>
+            <option>Левое заднее</option>
+            <option>Заднее</option>
         </select>
     </div>
 
