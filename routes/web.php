@@ -22,6 +22,10 @@ Auth::routes([
 ]);
 
 Route::get('admin/home', 'HomeController@index')->name('home');
+Route::get('admin/callbacks', 'HomeController@callbackPage')->name('home.callbacks');
+Route::get('admin/import', 'HomeController@import')->name('home.import');
+Route::get('admin/manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
+Route::get('admin/user-activity', 'HomeController@userActivity')->name('home.user-activity');
 
 Route::get('/', 'Client\ClientController@index')->name('client.index');
 Route::get('/about', 'Client\ClientController@about')->name('client.about');

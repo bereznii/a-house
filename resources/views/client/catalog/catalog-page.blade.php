@@ -1,6 +1,6 @@
 <div class="col-lg-9">
 
-    <div class="row my-4 mb-5">
+    <div class="row my-4">
 
         @foreach (range(1,10) as $id)
         <div class="col-lg-4 col-md-6 mb-4">
