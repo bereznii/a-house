@@ -23,7 +23,8 @@ Auth::routes([
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/', 'ClientController@index')->name('client.index');
-Route::get('/about', 'ClientController@about')->name('client.about');
-Route::get('/contact', 'ClientController@contact')->name('client.contact');
-Route::get('/1', 'ClientController@item')->name('client.item');
+Route::get('/', 'Client\ClientController@index')->name('client.index');
+Route::get('/about', 'Client\ClientController@about')->name('client.about');
+Route::get('/contact', 'Client\ClientController@contact')->name('client.contact');
+
+Route::get('automotive/{id}', 'Client\ProductController@show')->name('client.product.show');
