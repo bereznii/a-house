@@ -1,23 +1,20 @@
 @extends('admin.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    <div class="col-lg-3">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
-            </div>
+        <div class="list-group">
+            <a href="#" class="list-group-item">Импорт каталога</a>
+            <a href="#" class="list-group-item">Наценка по поставщикам</a>
+            <a href="#" class="list-group-item">История активности пользователей</a>
+            <a href="#" class="list-group-item">Запросы на обратный звонок</a>
         </div>
+
     </div>
-</div>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9">
+
+    </div>
+    <!-- /.col-lg-9 -->
 @endsection

@@ -21,7 +21,7 @@ Auth::routes([
     'reset' => false
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('admin/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'Client\ClientController@index')->name('client.index');
 Route::get('/about', 'Client\ClientController@about')->name('client.about');

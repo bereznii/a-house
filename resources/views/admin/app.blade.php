@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Laravel') }} Admin Panel</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -64,7 +64,12 @@
         @endguest
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                <div class="row">
+                    <!-- Page Content -->
+                    @yield('content')
+                </div>
+            </div>
         </main>
     </div>
 </body>
