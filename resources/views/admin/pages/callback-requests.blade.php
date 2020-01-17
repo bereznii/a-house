@@ -4,12 +4,50 @@
 
 <div class="card">
   <div class="card-header">
-    Callbacks
+    Запросы на обратные звонки
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+      <table class="table table-bordered">
+          <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Позиция</th>
+              <th scope="col">Номер телефона</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <th scope="row">1</th>
+              <td>-</td>
+              <td>+380998887766</td>
+          </tr>
+          <tr>
+              <th scope="row">2</th>
+              <td>-</td>
+              <td>+380998887766</td>
+          </tr>
+          <tr>
+              <th scope="row">3</th>
+              <td>-</td>
+              <td>+380998887766</td>
+          </tr>
+          <tr>
+              <th scope="row">4</th>
+              <td>-</td>
+              <td>+380998887766</td>
+          </tr>
+          <tr>
+              <th scope="row">5</th>
+              <td>-</td>
+              <td>+380998887766</td>
+          </tr>
+          <tr>
+              <th scope="row">6</th>
+              <td>-</td>
+              <td>+380998887766</td>
+          </tr>
+          </tbody>
+      </table>
   </div>
 </div>
 

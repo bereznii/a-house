@@ -30,15 +30,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
+                    <li class="nav-item @if(route('client.index') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.index') }}">Home
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @if(route('client.about') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.about') }}">About</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @if(route('client.contact') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.contact') }}">Contact</a>
                     </li>
                 </ul>

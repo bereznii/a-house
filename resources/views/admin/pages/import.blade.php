@@ -3,13 +3,15 @@
 @section('page')
 
 <div class="card">
-  <div class="card-header">
-    Import
-  </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <h5 class="card-title">Импорт каталога:</h5>
+      <form>
+          <div class="form-group">
+              <input type="file" class="form-control-file" id="exampleFormControlFile1">
+              <br>
+              <button type="submit" class="btn btn-primary">Импортировать</button>
+          </div>
+      </form>
   </div>
 </div>
 

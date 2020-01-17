@@ -7,9 +7,47 @@
     User activity
   </div>
   <div class="card-body">
-    <h5 class="card-title">Special title treatment</h5>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+      <table class="table table-bordered">
+          <thead>
+          <tr>
+              <th scope="col">IP</th>
+              <th scope="col">Позиция</th>
+              <th scope="col">Время</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+              <th scope="row">0.0.0.1</th>
+              <td>-</td>
+              <td>12-12-2019 14:30:22</td>
+          </tr>
+          <tr>
+              <th scope="row">0.0.0.2</th>
+              <td>-</td>
+              <td>12-12-2019 14:30:22</td>
+          </tr>
+          <tr>
+              <th scope="row">0.0.0.3</th>
+              <td>-</td>
+              <td>12-12-2019 14:30:22</td>
+          </tr>
+          <tr>
+              <th scope="row">0.0.0.4</th>
+              <td>-</td>
+              <td>12-12-2019 14:30:22</td>
+          </tr>
+          <tr>
+              <th scope="row">0.0.0.5</th>
+              <td>-</td>
+              <td>12-12-2019 14:30:22</td>
+          </tr>
+          <tr>
+              <th scope="row">0.0.0.6</th>
+              <td>-</td>
+              <td>12-12-2019 14:30:22</td>
+          </tr>
+          </tbody>
+      </table>
   </div>
 </div>
 
