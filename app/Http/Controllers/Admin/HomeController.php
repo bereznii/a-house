@@ -6,6 +6,7 @@ use App\Imports\CatalogImport;
 use App\Imports\Import;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -63,6 +64,8 @@ class HomeController extends Controller
         ini_set('memory_limit', '256M');
         ini_set('max_execution_time', '90');
 
+        Cache::forget('make_id');
+        Cache::forget('model_id');
         $import = new Import();
         $import->onlySheets( 0);
 
