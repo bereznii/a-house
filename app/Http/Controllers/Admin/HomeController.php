@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imports\CatalogImport;
+use App\Imports\Import;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -59,12 +60,15 @@ class HomeController extends Controller
      */
     public function import()
     {
+        ini_set('memory_limit', '256M');
+        ini_set('max_execution_time', '90');
 
-//        (new CatalogImport)->import(request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
+        $import = new Import();
+        $import->onlySheets( 0);
 
         Excel::import(new CatalogImport, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
 
-        dd(request()->all());
+        dd('DONE', request()->all());
 
         return view('admin.pages.import');
     }
