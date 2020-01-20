@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\CatalogImport;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
@@ -23,7 +27,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        return view('admin.pages.import');
     }
 
     /**
@@ -55,6 +59,13 @@ class HomeController extends Controller
      */
     public function import()
     {
+
+//        (new CatalogImport)->import(request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
+
+        Excel::import(new CatalogImport, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
+
+        dd(request()->all());
+
         return view('admin.pages.import');
     }
 }

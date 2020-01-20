@@ -21,9 +21,9 @@ Auth::routes([
     'reset' => false
 ]);
 
-Route::get('admin/home', 'HomeController@import')->name('home');
+Route::get('admin/home', 'HomeController@index')->name('home');
 Route::get('admin/callbacks', 'HomeController@callbackPage')->name('home.callbacks');
-//Route::get('admin/import', 'HomeController@import')->name('home.import');
+Route::post('admin/import', 'HomeController@import')->name('home.import.action');
 Route::get('admin/manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
 Route::get('admin/user-activity', 'HomeController@userActivity')->name('home.user-activity');
 
