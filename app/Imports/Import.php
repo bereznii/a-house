@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Shortcut;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
@@ -16,7 +17,8 @@ class Import implements WithMultipleSheets
     {
         return [
             0 => new CatalogImport(),
-            1 => new TypesImport(),
+            1 => new ShortcutsImport(),
+//            1 => new TypesImport(),
         ];
     }
 }
