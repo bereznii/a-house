@@ -20,7 +20,7 @@ class CreateModelsTable extends Migration
         });
 
         Schema::table('models', function($table) {
-            $table->foreign('make_id')->references('id')->on('makes');
+            $table->foreign('make_id')->references('id')->on('makes')->onDelete('cascade');
         });
     }
 

@@ -24,7 +24,6 @@ class CatalogImport implements ToModel, WithChunkReading
     {
         $row = array_slice($row, 0, 10);
 
-
         /**
          * MAKES
          */
@@ -42,7 +41,6 @@ class CatalogImport implements ToModel, WithChunkReading
         /**
          * MODELS
          */
-
         if (isset($row[2]) && preg_match($this->regex, $row[2]) == 0 && !isset($row[0]) && !isset($row[1])) {
 
             $make = Make::where('name', Cache::get('make'))->first();
@@ -64,11 +62,9 @@ class CatalogImport implements ToModel, WithChunkReading
             ]);
         }
 
-
         /**
          * PRODUCTS
          */
-
         if (isset($row[0]) && isset($row[1]) && isset($row[2]) && Cache::has('make_id')) {
             logger($row[2] . ' -> ' . self::$i++);
 

@@ -61,18 +61,23 @@ class HomeController extends Controller
      */
     public function import()
     {
+        $time_start = microtime(true);
+
         ini_set('memory_limit', '512M');
         ini_set('max_execution_time', '90');
 
 //        Cache::forget('make_id');
 //        Cache::forget('model_id');
         $import = new Import();
-        $import->onlySheets( 0);
+        $import->onlySheets( 1, 2);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
 
-        dd('DONE', request()->all());
+        $time_end = microtime(true);
+        $execution_time = ($time_end - $time_start);
 
-        return view('admin.pages.import');
+        logger((memory_get_usage(true)/1024/1024)." MiB, " .(memory_get_peak_usage(true)/1024/1024)." MiB (peak), {$execution_time}sec");
+
+        return redirect()->route('home');
     }
 }

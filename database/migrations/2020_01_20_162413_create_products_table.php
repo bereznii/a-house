@@ -31,9 +31,9 @@ class CreateProductsTable extends Migration
         });
 
         Schema::table('products', function($table) {
-            $table->foreign('type_id')->references('id')->on('types');
-            $table->foreign('make_id')->references('id')->on('makes');
-            $table->foreign('model_id')->references('id')->on('models');
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');;
+            $table->foreign('make_id')->references('id')->on('makes')->onDelete('cascade');;
+            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');;
         });
     }
 
