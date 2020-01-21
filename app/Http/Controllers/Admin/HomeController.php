@@ -61,13 +61,13 @@ class HomeController extends Controller
      */
     public function import()
     {
-        ini_set('memory_limit', '256M');
+        ini_set('memory_limit', '512M');
         ini_set('max_execution_time', '90');
 
 //        Cache::forget('make_id');
 //        Cache::forget('model_id');
         $import = new Import();
-        $import->onlySheets( 1);
+        $import->onlySheets( 0);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
 

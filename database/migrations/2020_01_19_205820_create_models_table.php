@@ -16,7 +16,7 @@ class CreateModelsTable extends Migration
         Schema::create('models', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('make_id')->unsigned();
-            $table->integer('name');
+            $table->string('name');
         });
 
         Schema::table('models', function($table) {
