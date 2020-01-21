@@ -5,6 +5,7 @@ namespace App\Imports;
 use App\Models\Make;
 use App\Models\MakeModel;
 use App\Models\Product;
+use App\Repositories\ImportRepository;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -13,7 +14,7 @@ class CatalogImport implements ToModel, WithChunkReading
 {
     private static int $i = 0;
 
-    private string $regex = '/^[A-Z\s\p{Lu}]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
+    const $regex = '/^[A-Z\s\p{Lu}]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
 
     /**
     * @param array $row
@@ -75,12 +76,12 @@ class CatalogImport implements ToModel, WithChunkReading
             return new Product([
                 'make_id' => Cache::get('make_id'),
                 'model_id' => $model->id,
-                'type_id' => 82,
+                'type_id' => ImportRepository::getProductTypeId($row[2]),
                 'barcode' => $row[0],
                 'stock_code' => $row[1],
                 'nomenclature' => $row[2],
-                'original_description' => 'to be',
-                'detailed_description' => $row[7],
+                'original_description' => ImportRepository::getOriginalDescription($row[2]),
+                'detailed_description' => $row[7] ?? ImportRepository::getDetailedDescription($row[2]),
                 'in_stock' => $row[4],
                 'dealer_price' => $row[5],
                 'retail_price' => $row[5],

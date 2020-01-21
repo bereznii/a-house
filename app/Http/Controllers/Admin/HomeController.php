@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\CatalogImport;
 use App\Imports\Import;
+use App\Repositories\ImportRepository;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -66,10 +67,8 @@ class HomeController extends Controller
         ini_set('memory_limit', '512M');
         ini_set('max_execution_time', '90');
 
-//        Cache::forget('make_id');
-//        Cache::forget('model_id');
         $import = new Import();
-        $import->onlySheets( 1, 2);
+        $import->onlySheets( 2);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
 
