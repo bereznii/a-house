@@ -17,8 +17,8 @@ class Import implements WithMultipleSheets
     public function conditionalSheets(): array
     {
         return [
-//            0 => new CatalogImport(),
-            0 => new ManufacturersImport(),
+            0 => new CatalogImport(),
+//            0 => new ManufacturersImport(),
             1 => new ShortcutsImport(),
             2 => new TypesImport(),
         ];

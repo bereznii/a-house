@@ -15,7 +15,7 @@ class CatalogImport implements ToModel, WithChunkReading
 {
     private static int $i = 0;
 
-    const $regex = '/^[A-Z\s\p{Lu}]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
+    const REGEX = '/^[A-Z\s\p{Lu}]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
 
     /**
     * @param array $row
@@ -29,7 +29,7 @@ class CatalogImport implements ToModel, WithChunkReading
         /**
          * MAKES
          */
-        if (preg_match($this->regex, $row[2]) == 1 && !isset($row[0]) && !isset($row[1])) {
+        if (preg_match(self::REGEX, $row[2]) == 1 && !isset($row[0]) && !isset($row[1])) {
 
             logger($row[2]);
 
@@ -43,7 +43,7 @@ class CatalogImport implements ToModel, WithChunkReading
         /**
          * MODELS
          */
-        if (isset($row[2]) && preg_match($this->regex, $row[2]) == 0 && !isset($row[0]) && !isset($row[1])) {
+        if (isset($row[2]) && preg_match(self::REGEX, $row[2]) == 0 && !isset($row[0]) && !isset($row[1])) {
 
             $make = Make::where('name', Cache::get('make'))->first();
             if (isset($make)) {

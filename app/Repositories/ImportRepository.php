@@ -14,7 +14,7 @@ class ImportRepository
 
     private static array $manufacturers = [];
 
-    const TYPE_REGEX = '/^[A-Z]{2,}\s([A-Z]{2}\b)?/u';
+    const TYPE_REGEX = '/^[A-Za-z]{1,}[\s\+]([A-Za-z]{1,2}\b)?/u';
 
     const DESCRIPTION_REGEX = '/\+.+$/u';
 
@@ -34,7 +34,19 @@ class ImportRepository
 
         $type = array_shift($matches);
 
-        return self::$types[trim($type)];
+        $index = strtoupper(trim($type));
+
+        if (array_pop($matches) == 'VW') {
+            list($index) = explode(' ', $type);
+        }
+
+        if (!isset($index) || empty($index)) {
+            if (strpos($row, 'RW-BO GU') !== false) {
+                $index = 'RW-BO GU';
+            }
+        }
+        logger($index);
+        return self::$types[$index];
     }
 
     /**
@@ -46,6 +58,10 @@ class ImportRepository
     public static function getDetailedDescription(string $row):string
     {
         $description = self::getOriginalDescription($row);
+
+        if (!isset($description)) {
+            return null;
+        }
 
         $matches = explode('+', $description);
         unset($matches[0]);
@@ -67,9 +83,9 @@ class ImportRepository
      * Return origin description. Part with description from nomenclature column.
      *
      * @param string $row
-     * @return string
+     * @return string|null
      */
-    public static function getOriginalDescription(string $row):string
+    public static function getOriginalDescription(string $row)
     {
         if (empty(self::$shortcuts)) {
             self::$shortcuts = Shortcut::select('shortcut', 'meaning')->get()->pluck('meaning', 'shortcut')->toArray();
@@ -77,7 +93,9 @@ class ImportRepository
 
         preg_match(self::DESCRIPTION_REGEX, $row, $matches);
 
-        return array_shift($matches);
+        $result = array_shift($matches);
+
+        return $result;
     }
 
     /**

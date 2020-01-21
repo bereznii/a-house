@@ -21,8 +21,8 @@ class CreateProductsTable extends Migration
             $table->string('barcode');
             $table->string('stock_code');
             $table->string('nomenclature');
-            $table->string('original_description', 500);
-            $table->text('detailed_description');
+            $table->string('original_description', 500)->nullable();
+            $table->text('detailed_description')->nullable();
             $table->integer('in_stock');
             $table->decimal('dealer_price', 8, 2);
             $table->decimal('retail_price', 8, 2);
@@ -31,9 +31,9 @@ class CreateProductsTable extends Migration
         });
 
         Schema::table('products', function($table) {
-            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');;
-            $table->foreign('make_id')->references('id')->on('makes')->onDelete('cascade');;
-            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');;
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade');
+            $table->foreign('make_id')->references('id')->on('makes')->onDelete('cascade');
+            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');
         });
     }
 
