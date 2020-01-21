@@ -16,7 +16,7 @@ class CreateManufacturerChargeTable extends Migration
         Schema::create('manufacturer_charge', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->decimal('charge', 5, 2);
+            $table->decimal('charge', 5, 2)->nullable();
             $table->timestamps();
         });
     }

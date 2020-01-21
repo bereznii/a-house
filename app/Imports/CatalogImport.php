@@ -4,6 +4,7 @@ namespace App\Imports;
 
 use App\Models\Make;
 use App\Models\MakeModel;
+use App\Models\ManufacturerCharge;
 use App\Models\Product;
 use App\Repositories\ImportRepository;
 use Illuminate\Support\Facades\Cache;
@@ -84,7 +85,7 @@ class CatalogImport implements ToModel, WithChunkReading
                 'detailed_description' => $row[7] ?? ImportRepository::getDetailedDescription($row[2]),
                 'in_stock' => $row[4],
                 'dealer_price' => $row[5],
-                'retail_price' => $row[5],
+                'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5]),
                 'manufacture' => $row[6],
                 'updated_at' => $timestamp,
                 'created_at' => $timestamp

@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\ManufacturerCharge;
 use App\Models\Shortcut;
 use App\Models\Type;
 
@@ -10,6 +11,8 @@ class ImportRepository
     private static array $types = [];
 
     private static array $shortcuts = [];
+
+    private static array $manufacturers = [];
 
     const TYPE_REGEX = '/^[A-Z]{2,}\s([A-Z]{2}\b)?/u';
 
@@ -93,5 +96,29 @@ class ImportRepository
         $then = mb_substr($string, 1, $strlen - 1, $encoding);
 
         return mb_strtoupper($firstChar, $encoding) . $then;
+    }
+
+    /**
+     * Return retail price recalculated with charge per manufacturer.
+     *
+     * @param double $price
+     * @return double $price
+     */
+    public static function calculateRetailPriceWithCharge($price)
+    {
+        return $price;
+    }
+
+    /**
+     * @param string $manufacturerName
+     * @return string
+     */
+    public static function getManufacturerIdByName(string $manufacturerName):string
+    {
+        if (empty(self::$manufacturers)) {
+            self::$manufacturers = ManufacturerCharge::select('name', 'id')->get()->pluck('id', 'name')->toArray();
+        }
+
+        return self::$manufacturer[$manufacturerName];
     }
 }
