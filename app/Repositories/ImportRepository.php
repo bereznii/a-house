@@ -27,7 +27,7 @@ class ImportRepository
     public static function getProductTypeId(string $row):int
     {
         if (empty(self::$types)) {
-            self::$types = Type::select('code', 'id')->get()->pluck('id', 'code')->toArray();
+            self::$types = Type::select(['code', 'id'])->get()->pluck('id', 'code')->toArray();
         }
 
         preg_match(self::TYPE_REGEX, $row, $matches);
@@ -45,7 +45,7 @@ class ImportRepository
                 $index = 'RW-BO GU';
             }
         }
-        logger($index);
+
         return self::$types[$index];
     }
 
@@ -53,9 +53,9 @@ class ImportRepository
      * Return detailed description for product. Translated from nomenclature column.
      *
      * @param string $row
-     * @return string
+     * @return string|null
      */
-    public static function getDetailedDescription(string $row):string
+    public static function getDetailedDescription(string $row)
     {
         $description = self::getOriginalDescription($row);
 
@@ -63,16 +63,29 @@ class ImportRepository
             return null;
         }
 
-        $matches = explode('+', $description);
-        unset($matches[0]);
-
         $result = '';
 
-        foreach ($matches as $match) {
-            $result .= self::$shortcuts[trim($match)] . ', ';
+        foreach (self::$shortcuts as $key => $shortcut) {
+            if (strpos($description, $key) !== false) {
+                $result .= $shortcut . ', ';
+            }
         }
 
         $result = rtrim($result, ' ,') . '.';
+
+
+//        $matches = explode('+', $description);
+//        unset($matches[0]);
+//
+//        $result = '';
+//
+//        foreach ($matches as $match) {
+//            $result .= self::$shortcuts[trim($match)] . ', ';
+//        }
+//
+//        $result = rtrim($result, ' ,') . '.';
+
+        logger('Description: ' . $result);
 
         $result = self::mb_ucfirst($result);
 

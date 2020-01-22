@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Imports\CatalogImport;
 use App\Imports\Import;
+use App\Models\Make;
+use App\Models\ManufacturerCharge;
 use App\Repositories\ImportRepository;
 use App\User;
 use Illuminate\Http\Request;
@@ -30,6 +32,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $makes = ManufacturerCharge::all()->pluck('name')->toArray();
+        $result = '';
+
+        foreach ($makes as $make) {
+            $result .= $make . ', ' ;
+        }
+        dd($result, count($makes));
         return view('admin.pages.import');
     }
 

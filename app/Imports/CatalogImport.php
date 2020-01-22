@@ -33,6 +33,12 @@ class CatalogImport implements ToModel, WithChunkReading
 
             logger($row[2]);
 
+            if ($row[2] == 'РАСХОДНЫЕ МАТЕРИАЛЫ') {
+                Cache::forget('make');
+                Cache::forget('make_id');
+                return null;
+            }
+
             Cache::put('make', $row[2], 10);
 
             return new Make([
@@ -72,8 +78,6 @@ class CatalogImport implements ToModel, WithChunkReading
 
             $model = MakeModel::where('name', Cache::get('model'))->first();
 
-            $timestamp = now();
-
             return new Product([
                 'make_id' => Cache::get('make_id'),
                 'model_id' => $model->id,
@@ -82,13 +86,11 @@ class CatalogImport implements ToModel, WithChunkReading
                 'stock_code' => $row[1],
                 'nomenclature' => $row[2],
                 'original_description' => ImportRepository::getOriginalDescription($row[2]),
-                'detailed_description' => $row[7] ?? ImportRepository::getDetailedDescription($row[2]),
+                'detailed_description' => (!isset($row[7]) || empty(trim($row[7]))) ? ImportRepository::getDetailedDescription($row[2]) : $row[7],
                 'in_stock' => $row[4],
                 'dealer_price' => $row[5],
                 'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5]),
-                'manufacture' => $row[6],
-                'updated_at' => $timestamp,
-                'created_at' => $timestamp
+                'manufacture' => $row[6]
             ]);
         }
 

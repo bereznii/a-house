@@ -19,13 +19,15 @@ class ManufacturersImport implements ToModel
 
         if (isset($row[0]) && isset($row[1]) && isset($row[2])  && isset($row[6])) {
 
+            if ($row[6] == 'Производитель') {
+                return null;
+            }
+
             ManufacturerCharge::firstOrCreate(
                 [
                     'name' => $row[6]
                 ]
             );
-
-            return null;
 
         }
 
