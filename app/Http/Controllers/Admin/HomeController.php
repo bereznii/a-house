@@ -32,13 +32,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $makes = ManufacturerCharge::all()->pluck('name')->toArray();
-        $result = '';
-
-        foreach ($makes as $make) {
-            $result .= $make . ', ' ;
-        }
-        dd($result, count($makes));
         return view('admin.pages.import');
     }
 
@@ -55,6 +48,8 @@ class HomeController extends Controller
      */
     public function manufacturerCharge()
     {
+
+
         return view('admin.pages.manufacturer-charge');
     }
 

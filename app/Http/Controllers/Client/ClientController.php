@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Make;
+use App\Models\MakeModel;
+use App\Models\Product;
+use App\Models\Type;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -14,7 +18,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        return view('client.catalog.index');
+        $makes = Make::all();
+
+        return view('client.catalog.index')->with([
+            'makes' => $makes
+        ]);
     }
 
     /**
@@ -45,5 +53,38 @@ class ClientController extends Controller
     public function contact()
     {
         return view('client.contact.index');
+    }
+
+    /**
+     * Return models for given make id.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getModels()
+    {
+        $models = MakeModel::where('make_id', request('selectedMake'))
+            ->get();
+
+        return response()->json($models);
+    }
+
+    /**
+     * Return types for given model id.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getTypes()
+    {
+        $typesForModel = Product::select('type_id')
+            ->where('model_id', request('selectedModel'))
+            ->where('in_stock', '>', 0)
+            ->groupBy('type_id')
+            ->get()
+            ->pluck('type_id')
+            ->toArray();
+
+        $types = Type::whereIn('id' , $typesForModel)->get();
+
+        return response()->json($types);
     }
 }

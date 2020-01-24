@@ -20,4 +20,12 @@ class Product extends Model
         'retail_price',
         'manufacture'
     ];
+
+    /**
+     * Get the type record associated with the product.
+     */
+    public function type()
+    {
+        return $this->hasOne('App\Models\Type', 'id', 'type_id');
+    }
 }

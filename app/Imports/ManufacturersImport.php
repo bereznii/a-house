@@ -19,7 +19,7 @@ class ManufacturersImport implements ToModel
 
         if (isset($row[0]) && isset($row[1]) && isset($row[2])  && isset($row[6])) {
 
-            if ($row[6] == 'Производитель') {
+            if ($row[6] == 'Производитель' || $row[6] == 'Sika') {
                 return null;
             }
 

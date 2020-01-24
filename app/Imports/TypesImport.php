@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Type;
+use App\Repositories\ImportRepository;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
@@ -20,7 +21,7 @@ class TypesImport implements ToModel
         if (isset($row[0]) && isset($row[1])) {
             return new Type([
                 'code' => $row[0],
-                'translation' => $row[1],
+                'translation' => ImportRepository::mb_ucfirst($row[1]),
             ]);
         }
 

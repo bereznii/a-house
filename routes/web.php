@@ -32,3 +32,6 @@ Route::get('/about', 'Client\ClientController@about')->name('client.about');
 Route::get('/contact', 'Client\ClientController@contact')->name('client.contact');
 
 Route::get('automotive/{id}', 'Client\ProductController@show')->name('client.product.show');
+
+Route::get('ajax/get-models', 'Client\ClientController@getModels');
+Route::get('ajax/get-types', 'Client\ClientController@getTypes');
