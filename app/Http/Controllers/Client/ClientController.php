@@ -30,9 +30,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function item()
+    public function item($id)
     {
-        return view('client.item.index');
+
     }
 
     /**

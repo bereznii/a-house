@@ -3,11 +3,20 @@
     <div class="card my-4 mb-5">
         <img class="card-img-top img-fluid" src="http://placehold.it/900x400" alt="">
         <div class="card-body">
-            <h3 class="card-title">Product Name</h3>
-            <h4>$24.99</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente dicta fugit fugiat hic aliquam itaque facere, soluta. Totam id dolores, sint aperiam sequi pariatur praesentium animi perspiciatis molestias iure, ducimus!</p>
-            <span class="text-warning">&#9733; &#9733; &#9733; &#9733; &#9734;</span>
-            4.0 stars
+            <h3 class="card-title">{{ $product->model->name ?? '' }}, {{ $product->type->translation ?? '' }}</h3>
+            <h4>{{ $product->retail_price ?? '' }}грн.</h4>
+            <hr>
+            <h6><b>Тип:</b> {{ $product->type->code ?? '' }}</h6>
+            <h6><b>Еврокод:</b> {{ $product->barcode ?? '' }}</h6>
+            <h6><b>Складской код:</b> {{ $product->stock_code ?? '' }}</h6>
+            <h6><b>Изготовитель:</b> {{ $product->manufacture ?? '' }}</h6>
+            @if(isset($product->detailed_description))
+                <h6><b>Описание:</b></h6>
+                <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
+            @endif
+            <hr>
+            <button class="btn btn-success">Купить</button>
+            <button class="btn btn-danger">Заказать обратный звонок</button>
         </div>
     </div>
     <!-- /.card -->

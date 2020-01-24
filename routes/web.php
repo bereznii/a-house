@@ -21,17 +21,25 @@ Auth::routes([
     'reset' => false
 ]);
 
-Route::get('admin/home', 'HomeController@index')->name('home');
-Route::get('admin/callbacks', 'HomeController@callbackPage')->name('home.callbacks');
-Route::post('admin/import', 'HomeController@import')->name('home.import.action');
-Route::get('admin/manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
-Route::get('admin/user-activity', 'HomeController@userActivity')->name('home.user-activity');
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('home', 'HomeController@index')->name('home');
+    Route::get('callbacks', 'HomeController@callbackPage')->name('home.callbacks');
+    Route::post('import', 'HomeController@import')->name('home.import.action');
+    Route::get('manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
+    Route::get('user-activity', 'HomeController@userActivity')->name('home.user-activity');
+});
 
-Route::get('/', 'Client\ClientController@index')->name('client.index');
-Route::get('/about', 'Client\ClientController@about')->name('client.about');
-Route::get('/contact', 'Client\ClientController@contact')->name('client.contact');
+Route::name('client.')->group(function (){
+    Route::get('/', 'Client\ClientController@index')->name('index');
+    Route::get('/about', 'Client\ClientController@about')->name('about');
+    Route::get('/contact', 'Client\ClientController@contact')->name('contact');
+    Route::get('/automotive/{id}', 'Client\ProductController@show')->name('product.show');
 
-Route::get('automotive/{id}', 'Client\ProductController@show')->name('client.product.show');
+    Route::get('/filter', 'Client\ProductController@getFilteredProducts')->name('filter');
+    Route::get('/search', 'Client\ProductController@getSearchedProducts')->name('search');
+});
 
-Route::get('ajax/get-models', 'Client\ClientController@getModels');
-Route::get('ajax/get-types', 'Client\ClientController@getTypes');
+Route::group(['prefix' => 'ajax'], function (){
+    Route::get('get-models', 'Client\ClientController@getModels');
+    Route::get('get-types', 'Client\ClientController@getTypes');
+});

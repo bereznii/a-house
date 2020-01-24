@@ -28,4 +28,20 @@ class Product extends Model
     {
         return $this->hasOne('App\Models\Type', 'id', 'type_id');
     }
+
+    /**
+     * Get the model record associated with the product.
+     */
+    public function model()
+    {
+        return $this->belongsTo('App\Models\MakeModel', 'model_id', 'id');
+    }
+
+    /**
+     * Get the type make associated with the product.
+     */
+    public function make()
+    {
+        return $this->belongsTo('App\Models\Make', 'make_id', 'id');
+    }
 }

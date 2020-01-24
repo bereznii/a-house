@@ -10,7 +10,7 @@ $(document).ready(function() {
             },
             type: "get",
             dataType: "json", //Expected data format from server
-            url: 'ajax/get-models',
+            url: '/ajax/get-models',
             data: {
                 selectedMake: selectedMake,
             },
@@ -44,7 +44,7 @@ $(document).ready(function() {
             },
             type: "get",
             dataType: "json", //Expected data format from server
-            url: 'ajax/get-types',
+            url: '/ajax/get-types',
             data: {
                 selectedModel: selectedModel,
             },
