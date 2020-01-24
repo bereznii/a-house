@@ -19,7 +19,7 @@ $(document).ready(function() {
                 $("#models option").remove();
                 $("#types option").remove();
 
-                var select = "";
+                var select = "<option value=''>Модель автомобиля</option>";
 
                 $.each(data, function(key, value) {
                     select += "<option value='"+value.id+"'>"+value.name+"</option>";
@@ -52,7 +52,7 @@ $(document).ready(function() {
 
                 $("#types option").remove();
 
-                var select = "";
+                var select = "<option value=''>Тип стекла</option>";
 
                 $.each(data, function(key, value) {
                     select += "<option value='"+value.id+"'>"+value.translation+"</option>";

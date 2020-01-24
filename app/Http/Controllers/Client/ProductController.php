@@ -25,13 +25,17 @@ class ProductController extends Controller
     }
 
     /**
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getFilteredProducts()
     {
-        $products = Product::where('make_id', request('makes'))
-            ->where('model_id', request('models'))
-            ->where('type_id', request('types'))
+        $make = request('makes');
+        $model = request('models') ?? '';
+        $type = request('types') ?? '';
+
+        $products = Product::where('make_id', $make)
+            ->where('model_id', 'like', "%{$model}%")
+            ->where('type_id', 'like', "%{$type}%")
             ->paginate(12);
 
         $makes = Make::all();
@@ -43,7 +47,7 @@ class ProductController extends Controller
     }
 
     /**
-     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getSearchedProducts()
     {
