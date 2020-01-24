@@ -30,13 +30,17 @@ class ProductController extends Controller
     public function getFilteredProducts()
     {
         $make = request('makes');
-        $model = request('models') ?? '';
-        $type = request('types') ?? '';
+        $model = request('models', '');
+        $type = request('types', '');
 
         $products = Product::where('make_id', $make)
             ->where('model_id', 'like', "%{$model}%")
             ->where('type_id', 'like', "%{$type}%")
             ->paginate(12);
+
+        $products->appends(['makes' => $make]);
+        $products->appends(['models' => $model]);
+        $products->appends(['types' => $type]);
 
         $makes = Make::all();
 
@@ -56,6 +60,8 @@ class ProductController extends Controller
         $products = Product::where('barcode', 'like', "%{$query}%")
             ->orWhere('stock_code', 'like', "%{$query}%")
             ->paginate(12);
+        $products->appends(['query' => $query]);
+
 
         $makes = Make::all();
 
