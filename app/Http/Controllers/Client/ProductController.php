@@ -36,11 +36,13 @@ class ProductController extends Controller
         $products = Product::where('make_id', $make)
             ->where('model_id', 'like', "%{$model}%")
             ->where('type_id', 'like', "%{$type}%")
-            ->paginate(12);
+            ->paginate(9);
 
         $products->appends(['makes' => $make]);
         $products->appends(['models' => $model]);
         $products->appends(['types' => $type]);
+
+        session()->flashInput(request()->input());
 
         $makes = Make::all();
 
@@ -59,9 +61,10 @@ class ProductController extends Controller
 
         $products = Product::where('barcode', 'like', "%{$query}%")
             ->orWhere('stock_code', 'like', "%{$query}%")
-            ->paginate(12);
+            ->paginate(9);
         $products->appends(['query' => $query]);
 
+        session()->flashInput(request()->input());
 
         $makes = Make::all();
 

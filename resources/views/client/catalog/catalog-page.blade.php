@@ -9,11 +9,14 @@
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
                             <h4 class="card-title">
-                                <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->type->translation ?? '' }}</a>
+                                <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }},
+                                    {{ mb_strtolower($product->type->translation ?? '') }}</a>
                             </h4>
                             <h5>{{ $product->retail_price ?? '' }}грн.</h5>
                             <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
-                            <h6><b>Изготовитель:</b> {{ $product->manufacture ?? '' }}</h6>
+                            <h6><b>Еврокод:</b>  {{ $product->stock_code ?? '' }}</h6>
+                            <h6><b>Складский код:</b> {{ $product->barcode ?? '' }}</h6>
+                            <h6><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
                         </div>
                         <div class="card-footer">
                             <button class="btn btn-success">Купить</button>

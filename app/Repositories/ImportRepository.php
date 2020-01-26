@@ -63,27 +63,27 @@ class ImportRepository
             return null;
         }
 
-        $result = '';
-
-        foreach (self::$shortcuts as $key => $shortcut) {
-            if (strpos($description, $key) !== false) {
-                $result .= $shortcut . ', ';
-            }
-        }
-
-        $result = rtrim($result, ' ,') . '.';
-
-
-//        $matches = explode('+', $description);
-//        unset($matches[0]);
-//
 //        $result = '';
 //
-//        foreach ($matches as $match) {
-//            $result .= self::$shortcuts[trim($match)] . ', ';
+//        foreach (self::$shortcuts as $key => $shortcut) {
+//            if (strpos($description, $key) !== false) {
+//                $result .= $shortcut . ', ';
+//            }
 //        }
 //
 //        $result = rtrim($result, ' ,') . '.';
+
+        $description = str_replace('-', '+', $description);
+        $matches = explode('+', $description);
+        unset($matches[0]);
+
+        $result = '';
+
+        foreach ($matches as $match) {
+            $result .= self::$shortcuts[trim($match)] . ', ';
+        }
+
+        $result = rtrim($result, ' ,') . '.';
 
         logger('Description: ' . $result);
 

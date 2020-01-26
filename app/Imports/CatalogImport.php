@@ -15,7 +15,7 @@ class CatalogImport implements ToModel, WithChunkReading
 {
     private static int $i = 0;
 
-    const REGEX = '/^[A-Z\s\p{Lu}]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
+    const REGEX = '/^[A-Z\s\p{Lu}\/]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
 
     /**
     * @param array $row

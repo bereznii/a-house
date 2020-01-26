@@ -31,15 +31,15 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item @if(route('client.index') == url()->current()) active @endif">
-                        <a class="nav-link" href="{{ route('client.index') }}">Home
+                        <a class="nav-link" href="{{ route('client.index') }}">Каталог
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item @if(route('client.about') == url()->current()) active @endif">
-                        <a class="nav-link" href="{{ route('client.about') }}">About</a>
+                        <a class="nav-link" href="{{ route('client.about') }}">О нас</a>
                     </li>
                     <li class="nav-item @if(route('client.contact') == url()->current()) active @endif">
-                        <a class="nav-link" href="{{ route('client.contact') }}">Contact</a>
+                        <a class="nav-link" href="{{ route('client.contact') }}">Контакты</a>
                     </li>
                 </ul>
             </div>

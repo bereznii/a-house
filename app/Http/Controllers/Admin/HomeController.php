@@ -32,6 +32,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $var = 'WS Honda Civic 05- 5D HB  +датчик+верхн.упл.+VIN-атермальное';
+
+        dd(ImportRepository::getDetailedDescription($var));
         return view('admin.pages.import');
     }
 

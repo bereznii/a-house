@@ -25,7 +25,7 @@ class ManufacturersImport implements ToModel
 
             ManufacturerCharge::firstOrCreate(
                 [
-                    'name' => $row[6]
+                    'name' => $row[6],
                 ]
             );
 
