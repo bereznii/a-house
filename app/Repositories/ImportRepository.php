@@ -73,14 +73,25 @@ class ImportRepository
 //
 //        $result = rtrim($result, ' ,') . '.';
 
-        $description = str_replace('-', '+', $description);
+//        $description = str_replace('-', '+', $description);
         $matches = explode('+', $description);
         unset($matches[0]);
 
         $result = '';
 
         foreach ($matches as $match) {
-            $result .= self::$shortcuts[trim($match)] . ', ';
+            if (strpos($match, '-') !== false) {
+                $newMatches = explode('-', $match);
+                foreach ($newMatches as $newMatch) {
+                    if (array_key_exists(trim($newMatch), self::$shortcuts)) {
+                        $result .= self::$shortcuts[trim($newMatch)] . ', ';
+                    }
+                }
+            } else {
+                if (array_key_exists($match, self::$shortcuts)) {
+                    $result .= self::$shortcuts[trim($match)] . ', ';
+                }
+            }
         }
 
         $result = rtrim($result, ' ,') . '.';
@@ -106,7 +117,7 @@ class ImportRepository
 
         preg_match(self::DESCRIPTION_REGEX, $row, $matches);
 
-        $result = array_shift($matches);
+        $result = array_pop($matches);
 
         return $result;
     }
