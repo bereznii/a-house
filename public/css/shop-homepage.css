@@ -21,3 +21,7 @@ footer {
 body {
     padding-top: 56px;
 }
+
+.bg-darkgreen {
+    background-color: seagreen !important;
+}

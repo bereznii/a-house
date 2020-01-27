@@ -36,6 +36,7 @@ class ProductController extends Controller
         $products = Product::where('make_id', $make)
             ->where('model_id', 'like', "%{$model}%")
             ->where('type_id', 'like', "%{$type}%")
+            ->where('in_stock', '>', 0)
             ->paginate(9);
 
         $products->appends(['makes' => $make]);
@@ -62,7 +63,8 @@ class ProductController extends Controller
         $query = request('query');
 
         $products = Product::where('barcode', 'like', "%{$query}%")
-            ->orWhere('stock_code', 'like', "%{$query}%")
+//            ->orWhere('stock_code', 'like', "%{$query}%")
+            ->where('in_stock', '>', 0)
             ->paginate(9);
         $products->appends(['query' => $query]);
 

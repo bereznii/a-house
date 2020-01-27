@@ -35,7 +35,9 @@ class ClientController extends Controller
      */
     public function about()
     {
-        return view('client.about.index');
+        return view('client.about.index')->with([
+            'sidebarData' => ClientRepository::sidebarData()
+        ]);
     }
 
     /**
@@ -45,7 +47,9 @@ class ClientController extends Controller
      */
     public function contact()
     {
-        return view('client.contact.index');
+        return view('client.contact.index')->with([
+            'sidebarData' => ClientRepository::sidebarData()
+        ]);
     }
 
     /**

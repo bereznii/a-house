@@ -21,7 +21,7 @@ class ClientRepository
         $models = request()->session()->get('models', null);
         $selectedModel = request()->session()->get('selectedModel', null);
 
-        if (empty($selectedModel) && $models->count() > 0) {
+        if (empty($selectedModel) && (isset($models) && $models->count() > 0)) {
             $types = self::getTypes($models->first()->id);
         } elseif (isset($selectedModel)) {
             $types = self::getTypes($selectedModel);

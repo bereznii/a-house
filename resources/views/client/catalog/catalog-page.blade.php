@@ -15,7 +15,6 @@
                             <h5>{{ $product->retail_price ?? '' }}грн.</h5>
                             <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
                             <h6><b>Еврокод:</b>  {{ $product->stock_code ?? '' }}</h6>
-                            <h6><b>Складский код:</b> {{ $product->barcode ?? '' }}</h6>
                             <h6><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
                         </div>
                         <div class="card-footer">

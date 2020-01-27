@@ -22,7 +22,7 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-darkgreen fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('client.index') }}">Autoglass House</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item @if(route('client.index') == url()->current()) active @endif">
+                    <li class="nav-item  @if(route('client.about') != url()->current() && route('client.contact') != url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.index') }}">Каталог
                             <span class="sr-only">(current)</span>
                         </a>
@@ -60,9 +60,9 @@
     <!-- /.container -->
 
     <!-- Footer -->
-    <footer class="py-3 bg-dark">
+    <footer class="py-3 bg-darkgreen">
         <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Your Website 2019</p>
+            <p class="m-0 text-center text-white">Copyright &copy; Autoglass House {{ now()->year }}</p>
         </div>
         <!-- /.container -->
     </footer>
