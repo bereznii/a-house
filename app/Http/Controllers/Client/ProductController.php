@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Models\Make;
 use App\Models\Product;
+use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -15,11 +16,10 @@ class ProductController extends Controller
      */
     public function show(int $id)
     {
-        $makes = Make::all();
         $product = Product::find($id);
 
         return view('client.item.index')->with([
-            'makes' => $makes,
+            'sidebarData' => ClientRepository::sidebarData(),
             'product' => $product
         ]);
     }
@@ -42,12 +42,14 @@ class ProductController extends Controller
         $products->appends(['models' => $model]);
         $products->appends(['types' => $type]);
 
+        request()->session()->put('selectedMake', $make);
+        request()->session()->put('selectedModel', $model);
+        request()->session()->put('selectedType', $type);
+
         session()->flashInput(request()->input());
-
-        $makes = Make::all();
-
+//        dd(ClientRepository::sidebarData());
         return view('client.catalog.index')->with([
-            'makes' => $makes,
+            'sidebarData' => ClientRepository::sidebarData(),
             'products' => $products
         ]);
     }
@@ -66,10 +68,8 @@ class ProductController extends Controller
 
         session()->flashInput(request()->input());
 
-        $makes = Make::all();
-
         return view('client.catalog.index')->with([
-            'makes' => $makes,
+            'sidebarData' => ClientRepository::sidebarData(),
             'products' => $products
         ]);
     }

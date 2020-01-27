@@ -21,21 +21,33 @@
         <div class="form-group">
             <label for="makes">Марка:</label>
             <select name="makes" class="form-control" id="makes">
-                @foreach($makes as $make)
-                    <option value="{{ $make->id }}">{{ $make->name }}</option>
+                @foreach($sidebarData['makes']['list'] as $make)
+                    <option value="{{ $make->id }}" @if($sidebarData['makes']['selectedId'] == $make->id) selected @endif>{{ $make->name }}</option>
                 @endforeach
             </select>
         </div>
 
         <div class="form-group">
             <label for="models">Модель:</label>
-            <select disabled name="models" class="form-control" id="models">
+            <select @if(!isset($sidebarData['models']['list'])) disabled @endif name="models" class="form-control" id="models">
+                @if(isset($sidebarData['models']['list']))
+                    <option value=''>Модель автомобиля</option>
+                    @foreach($sidebarData['models']['list'] as $model)
+                        <option value="{{ $model->id }}" @if($sidebarData['models']['selectedId'] == $model->id) selected @endif>{{ $model->name }}</option>
+                    @endforeach
+                @endif
             </select>
         </div>
 
         <div class="form-group">
             <label for="types">Тип стекла:</label>
-            <select disabled name="types" class="form-control" id="types">
+            <select @if(!isset($sidebarData['types']['list']) || empty($sidebarData['models']['selectedId'])) disabled @endif name="types" class="form-control" id="types">
+                @if(isset($sidebarData['types']['list']) && !empty($sidebarData['models']['selectedId']))
+                    <option value=''>Тип стекла</option>
+                    @foreach($sidebarData['types']['list'] as $type)
+                        <option value="{{ $type->id }}" @if($sidebarData['types']['selectedId'] == $type->id) selected @endif>{{ $type->translation }}</option>
+                    @endforeach
+                @endif
             </select>
         </div>
 

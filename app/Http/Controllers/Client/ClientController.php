@@ -7,7 +7,10 @@ use App\Models\Make;
 use App\Models\MakeModel;
 use App\Models\Product;
 use App\Models\Type;
+use App\Repositories\ClientRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ClientController extends Controller
 {
@@ -21,18 +24,8 @@ class ClientController extends Controller
         $makes = Make::all();
 
         return view('client.catalog.index')->with([
-            'makes' => $makes
+            'sidebarData' => ClientRepository::sidebarData()
         ]);
-    }
-
-    /**
-     * Return client item page.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function item($id)
-    {
-
     }
 
     /**
@@ -65,25 +58,27 @@ class ClientController extends Controller
         $models = MakeModel::where('make_id', request('selectedMake'))
             ->get();
 
+        request()->session()->put('models', $models);
+        request()->session()->put('selectedMake', request('selectedMake'));
+
+        request()->session()->forget('types');
+        request()->session()->forget('selectedType');
+
         return response()->json($models);
     }
 
     /**
      * Return types for given model id.
      *
+     * @param int|null $modelId
      * @return \Illuminate\Http\JsonResponse
      */
     public function getTypes()
     {
-        $typesForModel = Product::select('type_id')
-            ->where('model_id', request('selectedModel'))
-            ->where('in_stock', '>', 0)
-            ->groupBy('type_id')
-            ->get()
-            ->pluck('type_id')
-            ->toArray();
+        $types = ClientRepository::getTypes(request('selectedModel'));
 
-        $types = Type::whereIn('id' , $typesForModel)->get();
+        request()->session()->put('types', $types);
+        request()->session()->put('selectedModel', request('selectedModel'));
 
         return response()->json($types);
     }
