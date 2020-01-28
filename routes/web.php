@@ -49,4 +49,5 @@ Route::name('client.')->group(function (){
 Route::group(['prefix' => 'ajax'], function (){
     Route::get('get-models', 'Client\ClientController@getModels');
     Route::get('get-types', 'Client\ClientController@getTypes');
+    Route::get('add-to-cart', 'Client\CartController@update');
 });

@@ -34,4 +34,14 @@ class CheckoutController extends Controller
             'thank' => true
         ]);
     }
+
+    /**
+     * Add product to cart.
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function update()
+    {
+        dd(request()->all());
+    }
 }
