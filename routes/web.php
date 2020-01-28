@@ -33,10 +33,17 @@ Route::name('client.')->group(function (){
     Route::get('/', 'Client\ClientController@index')->name('index');
     Route::get('/about', 'Client\ClientController@about')->name('about');
     Route::get('/contact', 'Client\ClientController@contact')->name('contact');
+
     Route::get('/automotive/{id}', 'Client\ProductController@show')->name('product.show');
 
     Route::get('/filter', 'Client\ProductController@getFilteredProducts')->name('filter');
     Route::get('/search', 'Client\ProductController@getSearchedProducts')->name('search');
+
+    Route::group(['prefix' => 'checkout'], function () {
+        Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
+        Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
+    });
+
 });
 
 Route::group(['prefix' => 'ajax'], function (){

@@ -13,6 +13,8 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
+    <!-- Place your kit's code here -->
+    <script src="{{ url('/js/fontawesome.js') }}" crossorigin="anonymous"></script>
 
     <!-- Custom styles for this template -->
     <link rel="stylesheet" type="text/css" href="{{ url('/css/shop-homepage.css') }}" />
@@ -30,7 +32,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item  @if(route('client.about') != url()->current() && route('client.contact') != url()->current()) active @endif">
+                    <li class="nav-item  @if(route('client.about') != url()->current() && route('client.contact') != url()->current() && route('client.checkout') != url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.index') }}">Каталог
                             <span class="sr-only">(current)</span>
                         </a>
@@ -40,6 +42,9 @@
                     </li>
                     <li class="nav-item @if(route('client.contact') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.contact') }}">Контакты</a>
+                    </li>
+                    <li class="nav-item @if(route('client.checkout') == url()->current()) active @endif">
+                        <a class="nav-link" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart"></i> Корзина</a>
                     </li>
                 </ul>
             </div>

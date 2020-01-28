@@ -18,7 +18,11 @@
                             <h6><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-success">Купить</button>
+                            <button class="btn btn-success btn-sm">Купить</button>
+                            <button class="btn btn-success btn-sm">
+                                <i class="fas fa-cart-plus"></i>
+                                Добавить
+                            </button>
                         </div>
                     </div>
                 </div>
