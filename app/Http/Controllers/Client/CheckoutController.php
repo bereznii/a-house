@@ -51,4 +51,15 @@ class CheckoutController extends Controller
             'thank' => true
         ]);
     }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function removeFromOrder($id)
+    {
+        request()->session()->forget("cart.{$id}");
+
+        return $this->checkout();
+    }
 }

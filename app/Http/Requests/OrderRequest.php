@@ -34,7 +34,9 @@ class OrderRequest extends FormRequest
             'deliveryMethod' => 'required|integer',
             'paymentMethod' => 'required|integer',
             'callback' => 'required|integer',
-            'products.*' => 'integer',
+            'products.*.product_id' => 'required|integer',
+            'products.*.quantity' => 'required|integer',
+            'products.*.price' => 'required|numeric',
         ];
     }
 
@@ -66,6 +68,10 @@ class OrderRequest extends FormRequest
             'deliveryMethod.required' => 'Метод доставки является обязательным полем',
             'paymentMethod.required' => 'Метод оплаты является обязательным полем',
             'callback.required' => 'Обратный звонок является обязательным полем',
+            'products.*.product_id.required' => 'Товар является обязательным полем',
+            'products.*.quantity.integer' => 'Количество товара должно быть числом',
+            'products.*.price.required' => 'Цена товара является обязательным полем',
+            'products.*.price.numeric' => 'Цена товара является обязательным полем',
         ];
     }
 }

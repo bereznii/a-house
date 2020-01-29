@@ -1,6 +1,6 @@
 <div class="col-lg-9">
 
-    <div class="card mt-4">
+    <div class="card mt-4 mb-4">
         <div class="card-header">
             Оформление заказа
         </div>
@@ -100,16 +100,23 @@
                 </h4>
                 @if(isset($content))
                     <ul class="list-group mb-3">
-                        @foreach($content['products'] as $product)
+                        @foreach($content['products'] as $key => $product)
                         <li class="list-group-item lh-condensed">
+                            <div class="text-right">
+                                <span><a href="{{ route('client.checkout.removeFromOrder', ['id' => $product->id]) }}" class="text-danger"><i class="far fa-times-circle"></i></a></span>
+                            </div>
                             <div>
                                 <h6 class="my-0">{{ $product->model->name ?? '-' }}</h6>
                                 <p class="text-muted cart-item-description">{{ $product->type->translation }}</p>
                             </div>
+                            <div class="justify-content-end d-flex mb-1">
+                                <input type="text" class="form-control col-md-3 float-right" name="products[{{ $key }}][quantity]" value="{{ old('products')[$key]['quantity'] ?? 1 }}">
+                            </div>
                             <div class="text-right">
                                 <span class="text-muted">&#8372; {{ $product->retail_price }}</span>
                             </div>
-                            <input type="hidden" name="products[]" value="{{ $product->id }}">
+                            <input type="hidden" name="products[{{ $key }}][product_id]" value="{{ $product->id }}">
+                            <input type="hidden" name="products[{{ $key }}][price]" value="{{ old('products')[$key]['price'] ?? $product->retail_price }}">
                         </li>
                         @endforeach
                         <li class="list-group-item d-flex justify-content-between">
@@ -123,8 +130,5 @@
         </div>
         </div>
         </form>
-
     </div>
-
-
 </div>
