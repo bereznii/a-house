@@ -9,6 +9,10 @@ class CartController extends Controller
 {
     public function update()
     {
+        $productId = request('productId');
+
+        session(["cart.{$productId}" => $productId]);
+
         return response()->json(['status' => true]);
     }
 }

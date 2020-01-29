@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use App\Repositories\CartRepository;
 use App\Repositories\ClientRepository;
 use Illuminate\Http\Request;
 
@@ -15,8 +17,13 @@ class CheckoutController extends Controller
      */
     public function checkout()
     {
+        $ids = session('cart');
+
+        $content = (new CartRepository())->getContent();
+
         return view('client.checkout.index')->with([
-            'sidebarData' => ClientRepository::sidebarData()
+            'sidebarData' => ClientRepository::sidebarData(),
+            'content' => $content
         ]);
     }
 
@@ -33,15 +40,5 @@ class CheckoutController extends Controller
             'sidebarData' => ClientRepository::sidebarData(),
             'thank' => true
         ]);
-    }
-
-    /**
-     * Add product to cart.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function update()
-    {
-        dd(request()->all());
     }
 }

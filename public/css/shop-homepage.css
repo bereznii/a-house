@@ -25,3 +25,8 @@ body {
 .bg-darkgreen {
     background-color: seagreen !important;
 }
+
+.cart-item-description {
+    line-height: 100%;
+    font-size: 0.8em;
+}

@@ -109,19 +109,26 @@
                 <h4 class="d-flex justify-content-between align-items-center mb-3">
                     <span class="text-muted">Корзина</span>
                 </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Наименование</h6>
-                            <small class="text-muted">Brief description</small>
-                        </div>
-                        <span class="text-muted">&#8372; 12.00</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Итого (ГРН)</span>
-                        <strong>&#8372; 20.00</strong>
-                    </li>
-                </ul>
+                @if(isset($content))
+                    <ul class="list-group mb-3">
+                        @foreach($content['products'] as $product)
+                        <li class="list-group-item lh-condensed">
+                                <div>
+                                    <h6 class="my-0">{{ $product->model->name ?? '-' }}</h6>
+                                    <p class="text-muted cart-item-description">{{ $product->type->translation }}</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-muted">&#8372; {{ $product->retail_price }}</span>
+                                </div>
+
+                        </li>
+                        @endforeach
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Итого (ГРН)</span>
+                            <strong>&#8372; {{ $content['totalPrice'] ?? '0.00' }}</strong>
+                        </li>
+                    </ul>
+                @endif
 
             </div>
         </div>
