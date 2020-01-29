@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function update()
     {
         $productId = request('productId');
