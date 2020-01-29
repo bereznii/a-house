@@ -18,11 +18,12 @@
                             <h6><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
                         </div>
                         <div class="card-footer">
-                            <a href="{{ route('client.checkout') }}" class="btn btn-success btn-sm" role="button" aria-pressed="true">Купить</a>
-
                             <button class="btn btn-success btn-sm addToCart-btn" data-productid="{{ $product->id }}">
                                 <i class="fas fa-cart-plus"></i>
                                 Добавить
+                            </button>
+                            <button class="btn btn-danger btn-sm">
+                                Перезвонить
                             </button>
                         </div>
                     </div>

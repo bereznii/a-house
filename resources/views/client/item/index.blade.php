@@ -6,4 +6,6 @@
 
     @include('client.item.item-page')
 
+    @include('client.includes.callback-modal')
+
 @endsection

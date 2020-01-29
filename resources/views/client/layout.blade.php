@@ -44,7 +44,9 @@
                         <a class="nav-link" href="{{ route('client.contact') }}">Контакты</a>
                     </li>
                     <li class="nav-item @if(route('client.checkout') == url()->current()) active @endif">
-                        <a class="nav-link" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart"></i> Корзина</a>
+                        <a class="nav-link" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart"></i>
+                            @if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif Корзина
+                        </a>
                     </li>
                 </ul>
             </div>

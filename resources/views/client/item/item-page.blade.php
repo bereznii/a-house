@@ -15,8 +15,11 @@
                 <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
             @endif
             <hr>
-            <button class="btn btn-success">Купить</button>
-            <button class="btn btn-danger">Заказать обратный звонок</button>
+            <button class="btn btn-success addToCart-btn" data-productid="{{ $product->id }}">
+                <i class="fas fa-cart-plus"></i>
+                Добавить в корзину
+            </button>
+            <button class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">Заказать обратный звонок</button>
         </div>
     </div>
     <!-- /.card -->

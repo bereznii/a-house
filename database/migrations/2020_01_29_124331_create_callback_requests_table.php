@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class OrderProducts extends Migration
+class CreateCallbackRequestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class OrderProducts extends Migration
      */
     public function up()
     {
-        Schema::create('order_product', function (Blueprint $table) {
+        Schema::create('callback_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('order_id')->unsigned();
-            $table->integer('product_id')->unsigned();
+            $table->string('name')->nullable();
+            $table->string('phone')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class OrderProducts extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_product');
+        Schema::dropIfExists('callback_requests');
     }
 }

@@ -88,4 +88,36 @@ $(document).ready(function() {
 
     });
 
+    $(document).on('click', '.sendCallbackRequest-btn', function(event) {
+        event.preventDefault();
+
+        var name = $('[name="callbackName"]').val();
+        var phone = $('[name="callbackPhone"]').val();
+
+        var myForm = $('.modal-form');
+        if(! myForm[0].checkValidity()) {
+            myForm[0].reportValidity();
+            return;
+        }
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+            },
+            type: "get",
+            dataType: "json", //Expected data format from server
+            url: '/ajax/add-callback',
+            data: {
+                name: name,
+                phone: phone,
+            },
+            success: function(data) {
+                $('.callback-modal-content').empty();
+                $('#exampleModalLabel').empty();
+                $('#exampleModalLabel').text('Спасибо! Менеджер свяжется с Вами в ближайшее время.');
+            }
+        });
+
+    });
+
 });

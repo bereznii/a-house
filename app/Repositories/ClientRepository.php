@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 
+use App\Models\CallbackRequest;
 use App\Models\Make;
 use App\Models\Product;
 use App\Models\Type;
@@ -31,6 +32,8 @@ class ClientRepository
 
         $selectedType = request()->session()->get('selectedType', null);
 
+        $cartCount = count(request()->session()->get('cart', []));
+
         return [
             'makes' => [
                 'list' => $makes,
@@ -43,7 +46,8 @@ class ClientRepository
             'types' => [
                 'list' => $types,
                 'selectedId' => $selectedType
-            ]
+            ],
+            'cartCount' => $cartCount
         ];
     }
 
@@ -66,5 +70,19 @@ class ClientRepository
         $types = Type::whereIn('id' , $typesForModel)->get();
 
         return $types;
+    }
+
+    /**
+     * @param $request
+     * @return bool
+     */
+    public static function saveCallbackRequest($request): bool
+    {
+        $record = app(CallbackRequest::class);
+        $record->name = $request->get('name');
+        $record->phone = $request->get('phone');
+        $record->save();
+
+        return true;
     }
 }

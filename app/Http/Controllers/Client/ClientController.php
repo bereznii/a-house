@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\CallbackRequest;
 use App\Models\Make;
 use App\Models\MakeModel;
 use App\Models\Product;
 use App\Models\Type;
 use App\Repositories\ClientRepository;
 use Carbon\Carbon;
+use Grpc\Call;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -85,5 +87,21 @@ class ClientController extends Controller
         request()->session()->put('selectedModel', request('selectedModel'));
 
         return response()->json($types);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addCallback(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'phone' => 'required|max:255',
+        ]);
+
+        $result = ClientRepository::saveCallbackRequest($request);
+
+        return response()->json(['status' => $result]);
     }
 }

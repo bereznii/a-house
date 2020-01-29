@@ -13,54 +13,37 @@
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Имя</label>
                             <input type="text" name="firstName" class="form-control" id="firstName" placeholder="" value="{{ old('firstName') }}">
-                            <div class="invalid-feedback">
-                                Valid first name is required.
-                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName">Фамилия</label>
                             <input type="text" name="lastName" class="form-control" id="lastName" placeholder="" value="{{ old('lastName') }}" required>
-                            <div class="invalid-feedback">
-                                Valid last name is required.
-                            </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="email">Email <span class="text-muted">(Optional)</span></label>
                         <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" value="{{ old('email') }}">
-                        <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                        </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="address">Номер телефона</label>
                         <input type="text" name="phone" class="form-control" id="address" placeholder="+380(ХХ)ХХХ-ХХ-ХХ" value="{{ old('phone') }}" required>
-                        <div class="invalid-feedback">
-                            Please enter your shipping address.
-                        </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="address2">Адрес</label>
-                        <input type="text" name="address" class="form-control" id="address2" placeholder="Apartment or suite" value="{{ old('address') }}" required>
+                        <input type="text" name="address" class="form-control" id="address2" placeholder="Адрес" value="{{ old('address') }}" required>
                     </div>
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="country">Страна</label>
                             <input type="text" name="country" class="form-control" id="address2" placeholder="Украина" value="Украина" required disabled>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
+                            <input type="hidden" name="country" class="form-control" id="address2" value="Украина">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="state">Город</label>
                             <input type="text" name="city" class="form-control" id="address2" placeholder="Киев" value="{{ old('city') }}" required>
-                            <div class="invalid-feedback">
-                                Please provide a valid state.
-                            </div>
                         </div>
                     </div>
                     <hr class="mb-4">
@@ -72,9 +55,6 @@
                                 <option value="2" @if(old('deliveryMethod') == 2) selected @endif>Курьер</option>
                                 <option value="3" @if(old('deliveryMethod') == 3) selected @endif>Установка на месте</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Please select a valid country.
-                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="state">Метод оплаты</label>
@@ -83,22 +63,20 @@
                                 <option value="2" @if(old('paymentMethod') == 2) selected @endif>Наличные</option>
                                 <option value="3" @if(old('paymentMethod') == 3) selected @endif>Предоплата</option>
                             </select>
-                            <div class="invalid-feedback">
-                                Please provide a valid state.
-                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div class="custom-control custom-radio">
-                                <input id="credit" value="1" name="callback" type="radio" class="custom-control-input" checked required>
+                                <input id="credit" value="1" name="callback" type="radio" class="custom-control-input" checked disabled required>
                                 <label class="custom-control-label" for="credit">Запросить обратный звонок менеджера</label>
                             </div>
                             <div class="custom-control custom-radio">
-                                <input id="debit" value="0" name="callback" type="radio" class="custom-control-input" required>
+                                <input id="debit" value="0" name="callback" type="radio" class="custom-control-input" disabled required>
                                 <label class="custom-control-label" for="debit">Подтверждаю правильность заполненых данных</label>
                             </div>
                         </div>
+                        <input type="hidden" name="callback" class="form-control" id="address2" value="1">
                     </div>
                     <hr class="mb-4">
                     @if ($errors->any())
