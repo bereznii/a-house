@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\OrderRequest;
 use App\Models\Product;
 use App\Repositories\CartRepository;
 use App\Repositories\ClientRepository;
+use App\Repositories\OrderRepository;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -32,9 +34,17 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function store()
+    public function store(OrderRequest $request)
     {
-//        dd(request()->all());
+        $validated = $request->validated();
+
+        $order = app(OrderRepository::class);
+
+        $order->storeOrder($validated);
+
+        session()->flush();
+        session()->flashInput(request()->input());
+
 
         return view('client.checkout.index')->with([
             'sidebarData' => ClientRepository::sidebarData(),
