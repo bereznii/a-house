@@ -22,7 +22,7 @@
                                 <i class="fas fa-cart-plus"></i>
                                 Добавить
                             </button>
-                            <button class="btn btn-danger btn-sm">
+                            <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#exampleModal">
                                 Перезвонить
                             </button>
                         </div>

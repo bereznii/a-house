@@ -12,7 +12,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Имя</label>
-                            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="" value="{{ old('firstName') }}">
+                            <input type="text" name="firstName" class="form-control" id="firstName" placeholder="" value="{{ old('firstName') }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="lastName">Фамилия</label>

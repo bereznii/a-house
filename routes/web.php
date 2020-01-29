@@ -27,6 +27,9 @@ Route::group(['prefix' => 'admin'], function (){
     Route::post('import', 'HomeController@import')->name('home.import.action');
     Route::get('manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
     Route::get('user-activity', 'HomeController@userActivity')->name('home.user-activity');
+    Route::resource('orders', 'Admin\OrderController');
+
+    Route::post('confirm-callback-request', 'HomeController@confirmCallback');
 });
 
 Route::name('client.')->group(function (){

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\CatalogImport;
 use App\Imports\Import;
+use App\Models\CallbackRequest;
 use App\Models\Make;
 use App\Models\ManufacturerCharge;
 use App\Repositories\ImportRepository;
@@ -40,7 +41,25 @@ class HomeController extends Controller
      */
     public function callbackPage()
     {
-        return view('admin.pages.callback-requests');
+        $records = CallbackRequest::orderBy('created_at', 'desc')->paginate(20);
+
+        return view('admin.pages.callback-requests')->with([
+            'records' => $records
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function confirmCallback(Request $request)
+    {
+        $isChecked = (int)(request('value') == 'true');
+
+        CallbackRequest::find(request('recordId'))->update(['is_called' => $isChecked]);
+
+        return response()->json([
+            'status' => true
+        ]);
     }
 
     /**
@@ -48,8 +67,6 @@ class HomeController extends Controller
      */
     public function manufacturerCharge()
     {
-
-
         return view('admin.pages.manufacturer-charge');
     }
 

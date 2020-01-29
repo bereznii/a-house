@@ -7,6 +7,9 @@
     User activity
   </div>
   <div class="card-body">
+      <div class="alert alert-danger" role="alert">
+          Секция находится в разработке.
+      </div>
       <table class="table table-bordered">
           <thead>
           <tr>
@@ -18,31 +21,6 @@
           <tbody>
           <tr>
               <th scope="row">0.0.0.1</th>
-              <td>-</td>
-              <td>12-12-2019 14:30:22</td>
-          </tr>
-          <tr>
-              <th scope="row">0.0.0.2</th>
-              <td>-</td>
-              <td>12-12-2019 14:30:22</td>
-          </tr>
-          <tr>
-              <th scope="row">0.0.0.3</th>
-              <td>-</td>
-              <td>12-12-2019 14:30:22</td>
-          </tr>
-          <tr>
-              <th scope="row">0.0.0.4</th>
-              <td>-</td>
-              <td>12-12-2019 14:30:22</td>
-          </tr>
-          <tr>
-              <th scope="row">0.0.0.5</th>
-              <td>-</td>
-              <td>12-12-2019 14:30:22</td>
-          </tr>
-          <tr>
-              <th scope="row">0.0.0.6</th>
               <td>-</td>
               <td>12-12-2019 14:30:22</td>
           </tr>
