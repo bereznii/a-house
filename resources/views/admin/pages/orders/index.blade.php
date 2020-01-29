@@ -23,11 +23,11 @@
             @foreach($orders as $order)
                 <tr>
                     <th scope="row">{{ $order->id ?? '-' }}</th>
-                    <td>{{ $order->name ?? '-' }}, {{ $order->surname ?? '-' }}</td>
+                    <td>{{ $order->name ?? '-' }} {{ $order->surname ?? '-' }}</td>
                     <td>{{ $order->phone ?? '-' }}</td>
                     <td>{{ $order->email ?? '-' }}</td>
                     <td>{{ $order->products()->sum('retail_price') ?? '-' }}грн.</td>
-                    <td>{{ $order->status_id ?? '-' }}</td>
+                    <td>{{ $order->statusName ?? '-' }}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('orders.edit',$order->id) }}">Edit</a>
                     </td>

@@ -64,6 +64,10 @@
                                 <option value="3" @if(old('paymentMethod') == 3) selected @endif>Предоплата</option>
                             </select>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="comment">Дополнительный комментарий</label>
+                            <textarea name="comment" class="form-control" id="comment" rows="5"></textarea>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 mb-3">

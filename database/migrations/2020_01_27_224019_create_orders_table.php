@@ -22,6 +22,7 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             $table->string('country');
             $table->string('city');
+            $table->text('comment')->nullable();
             $table->integer('need_callback')->unsigned();
             $table->integer('delivery_type_id')->unsigned();
             $table->integer('payment_type_id')->unsigned();

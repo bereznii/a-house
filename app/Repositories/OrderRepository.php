@@ -7,6 +7,10 @@ use App\Models\Product;
 
 class OrderRepository
 {
+    /**
+     * @param array $cartContents
+     * @return bool
+     */
     public function storeOrder(array $cartContents): bool
     {
         $order = app(Order::class);
@@ -24,5 +28,14 @@ class OrderRepository
         $order->products()->attach($cartContents['products']);
 
         return true;
+    }
+
+    /**
+     * @param int $statusId
+     * @return string
+     */
+    public static function getOrdersStatus(int $statusId): string
+    {
+        return Order::STATUS_TEXTS[$statusId];
     }
 }

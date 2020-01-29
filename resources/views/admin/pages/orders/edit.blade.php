@@ -87,6 +87,10 @@
                                     <input class="form-control" type="text" value="Не указан" disabled>
                                 @endswitch
                             </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="comment">Дополнительный комментарий</label>
+                                <textarea disabled name="comment" class="form-control" id="comment" rows="5"></textarea>
+                            </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 mb-3">
@@ -101,7 +105,6 @@
                                     </label>
                                 </div>
                             </div>
-                            <input type="hidden" name="callback" class="form-control" id="address2" value="1">
                         </div>
                         <hr class="mb-4">
                         <form action="{{ route('orders.update', ['order' => $order->id]) }}" method="POST">
@@ -113,6 +116,7 @@
                                     <option value="1" @if($order->status_id == 1) selected @endif>Новый</option>
                                     <option value="2" @if($order->status_id == 2) selected @endif>Выполнен</option>
                                     <option value="3" @if($order->status_id == 3) selected @endif>Подтверждён</option>
+                                    <option value="4" @if($order->status_id == 4) selected @endif>Отменён</option>
                                 </select>
                             </div>
                             <button class="btn btn-success btn-lg btn-block" type="submit">Обновить заказ</button>

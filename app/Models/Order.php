@@ -10,6 +10,13 @@ class Order extends Model
         'status_id'
     ];
 
+    const STATUS_TEXTS = [
+        1 => 'Новый',
+        2 => 'Выполнен',
+        3 => 'Подтверждён',
+        4 => 'Отменён'
+    ];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
@@ -18,5 +25,15 @@ class Order extends Model
         return $this->belongsToMany('App\Models\Product')
             ->using('App\Models\OrderProduct')
             ->withTimestamps();
+    }
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getStatusNameAttribute()
+    {
+        return self::STATUS_TEXTS[$this->status_id];
     }
 }
