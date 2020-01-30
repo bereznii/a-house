@@ -55,4 +55,5 @@ Route::group(['prefix' => 'ajax'], function (){
     Route::get('get-types', 'Client\ClientController@getTypes');
     Route::get('add-to-cart', 'Client\CartController@update');
     Route::get('add-callback', 'Client\ClientController@addCallback');
+    Route::get('update-cart-quantity', 'Client\CartController@updateQuantity');
 });

@@ -19,8 +19,6 @@ class CheckoutController extends Controller
      */
     public function checkout()
     {
-        $ids = session('cart');
-
         $content = (new CartRepository())->getContent();
 
         return view('client.checkout.index')->with([

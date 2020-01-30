@@ -82,7 +82,30 @@ $(document).ready(function() {
                 productId: productId,
             },
             success: function(data) {
-                console.log(data);
+
+            }
+        });
+
+    });
+
+    $(document).on('change', '.quantity-input', function() {
+
+        var productId = $(this).data('productid');
+        var productQuantity = $(this).val();
+
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+            },
+            type: "get",
+            dataType: "json", //Expected data format from server
+            url: '/ajax/update-cart-quantity',
+            data: {
+                productId: productId,
+                productQuantity: productQuantity
+            },
+            success: function(data) {
+                location.reload();
             }
         });
 

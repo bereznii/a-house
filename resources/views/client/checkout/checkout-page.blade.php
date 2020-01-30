@@ -19,14 +19,14 @@
                                         <span><a href="{{ route('client.checkout.removeFromOrder', ['id' => $product->id]) }}" class="text-danger"><i class="far fa-times-circle"></i></a></span>
                                     </div>
                                     <div>
-                                        <h6 class="my-0">{{ $product->model->name ?? '-' }}</h6>
+                                        <h6 class="my-0"><a href="{{ route('client.product.show', ['id' => $product->id]) }}" target="_blank">{{ $product->model->name ?? '-' }}</a></h6>
                                         <p class="text-muted cart-item-description">{{ $product->type->translation }}</p>
                                     </div>
                                     <div class="justify-content-end d-flex mb-1">
-                                        <input type="text" class="form-control col-md-3 float-right" name="products[{{ $key }}][quantity]" value="{{ old('products')[$key]['quantity'] ?? 1 }}">
+                                        <input type="text" class="form-control col-md-3 float-right quantity-input" data-productid="{{ $product->id }}" name="products[{{ $key }}][quantity]" value="{{ $content['quantities'][$product->id] ?? old('products')[$key]['quantity'] ?? 1 }}">
                                     </div>
                                     <div class="text-right">
-                                        <span class="text-muted">&#8372; {{ $product->retail_price }}</span>
+                                        <span class="text-muted">&#8372; {{ $content['prices'][$product->id] ?? $product->retail_price }}</span>
                                     </div>
                                     <input type="hidden" name="products[{{ $key }}][product_id]" value="{{ $product->id }}">
                                     <input type="hidden" name="products[{{ $key }}][price]" value="{{ old('products')[$key]['price'] ?? $product->retail_price }}">
