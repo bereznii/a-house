@@ -24,6 +24,7 @@ class Order extends Model
     {
         return $this->belongsToMany('App\Models\Product')
             ->using('App\Models\OrderProduct')
+            ->withPivot('price', 'quantity')
             ->withTimestamps();
     }
 
@@ -35,5 +36,15 @@ class Order extends Model
     public function getStatusNameAttribute()
     {
         return self::STATUS_TEXTS[$this->status_id];
+    }
+
+    /**
+     * Get the user's full name.
+     *
+     * @return string
+     */
+    public function getTotalPriceAttribute()
+    {
+        return $this->products()->sum('price');
     }
 }

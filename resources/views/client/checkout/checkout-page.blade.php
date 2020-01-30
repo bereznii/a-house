@@ -29,7 +29,7 @@
                                         <span class="text-muted">&#8372; {{ $content['prices'][$product->id] ?? $product->retail_price }}</span>
                                     </div>
                                     <input type="hidden" name="products[{{ $key }}][product_id]" value="{{ $product->id }}">
-                                    <input type="hidden" name="products[{{ $key }}][price]" value="{{ old('products')[$key]['price'] ?? $product->retail_price }}">
+                                    <input type="hidden" name="products[{{ $key }}][price]" value="{{ $content['prices'][$product->id] ?? old('products')[$key]['price'] ?? $product->retail_price }}">
                                 </li>
                             @endforeach
                             <li class="list-group-item d-flex justify-content-between">
