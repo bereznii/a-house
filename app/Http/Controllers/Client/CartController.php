@@ -11,7 +11,11 @@ class CartController extends Controller
      */
     public function update()
     {
-        $productId = request('productId');
+        $validatedData = request()->validate([
+            'productId' => 'required|numeric'
+        ]);
+
+        $productId = $validatedData['productId'];
 
         $existingQuantity = (session("cart.{$productId}", 0));
         session(["cart.{$productId}" => $existingQuantity+1]);
@@ -24,8 +28,13 @@ class CartController extends Controller
      */
     public function updateQuantity()
     {
-        $productQuantity = request('productQuantity');
-        $productId = request('productId');
+        $validatedData = request()->validate([
+            'productId' => 'required|numeric',
+            'productQuantity' => 'required|numeric'
+        ]);
+
+        $productQuantity = $validatedData['productQuantity'];
+        $productId = $validatedData['productId'];
 
         session(["cart.{$productId}" => $productQuantity]);
 

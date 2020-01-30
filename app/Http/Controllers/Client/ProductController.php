@@ -29,9 +29,15 @@ class ProductController extends Controller
      */
     public function getFilteredProducts()
     {
-        $make = request('makes');
-        $model = request('models', '');
-        $type = request('types', '');
+        $validatedData = request()->validate([
+            'makes' => 'required|numeric',
+            'models' => 'nullable|numeric',
+            'types' => 'nullable|numeric'
+        ]);
+
+        $make = $validatedData['makes'];
+        $model = $validatedData['models'] ?? '';
+        $type = $validatedData['types'] ?? '';
 
         $products = Product::where('make_id', $make)
             ->where('model_id', 'like', "%{$model}%")
@@ -39,16 +45,21 @@ class ProductController extends Controller
             ->where('in_stock', '>', 0)
             ->paginate(9);
 
-        $products->appends(['makes' => $make]);
-        $products->appends(['models' => $model]);
-        $products->appends(['types' => $type]);
+        $products->appends([
+            'makes' => $make,
+            'models' => $model,
+            'types' => $type
+        ]);
 
-        request()->session()->put('selectedMake', $make);
-        request()->session()->put('selectedModel', $model);
-        request()->session()->put('selectedType', $type);
+        request()->session()->put([
+            'selectedMake' => $make,
+            'selectedModel' => $model,
+            'selectedType' => $type
+
+        ]);
 
         session()->flashInput(request()->input());
-//        dd(ClientRepository::sidebarData());
+
         return view('client.catalog.index')->with([
             'sidebarData' => ClientRepository::sidebarData(),
             'products' => $products
@@ -60,10 +71,13 @@ class ProductController extends Controller
      */
     public function getSearchedProducts()
     {
-        $query = request('query');
+        $validatedData = request()->validate([
+            'query' => 'required|alpha_num|max:20'
+        ]);
+
+        $query = $validatedData['query'];
 
         $products = Product::where('barcode', 'like', "%{$query}%")
-//            ->orWhere('stock_code', 'like', "%{$query}%")
             ->where('in_stock', '>', 0)
             ->paginate(9);
         $products->appends(['query' => $query]);

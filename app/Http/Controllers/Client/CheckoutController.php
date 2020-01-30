@@ -19,7 +19,7 @@ class CheckoutController extends Controller
      */
     public function checkout()
     {
-        $content = (new CartRepository())->getContent();
+        $content = app(CartRepository::class)->getContent();
 
         return view('client.checkout.index')->with([
             'sidebarData' => ClientRepository::sidebarData(),

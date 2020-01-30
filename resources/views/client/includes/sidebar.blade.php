@@ -7,7 +7,7 @@
     <form action="{{ route('client.search') }}" method="GET">
         <div class="form-group">
             <div class="input-group">
-                <input required type="text" value="{{ old('query') }}" name="query" placeholder="Поиск по еврокоду..." class="form-control" aria-label="Поиск" min="5" max="20">
+                <input required type="text" value="{{ old('query') }}" name="query" placeholder="Поиск по еврокоду..." class="form-control" aria-label="Поиск" maxlength="20">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary">Поиск</button>
                 </div>

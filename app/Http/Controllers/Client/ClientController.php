@@ -23,8 +23,6 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $makes = Make::all();
-
         return view('client.catalog.index')->with([
             'sidebarData' => ClientRepository::sidebarData()
         ]);
@@ -61,7 +59,11 @@ class ClientController extends Controller
      */
     public function getModels()
     {
-        $models = MakeModel::where('make_id', request('selectedMake'))
+        $validatedData = request()->validate([
+            'selectedMake' => 'required|numeric'
+        ]);
+
+        $models = MakeModel::where('make_id', $validatedData['selectedMake'])
             ->get();
 
         request()->session()->put('models', $models);
@@ -81,7 +83,11 @@ class ClientController extends Controller
      */
     public function getTypes()
     {
-        $types = ClientRepository::getTypes(request('selectedModel'));
+        $validatedData = request()->validate([
+            'selectedModel' => 'required|numeric'
+        ]);
+
+        $types = ClientRepository::getTypes($validatedData['selectedModel']);
 
         request()->session()->put('types', $types);
         request()->session()->put('selectedModel', request('selectedModel'));
