@@ -145,4 +145,8 @@ $(document).ready(function() {
 
     });
 
+    $(".item-card").hover(function()
+    {
+        $(this).toggleClass('classWithShadow');
+    });
 });

@@ -4,14 +4,14 @@
 
         @if(isset($products))
             @foreach ($products as $product)
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 mb-4 item-card">
                     <div class="card h-100">
                         <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
                         <div class="card-body">
-                            <h4 class="card-title">
-                                <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }},
+                            <h5 class="card-title">
+                                <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
                                     {{ mb_strtolower($product->type->translation ?? '') }}</a>
-                            </h4>
+                            </h5>
                             <h5>{{ $product->retail_price ?? '' }}грн.</h5>
                             <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
                             <h6><b>Еврокод:</b>  {{ $product->stock_code ?? '' }}</h6>

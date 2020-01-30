@@ -21,8 +21,9 @@ class CreateProductsTable extends Migration
             $table->string('barcode');
             $table->string('stock_code');
             $table->string('nomenclature');
-            $table->string('original_description', 500)->nullable();
-            $table->text('detailed_description')->nullable();
+            $table->string('original_description', 500)->nullable();//description from nomenclature
+            $table->text('detailed_description')->nullable();//description column
+            $table->text('translated_description')->nullable();//translated nomenclature
             $table->integer('in_stock');
             $table->decimal('dealer_price', 8, 2);
             $table->decimal('retail_price', 8, 2);
