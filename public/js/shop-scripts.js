@@ -116,6 +116,7 @@ $(document).ready(function() {
 
         var name = $('[name="callbackName"]').val();
         var phone = $('[name="callbackPhone"]').val();
+        var comment = $('[name="callbackComment"]').val();
 
         var myForm = $('.modal-form');
         if(! myForm[0].checkValidity()) {
@@ -133,6 +134,7 @@ $(document).ready(function() {
             data: {
                 name: name,
                 phone: phone,
+                comment: comment,
             },
             success: function(data) {
                 $('.callback-modal-content').empty();

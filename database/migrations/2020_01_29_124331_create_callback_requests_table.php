@@ -17,6 +17,7 @@ class CreateCallbackRequestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->nullable();
             $table->string('phone')->nullable();
+            $table->text('comment')->nullable();
             $table->boolean('is_called')->default(false);
             $table->timestamps();
         });

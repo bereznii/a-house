@@ -98,9 +98,10 @@ class ClientController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'phone' => 'required|max:255',
+            'comment' => 'max:10000',
         ]);
 
-        $result = ClientRepository::saveCallbackRequest($request);
+        $result = ClientRepository::saveCallbackRequest($validatedData);
 
         return response()->json(['status' => $result]);
     }

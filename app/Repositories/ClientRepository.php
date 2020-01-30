@@ -73,14 +73,15 @@ class ClientRepository
     }
 
     /**
-     * @param $request
+     * @param array $request
      * @return bool
      */
-    public static function saveCallbackRequest($request): bool
+    public static function saveCallbackRequest(array $data): bool
     {
         $record = app(CallbackRequest::class);
-        $record->name = $request->get('name');
-        $record->phone = $request->get('phone');
+        $record->name = $data['name'] ?? '';
+        $record->phone = $data['phone'] ?? '';
+        $record->comment = $data['comment'] ?? '';
         $record->save();
 
         return true;

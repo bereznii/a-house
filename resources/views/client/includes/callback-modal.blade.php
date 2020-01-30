@@ -19,6 +19,10 @@
                             <label for="name">Имя</label>
                             <input type="text" name="callbackName" class="form-control" id="name" placeholder="Имя" maxlength="200" required>
                         </div>
+                        <div class="col-md-12 mb-3">
+                            <label for="comment">Дополнительный комментарий</label>
+                            <textarea name="callbackComment" class="form-control" id="comment"  placeholder="Комментарий" maxlength="10000" rows="5"></textarea>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
