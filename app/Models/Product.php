@@ -15,6 +15,7 @@ class Product extends Model
         'nomenclature',
         'original_description',
         'detailed_description',
+        'translated_description',
         'in_stock',
         'dealer_price',
         'retail_price',

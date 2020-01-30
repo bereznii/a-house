@@ -55,7 +55,7 @@ class ImportRepository
      * @param string $row
      * @return string|null
      */
-    public static function getDetailedDescription(string $row)
+    public static function getTranslatedDescription(string $row)
     {
         $description = self::getOriginalDescription($row);
 
@@ -63,42 +63,23 @@ class ImportRepository
             return null;
         }
 
-//        $result = '';
-//
-//        foreach (self::$shortcuts as $key => $shortcut) {
-//            if (strpos($description, $key) !== false) {
-//                $result .= $shortcut . ', ';
-//            }
-//        }
-//
-//        $result = rtrim($result, ' ,') . '.';
-
-//        $description = str_replace('-', '+', $description);
         $matches = explode('+', $description);
         unset($matches[0]);
 
         $result = '';
 
         foreach ($matches as $match) {
-            if (strpos($match, '-') !== false) {
-                $newMatches = explode('-', $match);
-                foreach ($newMatches as $newMatch) {
-                    if (array_key_exists(trim($newMatch), self::$shortcuts)) {
-                        $result .= self::$shortcuts[trim($newMatch)] . ', ';
-                    }
-                }
-            } else {
-                if (array_key_exists($match, self::$shortcuts)) {
-                    $result .= self::$shortcuts[trim($match)] . ', ';
-                }
+            $trimmed = trim($match);
+            if (array_key_exists($trimmed, self::$shortcuts)) {
+                $result .= self::$shortcuts[$trimmed] . ', ';
             }
         }
 
         $result = rtrim($result, ' ,') . '.';
 
-        logger('Description: ' . $result);
 
-        $result = self::mb_ucfirst($result);
+        $result = mb_ucfirst($result);
+        logger('Description: ' . $result);
 
         return $result;
     }
@@ -120,24 +101,6 @@ class ImportRepository
         $result = array_pop($matches);
 
         return $result;
-    }
-
-    /**
-     * Multibyte version of ucfirst.
-     *
-     * @param string $string
-     * @param string $encoding
-     * @return string string
-     */
-    public static function mb_ucfirst(string $string, string $encoding = 'UTF-8'):string
-    {
-        $strlen = mb_strlen($string, $encoding);
-
-        $firstChar = mb_substr($string, 0, 1, $encoding);
-
-        $then = mb_substr($string, 1, $strlen - 1, $encoding);
-
-        return mb_strtoupper($firstChar, $encoding) . $then;
     }
 
     /**

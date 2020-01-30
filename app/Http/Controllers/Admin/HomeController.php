@@ -89,7 +89,7 @@ class HomeController extends Controller
         ini_set('max_execution_time', '90');
 
         $import = new Import();
-        $import->onlySheets( 0);
+        $import->onlySheets( 1);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
 

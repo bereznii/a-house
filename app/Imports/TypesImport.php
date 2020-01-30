@@ -21,7 +21,7 @@ class TypesImport implements ToModel
         if (isset($row[0]) && isset($row[1])) {
             return new Type([
                 'code' => $row[0],
-                'translation' => ImportRepository::mb_ucfirst($row[1]),
+                'translation' => mb_ucfirst($row[1]),
             ]);
         }
 
