@@ -93,7 +93,7 @@ class ImportRepository
     public static function getOriginalDescription(string $row)
     {
         if (empty(self::$shortcuts)) {
-            self::$shortcuts = Shortcut::select('shortcut', 'meaning')->get()->pluck('meaning', 'shortcut')->toArray();
+            self::$shortcuts = Shortcut::selectRaw('TRIM(shortcut) as shortcut, TRIM(meaning) as meaning')->get()->pluck('meaning', 'shortcut')->toArray();
         }
 
         preg_match(self::DESCRIPTION_REGEX, $row, $matches);

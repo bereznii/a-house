@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CatalogExport;
 use App\Imports\CatalogImport;
 use App\Imports\Import;
 use App\Models\CallbackRequest;
 use App\Models\Make;
 use App\Models\ManufacturerCharge;
+use App\Models\Product;
+use App\Models\Shortcut;
 use App\Repositories\ImportRepository;
 use App\User;
 use Illuminate\Http\Request;
@@ -33,6 +36,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        return Excel::download(new CatalogExport, 'catalog.xlsx');
+//        return (new CatalogExport)->download('catalog.xlsx', \Maatwebsite\Excel\Excel::XLSX);
+
         return view('admin.pages.import');
     }
 
