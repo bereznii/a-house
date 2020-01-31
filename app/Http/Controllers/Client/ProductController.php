@@ -11,8 +11,15 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    private $clientRepository;
-    private $productRepository;
+    /**
+     * @var ClientRepository
+     */
+    private ClientRepository $clientRepository;
+
+    /**
+     * @var ProductRepository
+     */
+    private ProductRepository $productRepository;
 
     /**
      * ProductController constructor.

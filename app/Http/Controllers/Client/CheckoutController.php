@@ -10,10 +10,27 @@ use App\Repositories\OrderRepository;
 
 class CheckoutController extends Controller
 {
-    private $cartRepository;
-    private $clientRepository;
-    private $orderRepository;
+    /**
+     * @var CartRepository
+     */
+    private CartRepository $cartRepository;
 
+    /**
+     * @var ClientRepository
+     */
+    private ClientRepository $clientRepository;
+
+    /**
+     * @var OrderRepository
+     */
+    private OrderRepository $orderRepository;
+
+    /**
+     * CheckoutController constructor.
+     * @param CartRepository $cartRepository
+     * @param ClientRepository $clientRepository
+     * @param OrderRepository $orderRepository
+     */
     public function __construct(CartRepository $cartRepository, ClientRepository $clientRepository, OrderRepository $orderRepository)
     {
         $this->cartRepository = $cartRepository;

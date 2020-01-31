@@ -17,8 +17,15 @@ use Illuminate\Support\Facades\Cache;
 
 class ClientController extends Controller
 {
-    private $clientRepository;
-    private $callbackRequestRepository;
+    /**
+     * @var ClientRepository
+     */
+    private ClientRepository $clientRepository;
+
+    /**
+     * @var CallbackRequestRepository
+     */
+    private CallbackRequestRepository $callbackRequestRepository;
 
     /**
      * ClientController constructor.

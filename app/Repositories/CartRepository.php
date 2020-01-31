@@ -57,6 +57,7 @@ class CartRepository
 
     /**
      * @param array $validatedData
+     * @return void
      */
     public function updateQuantity(array $validatedData)
     {
@@ -68,6 +69,7 @@ class CartRepository
 
     /**
      * @param int $id
+     * @return void
      */
     public function removeFromCartById(int $id)
     {

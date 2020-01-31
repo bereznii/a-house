@@ -75,8 +75,8 @@ class ClientRepository
     }
 
     /**
-     * @param $makeId
-     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
+     * @param int $makeId
+     * @return MakeModel|\Illuminate\Database\Eloquent\Collection
      */
     public function getModelsByMakeId(int $makeId)
     {

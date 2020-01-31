@@ -7,7 +7,10 @@ use App\Repositories\CartRepository;
 
 class CartController extends Controller
 {
-    private $cartRepository;
+    /**
+     * @var CartRepository
+     */
+    private CartRepository $cartRepository;
 
     /**
      * CartController constructor.
