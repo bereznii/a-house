@@ -34,7 +34,7 @@ class ClientRepository
 
         $selectedType = request()->session()->get('selectedType', null);
 
-        $cartCount = count(request()->session()->get('cart', []));
+        $cartCount = array_sum(request()->session()->get('cart', []));
 
         return [
             'makes' => [

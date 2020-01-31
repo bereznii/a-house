@@ -70,6 +70,7 @@ $(document).ready(function() {
     $(document).on('click', '.addToCart-btn', function() {
 
         var productId = $(this).data('productid');
+        var currentInCartQuantity = $('#cartQuantity').data('currentquantity');
 
         $.ajax({
             headers: {
@@ -82,7 +83,9 @@ $(document).ready(function() {
                 productId: productId,
             },
             success: function(data) {
-
+                newQuantity = currentInCartQuantity + 1;
+                $('#cartQuantity').text('('+newQuantity+')');
+                $('#cartQuantity').data('currentquantity', newQuantity);
             }
         });
 

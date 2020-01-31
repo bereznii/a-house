@@ -33,9 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item  @if(route('client.about') != url()->current() && route('client.contact') != url()->current() && route('client.checkout') != url()->current()) active @endif">
-                        <a class="nav-link" href="{{ route('client.index') }}">Каталог
-                            <span class="sr-only">(current)</span>
-                        </a>
+                        <a class="nav-link" href="{{ route('client.index') }}">Каталог</a>
                     </li>
                     <li class="nav-item @if(route('client.about') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.about') }}">О нас</a>
@@ -45,7 +43,7 @@
                     </li>
                     <li class="nav-item @if(route('client.checkout') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart"></i>
-                            @if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif Корзина
+                            <span id="cartQuantity" data-currentQuantity="{{ $sidebarData['cartCount'] }}">@if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif</span> Корзина
                         </a>
                     </li>
                 </ul>
