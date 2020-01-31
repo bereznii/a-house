@@ -105,7 +105,7 @@ class CatalogImport implements ToModel, WithChunkReading
                     'translated_description' => ImportRepository::getTranslatedDescription($row[2]),
                     'in_stock' => $row[4],
                     'dealer_price' => $row[5],
-                    'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5])
+                    'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row)
                 ]
             );
 

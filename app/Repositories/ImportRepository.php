@@ -105,11 +105,23 @@ class ImportRepository
     /**
      * Return retail price recalculated with charge per manufacturer.
      *
-     * @param double $price
+     * @param array $row
      * @return double $price
      */
-    public static function calculateRetailPriceWithCharge($price)
+    public static function calculateRetailPriceWithCharge($row)
     {
-        return $price;
+        if (preg_match('/WS.*/', $row[0]) || preg_match('/RW.*/', $row[0])) {
+            if (trim($row[6]) == 'SafeGlass') {
+                $percent = 40;
+            } else {
+                $percent = 25;
+            }
+        } else {
+            $percent = 40;
+        }
+
+        $price = $row[5] + ($row[5] * ($percent / 100));
+
+        return number_format((float)$price, 2, '.', '');
     }
 }
