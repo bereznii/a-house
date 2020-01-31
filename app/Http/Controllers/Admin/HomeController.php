@@ -31,9 +31,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
+     * @param array|null $countedRows
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(?array $countedRows)
+    public function index(array $countedRows = null)
     {
         return view('admin.pages.import')->with([
             'countedRows' => $countedRows

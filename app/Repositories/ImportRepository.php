@@ -110,11 +110,17 @@ class ImportRepository
      */
     public static function calculateRetailPriceWithCharge($row)
     {
-        if (preg_match('/WS.*/', $row[0]) || preg_match('/RW.*/', $row[0])) {
+        if (preg_match('/WS.*/', $row[0])) {
             if (trim($row[6]) == 'SafeGlass') {
                 $percent = 40;
             } else {
                 $percent = 25;
+            }
+        } elseif (preg_match('/RW.*/', $row[0])) {
+            if (trim($row[6]) == 'SafeGlass') {
+                $percent = 40;
+            } else {
+                $percent = 30;
             }
         } else {
             $percent = 40;

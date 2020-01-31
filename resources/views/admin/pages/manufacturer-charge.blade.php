@@ -9,24 +9,42 @@
   <div class="card-body">
       <form>
           <div class="form-group row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Поставщик 1</label>
+              <label for="inputPassword" class="col-sm-2 col-form-label">WS</label>
               <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="0.00%">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="25.00%" disabled>
               </div>
           </div>
           <div class="form-group row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Поставщик 2</label>
+              <label for="inputPassword" class="col-sm-2 col-form-label">WS SafeGlass</label>
               <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="0.00%">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="40.00%" disabled>
               </div>
           </div>
           <div class="form-group row">
-              <label for="inputPassword" class="col-sm-2 col-form-label">Поставщик 3</label>
+              <label for="inputPassword" class="col-sm-2 col-form-label">RW</label>
               <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="0.00%">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="30.00%" disabled>
               </div>
           </div>
-          <button type="submit" class="btn btn-primary">Обновить</button>
+          <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">RW SafeGlass</label>
+              <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="40.00%" disabled>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">BO</label>
+              <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="40.00%" disabled>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">GU</label>
+              <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="40.00%" disabled>
+              </div>
+          </div>
+          <button type="submit" class="btn btn-primary" disabled>Обновить</button>
       </form>
   </div>
 </div>
