@@ -78,7 +78,7 @@ class ImportRepository
 
 
         $result = mb_ucfirst($result);
-        logger('Description: ' . $result);
+//        logger('Description: ' . $result);
 
         return $result;
     }

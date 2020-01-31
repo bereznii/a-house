@@ -84,9 +84,10 @@
                             <div class="col-md-6 mb-3">
                                 <label for="country">Метод доставки</label>
                                 <select name="deliveryMethod" class="custom-select d-block w-100" id="country" required>
-                                    <option value="1" @if(old('deliveryMethod') == 1) selected @endif>Новая почта</option>
-                                    <option value="2" @if(old('deliveryMethod') == 2) selected @endif>Курьер</option>
+                                    <option value="2" @if(old('deliveryMethod') == 2) selected @endif>Доставка по Киеву</option>
+                                    <option value="1" @if(old('deliveryMethod') == 1) selected @endif>Доставка по регионам (Новая Почта, Гюнсел и др.)</option>
                                     <option value="3" @if(old('deliveryMethod') == 3) selected @endif>Установка на месте</option>
+                                    <option value="3" @if(old('deliveryMethod') == 4) selected @endif>Самовывоз</option>
                                 </select>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -94,8 +95,12 @@
                                 <select name="paymentMethod" class="custom-select d-block w-100" id="state" required>
                                     <option value="1" @if(old('paymentMethod') == 1) selected @endif>Наложенный платёж</option>
                                     <option value="2" @if(old('paymentMethod') == 2) selected @endif>Наличные</option>
-                                    <option value="3" @if(old('paymentMethod') == 3) selected @endif>Предоплата</option>
+                                    <option value="3" @if(old('paymentMethod') == 3) selected @endif>На карту</option>
                                 </select>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <p class="text-muted">*При отправке стекла курьерской службой взимается предоплата в размере стоимости доставки в обе стороны.
+                                    На случай если клиент отказался, передумал или указал неточный адрес.</p>
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="comment">Дополнительный комментарий</label>

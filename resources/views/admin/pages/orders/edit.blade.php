@@ -53,15 +53,19 @@
                                 <label>Метод доставки</label>
                                 @switch($order->delivery_type_id)
                                     @case(1)
-                                        <input class="form-control" type="text" value="Новая почта" disabled>
+                                        <input class="form-control" type="text" value="Доставка по регионам (Новая Почта, Гюнсел и др.)" disabled>
                                     @break
 
                                     @case(2)
-                                        <input class="form-control" type="text" value="Курьер" disabled>
+                                        <input class="form-control" type="text" value="Доставка по Киеву" disabled>
                                     @break
 
                                     @case(3)
                                         <input class="form-control" type="text" value="Установка на месте" disabled>
+                                    @break
+
+                                    @case(4)
+                                        <input class="form-control" type="text" value="Самовывоз" disabled>
                                     @break
 
                                     @default

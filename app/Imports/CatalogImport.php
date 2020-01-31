@@ -13,6 +13,9 @@ use Maatwebsite\Excel\Concerns\WithChunkReading;
 
 class CatalogImport implements ToModel, WithChunkReading
 {
+    /**
+     * @var int
+     */
     private static int $i = 0;
 
     const REGEX = '/^[A-Z\s\p{Lu}\/]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
@@ -41,9 +44,13 @@ class CatalogImport implements ToModel, WithChunkReading
 
             Cache::put('make', $row[2], 10);
 
-            return new Make([
-                'name' => $row[2],
-            ]);
+            Make::updateOrCreate(
+                [
+                    'name' => $row[2]
+                ]
+            );
+
+            return null;
         }
 
         /**
@@ -64,10 +71,14 @@ class CatalogImport implements ToModel, WithChunkReading
 
             logger($row[2]);
 
-            return new MakeModel([
-                'name' => $row[2],
-                'make_id' => Cache::get('make_id'),
-            ]);
+            MakeModel::firstOrCreate(
+                [
+                    'name' => $row[2],
+                    'make_id' => Cache::get('make_id')
+                ]
+            );
+
+            return null;
         }
 
         /**
@@ -78,21 +89,42 @@ class CatalogImport implements ToModel, WithChunkReading
 
             $model = MakeModel::where('name', Cache::get('model'))->first();
 
-            return new Product([
-                'make_id' => Cache::get('make_id'),
-                'model_id' => $model->id,
-                'type_id' => ImportRepository::getProductTypeId($row[2]),
-                'barcode' => $row[0],
-                'stock_code' => $row[1],
-                'nomenclature' => $row[2],
-                'original_description' => ImportRepository::getOriginalDescription($row[2]),
-                'detailed_description' => $row[7],
-                'translated_description' => ImportRepository::getTranslatedDescription($row[2]),
-                'in_stock' => $row[4],
-                'dealer_price' => $row[5],
-                'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5]),
-                'manufacture' => $row[6]
-            ]);
+            Product::updateOrCreate(
+                [
+                    'barcode' => $row[0],
+                    'manufacture' => $row[6],
+                    'stock_code' => $row[1]
+                ],
+                [
+                    'make_id' => Cache::get('make_id'),
+                    'model_id' => $model->id,
+                    'type_id' => ImportRepository::getProductTypeId($row[2]),
+                    'nomenclature' => $row[2],
+                    'original_description' => ImportRepository::getOriginalDescription($row[2]),
+                    'detailed_description' => $row[7],
+                    'translated_description' => ImportRepository::getTranslatedDescription($row[2]),
+                    'in_stock' => $row[4],
+                    'dealer_price' => $row[5],
+                    'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5])
+                ]
+            );
+
+            return null;
+//            return new Product([
+//                'make_id' => Cache::get('make_id'),
+//                'model_id' => $model->id,
+//                'type_id' => ImportRepository::getProductTypeId($row[2]),
+//                'barcode' => $row[0],
+//                'stock_code' => $row[1],
+//                'nomenclature' => $row[2],
+//                'original_description' => ImportRepository::getOriginalDescription($row[2]),
+//                'detailed_description' => $row[7],
+//                'translated_description' => ImportRepository::getTranslatedDescription($row[2]),
+//                'in_stock' => $row[4],
+//                'dealer_price' => $row[5],
+//                'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5]),
+//                'manufacture' => $row[6]
+//            ]);
         }
 
         return null;
