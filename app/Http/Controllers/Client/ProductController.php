@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Models\Make;
-use App\Models\Product;
 use App\Repositories\ClientRepository;
 use App\Repositories\ProductRepository;
-use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {

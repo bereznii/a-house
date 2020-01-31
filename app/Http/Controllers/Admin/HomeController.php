@@ -2,20 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\CatalogExport;
-use App\Imports\CatalogImport;
 use App\Imports\Import;
 use App\Models\CallbackRequest;
-use App\Models\Make;
-use App\Models\ManufacturerCharge;
-use App\Models\Product;
-use App\Models\Shortcut;
-use App\Repositories\ImportRepository;
-use App\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
