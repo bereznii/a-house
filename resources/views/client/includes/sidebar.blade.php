@@ -1,7 +1,9 @@
 <div class="col-lg-3">
 
     <div class="form-group">
-        <img style="width: 100%" src="{{ asset('storage/logo.png') }}" alt="logo">
+        <a href="{{ route('client.index') }}">
+            <img style="width: 100%" src="{{ asset('storage/logo.png') }}" alt="logo">
+        </a>
     </div>
 
     <form action="{{ route('client.search') }}" method="GET">

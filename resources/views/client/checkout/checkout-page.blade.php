@@ -125,7 +125,7 @@
                                 </ul>
                             </div>
                         @endif
-                        <button @if(empty($content['products'])) disabled @endif class="btn btn-success btn-lg btn-block" type="submit">Оформить заказ</button>
+                        <button @if($content['products']->isEmpty()) disabled @endif class="btn btn-success btn-lg btn-block" type="submit">Оформить заказ</button>
                 </div>
             </div>
         </div>

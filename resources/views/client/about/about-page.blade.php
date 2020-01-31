@@ -2,7 +2,7 @@
 
     <div class="card mt-4">
         <div class="card-header">
-            Contact
+            О нас
         </div>
         <div class="card-body">
             Content
