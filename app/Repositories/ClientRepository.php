@@ -2,19 +2,17 @@
 
 namespace App\Repositories;
 
-
-use App\Models\CallbackRequest;
 use App\Models\Make;
+use App\Models\MakeModel;
 use App\Models\Product;
 use App\Models\Type;
-use Illuminate\Database\Eloquent\Collection;
 
 class ClientRepository
 {
     /**
      * @return array
      */
-    public static function sidebarData()
+    public function sidebarData()
     {
         $makes = null;
         if (!request()->session()->has('makes')) {
@@ -27,9 +25,9 @@ class ClientRepository
         $selectedModel = request()->session()->get('selectedModel', null);
 
         if (empty($selectedModel) && (isset($models) && $models->count() > 0)) {
-            $types = self::getTypes($models->first()->id);
+            $types = self::getTypesByModelId($models->first()->id);
         } elseif (isset($selectedModel)) {
-            $types = self::getTypes($selectedModel);
+            $types = self::getTypesByModelId($selectedModel);
         } else {
             $types = request()->session()->get('types', null);
         }
@@ -61,7 +59,7 @@ class ClientRepository
      * @param int $modelId
      * @return \Illuminate\Support\Collection
      */
-    public static function getTypes($modelId)
+    public function getTypesByModelId($modelId)
     {
         $typesForModel = Product::select('type_id')
             ->where('model_id', $modelId)
@@ -77,17 +75,14 @@ class ClientRepository
     }
 
     /**
-     * @param array $data
-     * @return bool
+     * @param $makeId
+     * @return \Illuminate\Database\Eloquent\Builder[]|\Illuminate\Database\Eloquent\Collection
      */
-    public static function saveCallbackRequest(array $data): bool
+    public function getModelsByMakeId(int $makeId)
     {
-        $record = app(CallbackRequest::class);
-        $record->name = $data['name'] ?? '';
-        $record->phone = $data['phone'] ?? '';
-        $record->comment = $data['comment'] ?? '';
-        $record->save();
+        $models = MakeModel::where('make_id', $makeId)
+            ->get();
 
-        return true;
+        return $models;
     }
 }

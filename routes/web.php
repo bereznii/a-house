@@ -45,7 +45,7 @@ Route::name('client.')->group(function (){
     Route::group(['prefix' => 'checkout'], function () {
         Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
         Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
-        Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromOrder')->name('checkout.removeFromOrder');
+        Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
     });
 
 });

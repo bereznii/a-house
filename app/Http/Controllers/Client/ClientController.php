@@ -8,6 +8,7 @@ use App\Models\Make;
 use App\Models\MakeModel;
 use App\Models\Product;
 use App\Models\Type;
+use App\Repositories\CallbackRequestRepository;
 use App\Repositories\ClientRepository;
 use Carbon\Carbon;
 use Grpc\Call;
@@ -16,6 +17,20 @@ use Illuminate\Support\Facades\Cache;
 
 class ClientController extends Controller
 {
+    private $clientRepository;
+    private $callbackRequestRepository;
+
+    /**
+     * ClientController constructor.
+     * @param ClientRepository $clientRepository
+     * @param CallbackRequestRepository $callbackRequestRepository
+     */
+    public function __construct(ClientRepository $clientRepository, CallbackRequestRepository $callbackRequestRepository)
+    {
+        $this->clientRepository = $clientRepository;
+        $this->callbackRequestRepository = $callbackRequestRepository;
+    }
+
     /**
      * Return client homepage.
      *
@@ -24,7 +39,7 @@ class ClientController extends Controller
     public function index()
     {
         return view('client.catalog.index')->with([
-            'sidebarData' => ClientRepository::sidebarData()
+            'sidebarData' => $this->clientRepository->sidebarData()
         ]);
     }
 
@@ -36,7 +51,7 @@ class ClientController extends Controller
     public function about()
     {
         return view('client.about.index')->with([
-            'sidebarData' => ClientRepository::sidebarData()
+            'sidebarData' => $this->clientRepository->sidebarData()
         ]);
     }
 
@@ -48,7 +63,7 @@ class ClientController extends Controller
     public function contact()
     {
         return view('client.contact.index')->with([
-            'sidebarData' => ClientRepository::sidebarData()
+            'sidebarData' => $this->clientRepository->sidebarData()
         ]);
     }
 
@@ -63,8 +78,7 @@ class ClientController extends Controller
             'selectedMake' => 'required|numeric'
         ]);
 
-        $models = MakeModel::where('make_id', $validatedData['selectedMake'])
-            ->get();
+        $models = $this->clientRepository->getModelsByMakeId($validatedData['selectedMake']);
 
         request()->session()->put('models', $models);
         request()->session()->put('selectedMake', request('selectedMake'));
@@ -86,7 +100,7 @@ class ClientController extends Controller
             'selectedModel' => 'required|numeric'
         ]);
 
-        $types = ClientRepository::getTypes($validatedData['selectedModel']);
+        $types = $this->clientRepository->getTypesByModelId($validatedData['selectedModel']);
 
         request()->session()->put('types', $types);
         request()->session()->put('selectedModel', request('selectedModel'));
@@ -106,7 +120,7 @@ class ClientController extends Controller
             'comment' => 'max:10000',
         ]);
 
-        $result = ClientRepository::saveCallbackRequest($validatedData);
+        $result = $this->callbackRequestRepository->saveCallbackRequest($validatedData);
 
         return response()->json(['status' => $result]);
     }

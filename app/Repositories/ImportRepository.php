@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Models\ManufacturerCharge;
 use App\Models\Shortcut;
 use App\Models\Type;
 

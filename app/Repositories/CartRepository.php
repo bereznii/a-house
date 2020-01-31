@@ -42,4 +42,35 @@ class CartRepository
 
         return $prices;
     }
+
+    /**
+     * @param array $validatedData
+     * @return void
+     */
+    public function updateContent(array $validatedData)
+    {
+        $productId = $validatedData['productId'];
+
+        $existingQuantity = (session("cart.{$productId}", 0));
+        session(["cart.{$productId}" => $existingQuantity+1]);
+    }
+
+    /**
+     * @param array $validatedData
+     */
+    public function updateQuantity(array $validatedData)
+    {
+        $productQuantity = $validatedData['productQuantity'];
+        $productId = $validatedData['productId'];
+
+        session(["cart.{$productId}" => $productQuantity]);
+    }
+
+    /**
+     * @param int $id
+     */
+    public function removeFromCartById(int $id)
+    {
+        request()->session()->forget("cart.{$id}");
+    }
 }

@@ -3,9 +3,21 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\CartRepository;
 
 class CartController extends Controller
 {
+    private $cartRepository;
+
+    /**
+     * CartController constructor.
+     * @param CartRepository $cartRepository
+     */
+    public function __construct(CartRepository $cartRepository)
+    {
+        $this->cartRepository = $cartRepository;
+    }
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
@@ -15,10 +27,7 @@ class CartController extends Controller
             'productId' => 'required|numeric'
         ]);
 
-        $productId = $validatedData['productId'];
-
-        $existingQuantity = (session("cart.{$productId}", 0));
-        session(["cart.{$productId}" => $existingQuantity+1]);
+        $this->cartRepository->updateContent($validatedData);
 
         return response()->json(['status' => true]);
     }
@@ -33,10 +42,7 @@ class CartController extends Controller
             'productQuantity' => 'required|numeric'
         ]);
 
-        $productQuantity = $validatedData['productQuantity'];
-        $productId = $validatedData['productId'];
-
-        session(["cart.{$productId}" => $productQuantity]);
+        $this->cartRepository->updateQuantity($validatedData);
 
         return response()->json(['status' => true]);
     }

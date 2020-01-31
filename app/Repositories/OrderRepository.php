@@ -3,7 +3,6 @@
 namespace App\Repositories;
 
 use App\Models\Order;
-use App\Models\Product;
 
 class OrderRepository
 {

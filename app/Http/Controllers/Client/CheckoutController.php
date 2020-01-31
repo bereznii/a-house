@@ -4,14 +4,23 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
-use App\Models\Product;
 use App\Repositories\CartRepository;
 use App\Repositories\ClientRepository;
 use App\Repositories\OrderRepository;
-use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
 {
+    private $cartRepository;
+    private $clientRepository;
+    private $orderRepository;
+
+    public function __construct(CartRepository $cartRepository, ClientRepository $clientRepository, OrderRepository $orderRepository)
+    {
+        $this->cartRepository = $cartRepository;
+        $this->clientRepository = $clientRepository;
+        $this->orderRepository = $orderRepository;
+    }
+
     /**
      * Return client checkout page.
      *
@@ -19,10 +28,10 @@ class CheckoutController extends Controller
      */
     public function checkout()
     {
-        $content = app(CartRepository::class)->getContent();
+        $content = $this->cartRepository->getContent();
 
         return view('client.checkout.index')->with([
-            'sidebarData' => ClientRepository::sidebarData(),
+            'sidebarData' => $this->clientRepository->sidebarData(),
             'content' => $content
         ]);
     }
@@ -36,16 +45,13 @@ class CheckoutController extends Controller
     {
         $validated = $request->validated();
 
-        $order = app(OrderRepository::class);
-
-        $order->storeOrder($validated);
+        $this->orderRepository->storeOrder($validated);
 
         session()->flush();
         session()->flashInput(request()->input());
 
-
         return view('client.checkout.index')->with([
-            'sidebarData' => ClientRepository::sidebarData(),
+            'sidebarData' => $this->clientRepository->sidebarData(),
             'thank' => true
         ]);
     }
@@ -54,9 +60,9 @@ class CheckoutController extends Controller
      * @param int $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function removeFromOrder($id)
+    public function removeFromCart($id)
     {
-        request()->session()->forget("cart.{$id}");
+        $this->cartRepository->removeFromCartById($id);
 
         return $this->checkout();
     }

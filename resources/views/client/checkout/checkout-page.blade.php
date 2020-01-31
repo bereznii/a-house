@@ -16,7 +16,7 @@
                             @foreach($content['products'] as $key => $product)
                                 <li class="list-group-item lh-condensed">
                                     <div class="text-right">
-                                        <span><a href="{{ route('client.checkout.removeFromOrder', ['id' => $product->id]) }}" class="text-danger"><i class="far fa-times-circle"></i></a></span>
+                                        <span><a href="{{ route('client.checkout.removeFromCart', ['id' => $product->id]) }}" class="text-danger"><i class="far fa-times-circle"></i></a></span>
                                     </div>
                                     <div>
                                         <h6 class="my-0"><a href="{{ route('client.product.show', ['id' => $product->id]) }}" target="_blank">{{ $product->model->name ?? '-' }}</a></h6>
