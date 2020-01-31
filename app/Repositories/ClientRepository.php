@@ -11,8 +11,12 @@ use Illuminate\Database\Eloquent\Collection;
 
 class ClientRepository
 {
+    /**
+     * @return array
+     */
     public static function sidebarData()
     {
+        $makes = null;
         if (!request()->session()->has('makes')) {
             $makes = Make::all();
         }
@@ -54,7 +58,7 @@ class ClientRepository
     /**
      * Return types for given model id.
      *
-     * @param $modelId
+     * @param int $modelId
      * @return \Illuminate\Support\Collection
      */
     public static function getTypes($modelId)
@@ -73,7 +77,7 @@ class ClientRepository
     }
 
     /**
-     * @param array $request
+     * @param array $data
      * @return bool
      */
     public static function saveCallbackRequest(array $data): bool

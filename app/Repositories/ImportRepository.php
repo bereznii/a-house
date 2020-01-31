@@ -40,7 +40,7 @@ class ImportRepository
             list($index) = explode(' ', $type);
         }
 
-        if (!isset($index) || empty($index)) {
+        if (empty($index)) {
             if (strpos($row, 'RW-BO GU') !== false) {
                 $index = 'RW-BO GU';
             }
@@ -112,18 +112,5 @@ class ImportRepository
     public static function calculateRetailPriceWithCharge($price)
     {
         return $price;
-    }
-
-    /**
-     * @param string $manufacturerName
-     * @return string
-     */
-    public static function getManufacturerIdByName(string $manufacturerName):string
-    {
-        if (empty(self::$manufacturers)) {
-            self::$manufacturers = ManufacturerCharge::select('name', 'id')->get()->pluck('id', 'name')->toArray();
-        }
-
-        return self::$manufacturer[$manufacturerName];
     }
 }

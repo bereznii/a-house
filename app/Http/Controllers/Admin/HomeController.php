@@ -12,6 +12,7 @@ use App\Models\Product;
 use App\Models\Shortcut;
 use App\Repositories\ImportRepository;
 use App\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Storage;
@@ -36,10 +37,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return Excel::download(new CatalogExport, 'catalog.xlsx');
-//        return (new CatalogExport)->download('catalog.xlsx', \Maatwebsite\Excel\Excel::XLSX);
-
         return view('admin.pages.import');
     }
 
@@ -60,12 +57,18 @@ class HomeController extends Controller
      */
     public function confirmCallback(Request $request)
     {
+        $status = false;
         $isChecked = (int)(request('value') == 'true');
 
-        CallbackRequest::find(request('recordId'))->update(['is_called' => $isChecked]);
+        $record = CallbackRequest::find(request('recordId'));
+
+        if (isset($record)) {
+            $status = $record->update(['is_called' => $isChecked]);
+            $status = ($status > 0) ? true : false;
+        }
 
         return response()->json([
-            'status' => true
+            'status' => $status
         ]);
     }
 
@@ -86,7 +89,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return RedirectResponse
      */
     public function import()
     {
@@ -96,7 +99,7 @@ class HomeController extends Controller
         ini_set('max_execution_time', '90');
 
         $import = new Import();
-        $import->onlySheets( 1);
+        $import->onlySheets([1]);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLSX);
 

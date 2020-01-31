@@ -28,6 +28,10 @@ class CartRepository
         return $content;
     }
 
+    /**
+     * @param array $content
+     * @return array
+     */
     private function getPrices($content)
     {
         $prices = [];

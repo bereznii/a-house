@@ -78,7 +78,6 @@ class ClientController extends Controller
     /**
      * Return types for given model id.
      *
-     * @param int|null $modelId
      * @return \Illuminate\Http\JsonResponse
      */
     public function getTypes()
