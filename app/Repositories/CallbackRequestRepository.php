@@ -20,4 +20,21 @@ class CallbackRequestRepository
 
         return true;
     }
+
+    /**
+     * @param int $isChecked
+     * @return bool
+     */
+    public function confirmCallbackRequest(int $isChecked): bool
+    {
+        $status = false;
+        $record = CallbackRequest::find(request('recordId'));
+
+        if (isset($record)) {
+            $status = $record->update(['is_called' => $isChecked]);
+            $status = ($status > 0) ? true : false;
+        }
+
+        return $status;
+    }
 }

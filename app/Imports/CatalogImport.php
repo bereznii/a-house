@@ -50,6 +50,9 @@ class CatalogImport implements ToModel, WithChunkReading
                 ]
             );
 
+            $makeCount = Cache::get('makeCount', 0);
+            Cache::put('makeCount', $makeCount+1, 10);
+
             return null;
         }
 
@@ -77,6 +80,9 @@ class CatalogImport implements ToModel, WithChunkReading
                     'make_id' => Cache::get('make_id')
                 ]
             );
+
+            $modelCount = Cache::get('modelCount', 0);
+            Cache::put('modelCount', $modelCount+1, 10);
 
             return null;
         }
@@ -109,22 +115,10 @@ class CatalogImport implements ToModel, WithChunkReading
                 ]
             );
 
+            $productCount = Cache::get('productCount', 0);
+            Cache::put('productCount', $productCount+1, 10);
+
             return null;
-//            return new Product([
-//                'make_id' => Cache::get('make_id'),
-//                'model_id' => $model->id,
-//                'type_id' => ImportRepository::getProductTypeId($row[2]),
-//                'barcode' => $row[0],
-//                'stock_code' => $row[1],
-//                'nomenclature' => $row[2],
-//                'original_description' => ImportRepository::getOriginalDescription($row[2]),
-//                'detailed_description' => $row[7],
-//                'translated_description' => ImportRepository::getTranslatedDescription($row[2]),
-//                'in_stock' => $row[4],
-//                'dealer_price' => $row[5],
-//                'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row[5]),
-//                'manufacture' => $row[6]
-//            ]);
         }
 
         return null;

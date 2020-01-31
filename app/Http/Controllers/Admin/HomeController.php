@@ -4,20 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Imports\Import;
 use App\Models\CallbackRequest;
+use App\Repositories\CallbackRequestRepository;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
 {
     /**
+     * @var CallbackRequestRepository
+     */
+    private CallbackRequestRepository $callbackRequestRepository;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(CallbackRequestRepository $callbackRequestRepository)
     {
         $this->middleware('auth');
+        $this->callbackRequestRepository = $callbackRequestRepository;
     }
 
     /**
@@ -25,9 +33,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(?array $countedRows)
     {
-        return view('admin.pages.import');
+        return view('admin.pages.import')->with([
+            'countedRows' => $countedRows
+        ]);
     }
 
     /**
@@ -47,15 +57,9 @@ class HomeController extends Controller
      */
     public function confirmCallback(Request $request)
     {
-        $status = false;
         $isChecked = (int)(request('value') == 'true');
 
-        $record = CallbackRequest::find(request('recordId'));
-
-        if (isset($record)) {
-            $status = $record->update(['is_called' => $isChecked]);
-            $status = ($status > 0) ? true : false;
-        }
+        $status = $this->callbackRequestRepository->confirmCallbackRequest($isChecked);
 
         return response()->json([
             'status' => $status
@@ -79,7 +83,7 @@ class HomeController extends Controller
     }
 
     /**
-     * @return RedirectResponse
+     * @return \Illuminate\Contracts\Support\Renderable
      */
     public function import()
     {
@@ -98,6 +102,13 @@ class HomeController extends Controller
 
         logger((memory_get_usage(true)/1024/1024)." MiB, " .(memory_get_peak_usage(true)/1024/1024)." MiB (peak), {$execution_time}sec");
 
-        return redirect()->route('home');
+        $countedRows['makeCount'] = Cache::get('makeCount', 0);
+        Cache::forget('makeCount');
+        $countedRows['modelCount'] = Cache::get('modelCount', 0);
+        Cache::forget('modelCount');
+        $countedRows['productCount'] = Cache::get('productCount', 0);
+        Cache::forget('productCount');
+
+        return $this->index($countedRows);
     }
 }

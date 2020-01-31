@@ -13,6 +13,13 @@
               <button type="submit" class="btn btn-primary">Импортировать</button>
           </div>
       </form>
+      @if(isset($countedRows))
+          <p>Обновлено
+              {{ $countedRows['makeCount'] ?? '-' }} марок,
+              {{ $countedRows['modelCount'] ?? '-' }} моделей,
+              {{ $countedRows['productCount'] ?? '-' }} позиций
+          </p>
+      @endif
   </div>
 </div>
 
