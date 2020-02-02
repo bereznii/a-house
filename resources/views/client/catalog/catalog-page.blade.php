@@ -6,7 +6,7 @@
             @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100 item-card">
-                        <a href="#"><img class="card-img-top" src="{{ asset('storage/WS2.png') }}" alt=""></a>
+                        <a href="#"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt=""></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
