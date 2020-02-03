@@ -93,7 +93,7 @@
                             </div>
                             <div class="col-md-12 mb-3">
                                 <label for="comment">Дополнительный комментарий</label>
-                                <textarea disabled name="comment" class="form-control" id="comment" rows="5" value="{{ $order->comment ?? '-' }}"></textarea>
+                                <textarea disabled name="comment" class="form-control" id="comment" rows="5">{{ $order->comment ?? '-' }}</textarea>
                             </div>
                         </div>
                         <div class="row">
