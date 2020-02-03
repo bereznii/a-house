@@ -1,6 +1,6 @@
-<div class="col-lg-3">
+<div class="col-lg-3 my-4">
 
-    <div class="form-group">
+    <div class="form-group d-none d-lg-block">
         <a href="{{ route('client.index') }}">
             <img style="width: 100%" src="{{ asset('storage/logo.png') }}" alt="logo">
         </a>
