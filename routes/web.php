@@ -21,7 +21,7 @@ Auth::routes([
     'reset' => false
 ]);
 
-Route::group(['prefix' => 'admin'], function (){
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('callbacks', 'HomeController@callbackPage')->name('home.callbacks');
     Route::post('import', 'HomeController@import')->name('home.import.action');

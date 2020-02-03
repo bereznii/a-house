@@ -17,10 +17,10 @@ class Import implements WithMultipleSheets
     public function conditionalSheets(): array
     {
         return [
-            1 => new CatalogImport(),
+            0 => new CatalogImport(),
 //            0 => new ManufacturersImport(),
-            2=> new ShortcutsImport(),
-            3 => new TypesImport(),
+            1=> new ShortcutsImport(),
+            2 => new TypesImport(),
         ];
     }
 }

@@ -4,9 +4,9 @@
 
         @if(isset($products))
             @foreach ($products as $product)
-                <div class="col-lg-4 col-md-6 mb-4 item-card">
-                    <div class="card h-100">
-                        <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100 item-card">
+                        <a href="#"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt=""></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
