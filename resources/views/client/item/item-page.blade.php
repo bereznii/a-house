@@ -1,7 +1,7 @@
 <div class="col-lg-9">
 
     <div class="card my-4 mb-5">
-        <img class="card-img-top img-fluid item-img" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="">
+        <img class="card-img-top img-fluid item-img" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}">
         <div class="card-body">
             <h3 class="card-title">{{ $product->model->name ?? '' }}</h3>
             <h4>{{ $product->type->translation ?? '' }}</h4>
