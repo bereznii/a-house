@@ -13,7 +13,7 @@ class CartRepository
      */
     public function getContent(): array
     {
-        $cart = session('cart');
+        $cart = session('cart', []);
 
         $ids = array_keys($cart);
 

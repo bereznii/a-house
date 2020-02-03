@@ -45,6 +45,7 @@ class CheckoutController extends Controller
      */
     public function checkout()
     {
+        dd(\Hash::make('AutoglassHouse2020'));
         $content = $this->cartRepository->getContent();
 
         return view('client.checkout.index')->with([
