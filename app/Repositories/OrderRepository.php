@@ -7,24 +7,26 @@ use App\Models\Order;
 class OrderRepository
 {
     /**
-     * @param array $cartContents
+     * @param array $order
      * @return bool
      */
-    public function storeOrder(array $cartContents): bool
+    public function storeOrder(array $order): bool
     {
+        dd($order);
         $order = app(Order::class);
-        $order->name = $cartContents['firstName'];
-        $order->surname = $cartContents['lastName'];
-        $order->email = $cartContents['email'];
-        $order->phone = $cartContents['phone'];
-        $order->address = $cartContents['address'];
-        $order->country = $cartContents['country'];
-        $order->city = $cartContents['city'];
-        $order->delivery_type_id = $cartContents['deliveryMethod'];
-        $order->payment_type_id = $cartContents['paymentMethod'];
-        $order->need_callback = $cartContents['callback'];
+        $order->name = $order['firstName'];
+        $order->surname = $order['lastName'];
+        $order->email = $order['email'];
+        $order->phone = $order['phone'];
+        $order->address = $order['address'];
+        $order->country = $order['country'];
+        $order->city = $order['city'];
+        $order->delivery_type_id = $order['deliveryMethod'];
+        $order->payment_type_id = $order['paymentMethod'];
+        $order->need_callback = $order['callback'];
+        $order->comment = $order['comment'];
         $order->save();
-        $order->products()->attach($cartContents['products']);
+        $order->products()->attach($order['products']);
 
         return true;
     }
