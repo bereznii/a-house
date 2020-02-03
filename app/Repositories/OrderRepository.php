@@ -12,7 +12,6 @@ class OrderRepository
      */
     public function storeOrder(array $order): bool
     {
-        dd($order);
         $order = app(Order::class);
         $order->name = $order['firstName'];
         $order->surname = $order['lastName'];
