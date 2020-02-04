@@ -7,24 +7,25 @@ use App\Entities\Order;
 class OrderRepository
 {
     /**
-     * @param array $cartContents
+     * @param array $orderData
      * @return bool
      */
-    public function storeOrder(array $cartContents): bool
+    public function storeOrder(array $orderData): bool
     {
         $order = app(Order::class);
-        $order->name = $cartContents['firstName'];
-        $order->surname = $cartContents['lastName'];
-        $order->email = $cartContents['email'];
-        $order->phone = $cartContents['phone'];
-        $order->address = $cartContents['address'];
-        $order->country = $cartContents['country'];
-        $order->city = $cartContents['city'];
-        $order->delivery_type_id = $cartContents['deliveryMethod'];
-        $order->payment_type_id = $cartContents['paymentMethod'];
-        $order->need_callback = $cartContents['callback'];
+        $order->name = $orderData['firstName'];
+        $order->surname = $orderData['lastName'];
+        $order->email = $orderData['email'];
+        $order->phone = $orderData['phone'];
+        $order->address = $orderData['address'];
+        $order->country = $orderData['country'];
+        $order->city = $orderData['city'];
+        $order->delivery_type_id = $orderData['deliveryMethod'];
+        $order->payment_type_id = $orderData['paymentMethod'];
+        $order->need_callback = $orderData['callback'];
+        $order->comment = $orderData['comment'];
         $order->save();
-        $order->products()->attach($cartContents['products']);
+        $order->products()->attach($orderData['products']);
 
         return true;
     }
