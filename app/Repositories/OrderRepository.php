@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\Order;
+use App\Entities\Order;
 
 class OrderRepository
 {

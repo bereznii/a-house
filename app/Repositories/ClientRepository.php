@@ -2,10 +2,10 @@
 
 namespace App\Repositories;
 
-use App\Models\Make;
-use App\Models\MakeModel;
-use App\Models\Product;
-use App\Models\Type;
+use App\Entities\Make;
+use App\Entities\MakeModel;
+use App\Entities\Product;
+use App\Entities\Type;
 
 class ClientRepository
 {

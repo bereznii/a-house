@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,8 +22,8 @@ class Order extends Model
      */
     public function products()
     {
-        return $this->belongsToMany('App\Models\Product')
-            ->using('App\Models\OrderProduct')
+        return $this->belongsToMany('App\Entities\Product')
+            ->using('App\Entities\OrderProduct')
             ->withPivot('price', 'quantity')
             ->withTimestamps();
     }

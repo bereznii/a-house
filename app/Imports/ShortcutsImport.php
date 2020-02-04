@@ -2,8 +2,8 @@
 
 namespace App\Imports;
 
-use App\Models\Shortcut;
-use App\Models\Type;
+use App\Entities\Shortcut;
+use App\Entities\Type;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Models\CallbackRequest;
+use App\Entities\CallbackRequest;
 
 class CallbackRequestRepository
 {

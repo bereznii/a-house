@@ -2,10 +2,7 @@
 
 namespace App\Imports;
 
-use App\Models\Type;
-use App\Repositories\ImportRepository;
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
+use App\Entities\Type;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class TypesImport implements ToModel

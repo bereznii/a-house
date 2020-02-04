@@ -2,11 +2,10 @@
 
 namespace App\Imports;
 
-use App\Models\Make;
-use App\Models\MakeModel;
-use App\Models\ManufacturerCharge;
-use App\Models\Product;
-use App\Repositories\ImportRepository;
+use App\Entities\Make;
+use App\Entities\MakeModel;
+use App\Entities\Product;
+use App\Services\ImportService;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithChunkReading;
@@ -104,14 +103,14 @@ class CatalogImport implements ToModel, WithChunkReading
                 [
                     'make_id' => Cache::get('make_id'),
                     'model_id' => $model->id,
-                    'type_id' => ImportRepository::getProductTypeId($row[2]),
+                    'type_id' => ImportService::getProductTypeId($row[2]),
                     'nomenclature' => $row[2],
-                    'original_description' => ImportRepository::getOriginalDescription($row[2]),
+                    'original_description' => ImportService::getOriginalDescription($row[2]),
                     'detailed_description' => $row[7],
-                    'translated_description' => ImportRepository::getTranslatedDescription($row[2]),
+                    'translated_description' => ImportService::getTranslatedDescription($row[2]),
                     'in_stock' => $row[4],
                     'dealer_price' => $row[5],
-                    'retail_price' => ImportRepository::calculateRetailPriceWithCharge($row)
+                    'retail_price' => ImportService::calculateRetailPriceWithCharge($row)
                 ]
             );
 

@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Type
  *
- * @package App\Models
- * @mixin \Eloquent
+Entities * @mixin \Eloquent
  */
 class Type extends Model
 {

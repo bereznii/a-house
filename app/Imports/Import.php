@@ -2,8 +2,8 @@
 
 namespace App\Imports;
 
-use App\Models\ManufacturerCharge;
-use App\Models\Shortcut;
+use App\Entities\ManufacturerCharge;
+use App\Entities\Shortcut;
 use Maatwebsite\Excel\Concerns\WithConditionalSheets;
 use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 

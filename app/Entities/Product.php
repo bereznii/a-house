@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Product
- * @package App\Models
+ * @package App\Entities
  * @mixin \Eloquent
  */
 class Product extends Model
@@ -32,7 +32,7 @@ class Product extends Model
      */
     public function type()
     {
-        return $this->hasOne('App\Models\Type', 'id', 'type_id');
+        return $this->hasOne('App\Entities\Type', 'id', 'type_id');
     }
 
     /**
@@ -40,7 +40,7 @@ class Product extends Model
      */
     public function model()
     {
-        return $this->belongsTo('App\Models\MakeModel', 'model_id', 'id');
+        return $this->belongsTo('App\Entities\MakeModel', 'model_id', 'id');
     }
 
     /**
@@ -48,6 +48,6 @@ class Product extends Model
      */
     public function make()
     {
-        return $this->belongsTo('App\Models\Make', 'make_id', 'id');
+        return $this->belongsTo('App\Entities\Make', 'make_id', 'id');
     }
 }

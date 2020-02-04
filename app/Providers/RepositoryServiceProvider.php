@@ -5,7 +5,6 @@ namespace App\Providers;
 use App\Repositories\CallbackRequestRepository;
 use App\Repositories\CartRepository;
 use App\Repositories\ClientRepository;
-use App\Repositories\ImportRepository;
 use App\Repositories\OrderRepository;
 use App\Repositories\ProductRepository;
 use Illuminate\Support\ServiceProvider;
@@ -29,10 +28,6 @@ class RepositoryServiceProvider extends ServiceProvider
 
         $this->app->singleton(ClientRepository::class, function () {
             return new ClientRepository();
-        });
-
-        $this->app->singleton(ImportRepository::class, function () {
-            return new ImportRepository();
         });
 
         $this->app->singleton(OrderRepository::class, function () {

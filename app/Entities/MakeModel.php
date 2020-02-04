@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class MakeModel
- * @package App\Models
+ * @package App\Entities
  * @mixin \Eloquent
  */
 class MakeModel extends Model

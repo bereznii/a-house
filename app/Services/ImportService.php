@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
-use App\Models\Shortcut;
-use App\Models\Type;
+use App\Entities\Shortcut;
+use App\Entities\Type;
 
-class ImportRepository
+class ImportService
 {
     private static array $types = [];
 
