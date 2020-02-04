@@ -29,9 +29,15 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-darkgreen fixed-top">
         <div class="container">
             <a class="navbar-brand" href="{{ route('client.index') }}">Autoglass House</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+
+            <div class="row">
+                <a class="nav-link text-white" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart fa-lg"></i>
+                    <span class="cartQuantity" id="cartQuantity" data-currentQuantity="{{ $sidebarData['cartCount'] }}">@if($sidebarData['cartCount'] > 0)({{ $sidebarData['cartCount'] }}) @endif</span>
+                </a>
+                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item  @if(route('client.about') != url()->current() && route('client.contact') != url()->current() && route('client.checkout') != url()->current()) active @endif">
@@ -45,7 +51,7 @@
                     </li>
                     <li class="nav-item @if(route('client.checkout') == url()->current()) active @endif">
                         <a class="nav-link" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart"></i>
-                            <span id="cartQuantity" data-currentQuantity="{{ $sidebarData['cartCount'] }}">@if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif</span> Корзина
+                            <span class="cartQuantity" id="cartQuantity" data-currentQuantity="{{ $sidebarData['cartCount'] }}">@if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif</span> Корзина
                         </a>
                     </li>
                 </ul>

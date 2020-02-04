@@ -84,8 +84,8 @@ $(document).ready(function() {
             },
             success: function(data) {
                 newQuantity = currentInCartQuantity + 1;
-                $('#cartQuantity').text('('+newQuantity+')');
-                $('#cartQuantity').data('currentquantity', newQuantity);
+                $('.cartQuantity').text('('+newQuantity+')');
+                $('.cartQuantity').data('currentquantity', newQuantity);
             }
         });
 
