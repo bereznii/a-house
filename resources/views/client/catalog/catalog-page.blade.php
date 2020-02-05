@@ -5,20 +5,20 @@
     {
         "@context": "http://schema.org",
         "@type": "ItemList",
-        "url": "http://multivarki.ru?filters%5Bprice%5D%5BLTE%5D=39600",
+        "url": "{{ url()->current() }}",
         "numberOfItems": "{{ $products->count() }}",
         "itemListElement": [
         @foreach ($products as $key => $product)
             {
                 "@type": "ListItem",
                 "position": {{ $key+1 }},
+                "url": "https://autoglasshouse.com.ua/automotive/{{ $product->id }}",
                 "item": {
                   "@context": "https://schema.org/",
                   "@type": "Product",
                   "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
                   "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
                   "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
-                  "url": "https://autoglasshouse.com.ua/automotive/{{ $product->id }}",
                   "brand": {
                     "@type": "Thing",
                     "name": "{{ $product->manufacture }}"
