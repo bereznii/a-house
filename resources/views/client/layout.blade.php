@@ -8,6 +8,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <meta name="google-site-verification" content="WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE">
+
     <title>Autoglass House</title>
     <meta name="description" content="">
     <meta name="robots" content="index, follow" />
