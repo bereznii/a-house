@@ -19,6 +19,7 @@
                   "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
                   "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
                   "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
+                  "url": "https://autoglasshouse.com.ua/automotive/{{ $product->id }}",
                   "brand": {
                     "@type": "Thing",
                     "name": "{{ $product->manufacture }}"
