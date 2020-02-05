@@ -10,28 +10,31 @@
         "itemListElement": [
         @foreach ($products as $key => $product)
             {
-              "@context": "https://schema.org/",
-              "position": "{{ $key }}",
-              "@type": "Product",
-              "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
-              "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
-              "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
-              "url": "{{ url()->current() }}",
-              "brand": {
-                "@type": "Thing",
-                "name": "{{ $product->manufacture }}"
-              },
-              "offers": {
-                "@type": "Offer",
-                "priceCurrency": "UAH",
-                "price": "{{ $product->retail_price }}",
-                "itemCondition": "http://schema.org/UsedCondition",
-                "availability": "http://schema.org/InStock",
-                "seller": {
-                  "@type": "Organization",
-                  "name": "Autoglass House"
+                "@type": "ListItem",
+                "position": {{ $key+1 }},
+                "item": {
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
+                  "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
+                  "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
+                  "url": "https://autoglasshouse.com.ua/automotive/{{ $product->id }}",
+                  "brand": {
+                    "@type": "Thing",
+                    "name": "{{ $product->manufacture }}"
+                  },
+                  "offers": {
+                    "@type": "Offer",
+                    "priceCurrency": "UAH",
+                    "price": "{{ $product->retail_price }}",
+                    "itemCondition": "http://schema.org/UsedCondition",
+                    "availability": "http://schema.org/InStock",
+                    "seller": {
+                      "@type": "Organization",
+                      "name": "Autoglass House"
+                    }
+                  }
                 }
-              }
             }
             @if($key != $products->count()-1)
             ,
