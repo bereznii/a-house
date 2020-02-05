@@ -1,5 +1,67 @@
 <div class="col-lg-9">
 
+    <script type="application/ld+json">
+    {
+     "@context": "http://schema.org",
+     "@type": "BreadcrumbList",
+     "itemListElement":
+     [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "item":
+       {
+        "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}",
+        "name": "{{ $product->make->name ?? '' }}"
+        }
+      },
+      {
+       "@type": "ListItem",
+      "position": 2,
+      "item":
+       {
+         "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}&models={{ $product->model_id ?? '' }}",
+         "name": "{{ $product->model->name ?? '' }}"
+       }
+      },
+      {
+       "@type": "ListItem",
+      "position": 3,
+      "item":
+       {
+         "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}&models={{ $product->model_id ?? '' }}&types={{ $product->type_id ?? '' }}",
+         "name": "{{ $product->type->translation ?? '' }}"
+       }
+      }
+     ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
+      "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
+      "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
+      "brand": {
+        "@type": "Thing",
+        "name": "{{ $product->manufacture }}"
+      },
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "UAH",
+        "price": "{{ $product->retail_price }}",
+        "itemCondition": "http://schema.org/UsedCondition",
+        "availability": "http://schema.org/InStock",
+        "seller": {
+          "@type": "Organization",
+          "name": "Autoglass House"
+        }
+      }
+    }
+    </script>
+
     <div class="card my-4 mb-5">
         <img class="card-img-top img-fluid item-img" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}">
         <div class="card-body">

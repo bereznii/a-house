@@ -1,8 +1,8 @@
 <div class="col-lg-3 my-4">
 
-    <div class="form-group d-none d-lg-block">
-        <a href="{{ route('client.index') }}">
-            <img style="width: 100%" src="{{ asset('storage/logo.png') }}" alt="logo">
+    <div class="form-group d-none d-lg-block" itemscope itemtype="http://schema.org/Organization">
+        <a href="{{ route('client.index') }}" itemprop="url">
+            <img style="width: 100%" itemprop="logo" src="{{ asset('storage/logo.png') }}" alt="Логотипа Autoglass House">
         </a>
     </div>
 

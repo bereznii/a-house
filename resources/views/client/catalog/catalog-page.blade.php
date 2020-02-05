@@ -1,7 +1,43 @@
 <div class="col-lg-9">
 
-    <div class="row my-4">
+    @if(isset($products))
+    <script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "ItemList",
+        "url": "http://multivarki.ru?filters%5Bprice%5D%5BLTE%5D=39600",
+        "numberOfItems": "315",
+        "itemListElement": [
+        @foreach ($products as $product)
+            {
+              "@context": "https://schema.org/",
+              "@type": "Product",
+              "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
+              "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
+              "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
+              "brand": {
+                "@type": "Thing",
+                "name": "{{ $product->manufacture }}"
+              },
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "UAH",
+                "price": "{{ $product->retail_price }}",
+                "itemCondition": "http://schema.org/UsedCondition",
+                "availability": "http://schema.org/InStock",
+                "seller": {
+                  "@type": "Organization",
+                  "name": "Autoglass House"
+                }
+              }
+            },
+        @endforeach
+        ]
+    }
+    </script>
+    @endif
 
+    <div class="row my-4">
         @if(isset($products))
             @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 mb-4">

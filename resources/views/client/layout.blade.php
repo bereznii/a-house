@@ -27,8 +27,8 @@
 
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-darkgreen fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="{{ route('client.index') }}">Autoglass House</a>
+        <div itemscope itemtype="http://schema.org/Organization" class="container">
+            <a itemprop="url" class="navbar-brand" href="{{ route('client.index') }}">Autoglass House</a>
 
             <div class="row">
                 <a class="nav-link text-white d-block d-lg-none" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart fa-lg"></i>
