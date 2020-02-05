@@ -3,15 +3,16 @@
 
 <head>
 
-    <!-- Global Site Tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157621129-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE');
+        gtag('config', 'UA-157621129-1');
     </script>
+
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
