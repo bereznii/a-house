@@ -48,12 +48,16 @@
         "@type": "Thing",
         "name": "{{ $product->manufacture }}"
       },
+      "sku": "{{ $product->stock_code ?? '' }}",
+      "url": "{{ url()->current() }}",
       "offers": {
         "@type": "Offer",
         "priceCurrency": "UAH",
         "price": "{{ $product->retail_price }}",
         "itemCondition": "http://schema.org/UsedCondition",
         "availability": "http://schema.org/InStock",
+        "priceValidUntil": "{{ now()->addMonths(1) }}",
+        "url": "{{ url()->current() }}",
         "seller": {
           "@type": "Organization",
           "name": "Autoglass House"

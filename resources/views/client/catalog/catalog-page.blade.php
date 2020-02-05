@@ -6,9 +6,9 @@
         "@context": "http://schema.org",
         "@type": "ItemList",
         "url": "http://multivarki.ru?filters%5Bprice%5D%5BLTE%5D=39600",
-        "numberOfItems": "315",
+        "numberOfItems": "{{ $products->count() }}",
         "itemListElement": [
-        @foreach ($products as $product)
+        @foreach ($products as $key => $product)
             {
               "@context": "https://schema.org/",
               "@type": "Product",
@@ -30,7 +30,10 @@
                   "name": "Autoglass House"
                 }
               }
-            },
+            }
+            @if($key != $products->count()-1)
+            ,
+            @endif
         @endforeach
         ]
     }
