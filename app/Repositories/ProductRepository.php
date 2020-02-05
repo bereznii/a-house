@@ -50,7 +50,6 @@ class ProductRepository
             'selectedMake' => $make,
             'selectedModel' => $model,
             'selectedType' => $type
-
         ]);
 
         return $products;
@@ -64,7 +63,7 @@ class ProductRepository
     {
         $query = $validatedData['query'];
 
-        $products = Product::where('barcode', 'like', "%{$query}%")
+        $products = Product::where('stock_code', 'like', "{$query}%")
             ->where('in_stock', '>', 0)
             ->paginate(9);
         $products->appends(['query' => $query]);
