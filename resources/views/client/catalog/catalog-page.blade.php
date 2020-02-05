@@ -19,7 +19,7 @@
                   "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
                   "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
                   "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
-                  "url": "https://autoglasshouse.com.ua/automotive/{{ $product->id }}",
+                  "url": "{{ url()->current() }}#{{ $product->id }}",
                   "brand": {
                     "@type": "Thing",
                     "name": "{{ $product->manufacture }}"
@@ -50,8 +50,8 @@
         @if(isset($products))
             @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="card h-100 item-card">
-                        <a href="#"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}"></a>
+                    <div class="card h-100 item-card" id="{{ $product->id }}">
+                        <a href="{{ route('client.product.show', ['id' => $product->id]) }}"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}"></a>
                         <div class="card-body">
                             <h5 class="card-title">
                                 <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
