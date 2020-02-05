@@ -11,7 +11,7 @@
         @foreach ($products as $key => $product)
             {
               "@context": "https://schema.org/",
-              "position": "{{ $key }}"
+              "position": "{{ $key }}",
               "@type": "Product",
               "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
               "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
