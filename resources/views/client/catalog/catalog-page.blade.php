@@ -11,10 +11,12 @@
         @foreach ($products as $key => $product)
             {
               "@context": "https://schema.org/",
+              "position": "{{ $key }}"
               "@type": "Product",
               "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
               "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
               "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
+              "url": "{{ url()->current() }}",
               "brand": {
                 "@type": "Thing",
                 "name": "{{ $product->manufacture }}"
