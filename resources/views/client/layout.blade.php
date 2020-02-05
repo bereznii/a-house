@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157621129-1"></script>
     <script>
@@ -13,7 +12,6 @@
         gtag('config', 'UA-157621129-1');
     </script>
 
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -21,7 +19,7 @@
 
     <meta name="google-site-verification" content="WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE">
 
-    <title>Autoglass House</title>
+    <title>{{ $metaData['title'] ?? 'Autoglass House' }}</title>
     <meta name="description" content="">
     <meta name="robots" content="index, follow" />
 

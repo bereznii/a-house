@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Repositories\ClientRepository;
 use App\Repositories\ProductRepository;
+use App\Services\MetaDataService;
 
 class ProductController extends Controller
 {
@@ -19,13 +20,19 @@ class ProductController extends Controller
     private ProductRepository $productRepository;
 
     /**
+     * @var MetaDataService
+     */
+    private MetaDataService $metaDataService;
+
+    /**
      * ProductController constructor.
      * @param ClientRepository $clientRepository
      */
-    public function __construct(ClientRepository $clientRepository, ProductRepository $productRepository)
+    public function __construct(ClientRepository $clientRepository, ProductRepository $productRepository, MetaDataService $metaDataService)
     {
         $this->clientRepository = $clientRepository;
         $this->productRepository = $productRepository;
+        $this->metaDataService = $metaDataService;
     }
 
     /**
@@ -38,6 +45,7 @@ class ProductController extends Controller
 
         return view('client.item.index')->with([
             'sidebarData' => $this->clientRepository->sidebarData(),
+            'metaData' => $this->metaDataService->collectMetaData('product', $product),
             'product' => $product
         ]);
     }
@@ -57,8 +65,11 @@ class ProductController extends Controller
 
         session()->flashInput(request()->input());
 
+        $sideBar = $this->clientRepository->sidebarData();
+
         return view('client.catalog.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $sideBar,
+            'metaData' => $this->metaDataService->collectMetaData('catalog', $sideBar),
             'products' => $products
         ]);
     }
