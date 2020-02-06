@@ -14,13 +14,12 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <meta name="google-site-verification" content="WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE">
 
-    <title>{{ $metaData['title'] ?? 'Autoglass House' }}</title>
-    <meta name="description" content="">
+    <title>{{ $metaData['title'] ?? 'Интернет-магазин Autoglass House' }}</title>
+    <meta name="description" content="{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}">
+    <meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
     <meta name="robots" content="index, follow" />
 
     <!-- Bootstrap core CSS -->
