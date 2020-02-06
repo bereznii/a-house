@@ -30,20 +30,18 @@ class MetaDataService
                 $metaTitle = 'Контактные данные Autoglass House. Поможем подобрать нужно стекло по лучшей цене';
                 break;
             case 'about':
-                $metaTitle = 'Интернет магазин Autoglass House. Поможем подобрать нужно стекло по лучшей цене';
+                $metaTitle = 'Интернет-магазин Autoglass House. Поможем подобрать нужно стекло по лучшей цене';
                 break;
             case 'product':
                 $metaTitle = "{$obj->type->translation} для {$obj->model->name} купить по лучшей цене. Интернет магазин Autoglass House";
                 break;
             case 'catalog':
-                $autoglassFor = '';
-
 //                if (isset($obj['types']['selectedId'])) {
 //                    $autoglassFor = $obj['types']['list']->where('id', $obj['types']['selectedId'])->first()->translation .
 //                        ' для ' . $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
 //                } else
 
-                if ($obj['models']['selectedId']) {
+                if (isset($obj['models']['selectedId'])) {
                     $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
                 } elseif (isset($obj['makes']['selectedId'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;

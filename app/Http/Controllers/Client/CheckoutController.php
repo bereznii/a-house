@@ -7,6 +7,7 @@ use App\Http\Requests\OrderRequest;
 use App\Repositories\CartRepository;
 use App\Repositories\ClientRepository;
 use App\Repositories\OrderRepository;
+use App\Services\MetaDataService;
 
 class CheckoutController extends Controller
 {
@@ -25,17 +26,29 @@ class CheckoutController extends Controller
      */
     private OrderRepository $orderRepository;
 
+
+    /**
+     * @var MetaDataService
+     */
+    private MetaDataService $metaDataService;
+
     /**
      * CheckoutController constructor.
      * @param CartRepository $cartRepository
      * @param ClientRepository $clientRepository
      * @param OrderRepository $orderRepository
      */
-    public function __construct(CartRepository $cartRepository, ClientRepository $clientRepository, OrderRepository $orderRepository)
+    public function __construct(
+        CartRepository $cartRepository,
+        ClientRepository $clientRepository,
+        OrderRepository $orderRepository,
+        MetaDataService $metaDataService
+    )
     {
         $this->cartRepository = $cartRepository;
         $this->clientRepository = $clientRepository;
         $this->orderRepository = $orderRepository;
+        $this->metaDataService = $metaDataService;
     }
 
     /**
@@ -69,6 +82,7 @@ class CheckoutController extends Controller
 
         return view('client.checkout.index')->with([
             'sidebarData' => $this->clientRepository->sidebarData(),
+            'metaData' => $this->metaDataService->collectMetaData('catalog'),
             'thank' => true
         ]);
     }

@@ -89,6 +89,7 @@ class ProductController extends Controller
 
         return view('client.catalog.index')->with([
             'sidebarData' => $this->clientRepository->sidebarData(),
+            'metaData' => $this->metaDataService->collectMetaData('catalog'),
             'products' => $products
         ]);
     }

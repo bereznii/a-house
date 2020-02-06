@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Repositories\CallbackRequestRepository;
 use App\Repositories\ClientRepository;
+use App\Services\MetaDataService;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -20,14 +21,24 @@ class ClientController extends Controller
     private CallbackRequestRepository $callbackRequestRepository;
 
     /**
+     * @var MetaDataService
+     */
+    private MetaDataService $metaDataService;
+
+    /**
      * ClientController constructor.
      * @param ClientRepository $clientRepository
      * @param CallbackRequestRepository $callbackRequestRepository
      */
-    public function __construct(ClientRepository $clientRepository, CallbackRequestRepository $callbackRequestRepository)
+    public function __construct(
+        ClientRepository $clientRepository,
+        CallbackRequestRepository $callbackRequestRepository,
+        MetaDataService $metaDataService
+    )
     {
         $this->clientRepository = $clientRepository;
         $this->callbackRequestRepository = $callbackRequestRepository;
+        $this->metaDataService = $metaDataService;
     }
 
     /**
@@ -38,7 +49,8 @@ class ClientController extends Controller
     public function index()
     {
         return view('client.catalog.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData()
+            'sidebarData' => $this->clientRepository->sidebarData(),
+            'metaData' => $this->metaDataService->collectMetaData('catalog')
         ]);
     }
 
@@ -50,7 +62,8 @@ class ClientController extends Controller
     public function about()
     {
         return view('client.about.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData()
+            'sidebarData' => $this->clientRepository->sidebarData(),
+            'metaData' => $this->metaDataService->collectMetaData('about')
         ]);
     }
 
@@ -62,7 +75,8 @@ class ClientController extends Controller
     public function contact()
     {
         return view('client.contact.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData()
+            'sidebarData' => $this->clientRepository->sidebarData(),
+            'metaData' => $this->metaDataService->collectMetaData('contact')
         ]);
     }
 
