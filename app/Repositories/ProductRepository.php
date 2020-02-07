@@ -70,4 +70,14 @@ class ProductRepository
 
         return $products;
     }
+
+    /**
+     * @return \Illuminate\Support\Collection
+     */
+    public function getProductForSitemap()
+    {
+        $products = Product::select(['id', 'updated_at'])->get();
+
+        return $products;
+    }
 }

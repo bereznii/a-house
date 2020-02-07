@@ -57,3 +57,5 @@ Route::group(['prefix' => 'ajax'], function (){
     Route::get('add-callback', 'Client\ClientController@addCallback');
     Route::get('update-cart-quantity', 'Client\CartController@updateQuantity');
 });
+
+Route::get('sitemap.xml', 'Client\SitemapController@index');
