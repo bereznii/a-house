@@ -4,12 +4,12 @@ namespace App\Repositories;
 
 use App\Entities\CallbackRequest as Model;
 
-class CallbackRequestRepository
+class CallbackRequestRepository extends CoreRepository
 {
     /**
      * @return mixed|string
      */
-    protected function instantiate()
+    protected function getModelClass()
     {
         return Model::class;
     }

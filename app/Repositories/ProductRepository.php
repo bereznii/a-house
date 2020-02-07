@@ -4,12 +4,12 @@ namespace App\Repositories;
 
 use App\Entities\Product as Model;
 
-class ProductRepository
+class ProductRepository extends CoreRepository
 {
     /**
      * @return mixed|string
      */
-    protected function instantiate()
+    protected function getModelClass()
     {
         return Model::class;
     }

@@ -45,11 +45,11 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Имя</label>
-                                <input type="text" name="firstName" class="form-control" id="firstName" placeholder="" value="{{ old('firstName') }}" required>
+                                <input type="text" name="name" class="form-control" id="name" placeholder="" value="{{ old('firstName') }}" required>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="lastName">Фамилия</label>
-                                <input type="text" name="lastName" class="form-control" id="lastName" placeholder="" value="{{ old('lastName') }}" required>
+                                <input type="text" name="surname" class="form-control" id="surname" placeholder="" value="{{ old('lastName') }}" required>
                             </div>
                         </div>
 
@@ -83,7 +83,7 @@
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="country">Метод доставки</label>
-                                <select name="deliveryMethod" class="custom-select d-block w-100" id="country" required>
+                                <select name="delivery_type_id" class="custom-select d-block w-100" id="country" required>
                                     <option value="2" @if(old('deliveryMethod') == 2) selected @endif>Доставка по Киеву</option>
                                     <option value="1" @if(old('deliveryMethod') == 1) selected @endif>Доставка по регионам (Новая Почта, Гюнсел и др.)</option>
                                     <option value="3" @if(old('deliveryMethod') == 3) selected @endif>Установка на месте</option>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="col-md-6 mb-3">
                                 <label for="state">Метод оплаты</label>
-                                <select name="paymentMethod" class="custom-select d-block w-100" id="state" required>
+                                <select name="payment_type_id" class="custom-select d-block w-100" id="state" required>
                                     <option value="1" @if(old('paymentMethod') == 1) selected @endif>Наложенный платёж</option>
                                     <option value="2" @if(old('paymentMethod') == 2) selected @endif>Наличные</option>
                                     <option value="3" @if(old('paymentMethod') == 3) selected @endif>На карту</option>
@@ -110,15 +110,15 @@
                         <div class="row">
                             <div class="col-md-12 mb-3">
                                 <div class="custom-control custom-radio">
-                                    <input id="credit" value="1" name="callback" type="radio" class="custom-control-input" checked disabled required>
+                                    <input id="credit" value="1" name="need_callback" type="radio" class="custom-control-input" checked disabled required>
                                     <label class="custom-control-label" for="credit">Запросить обратный звонок менеджера</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input id="debit" value="0" name="callback" type="radio" class="custom-control-input" disabled required>
+                                    <input id="debit" value="0" name="need_callback" type="radio" class="custom-control-input" disabled required>
                                     <label class="custom-control-label" for="debit">Подтверждаю правильность заполненых данных</label>
                                 </div>
                             </div>
-                            <input type="hidden" name="callback" class="form-control" id="address2" value="1">
+                            <input type="hidden" name="need_callback" class="form-control" id="address2" value="1">
                         </div>
                         <hr class="mb-4">
                         @if ($errors->any())

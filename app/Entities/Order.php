@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    public $fillable = [
-        'status_id'
-    ];
+    /**
+     * @var array
+     */
+    protected $guarded = [];
 
     const STATUS_TEXTS = [
         1 => 'Новый',

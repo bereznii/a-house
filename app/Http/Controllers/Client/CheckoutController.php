@@ -39,7 +39,7 @@ class CheckoutController extends Controller
      * @param OrderRepository $orderRepository
      */
     public function __construct(
-        ClientService $cartService,
+        CartService $cartService,
         ClientService $clientService,
         OrderRepository $orderRepository,
         MetaDataService $metaDataService

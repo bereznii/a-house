@@ -14,7 +14,7 @@ abstract class CoreRepository
     /**
      * @var Model
      */
-    private Model $model;
+    protected Model $model;
 
     /**
      * CoreRepository constructor.
@@ -34,7 +34,7 @@ abstract class CoreRepository
      */
     protected function instantiate()
     {
-        return app($this->model);
+        return clone $this->model;
     }
 
 }
