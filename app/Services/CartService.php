@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
 use App\Entities\Product;
 
-class CartRepository
+class CartService
 {
     /**
      * Return ids of products in cart.

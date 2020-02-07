@@ -3,22 +3,22 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\CartRepository;
+use App\Services\CartService;
 
 class CartController extends Controller
 {
     /**
-     * @var CartRepository
+     * @var CartService
      */
-    private CartRepository $cartRepository;
+    private CartService $cartService;
 
     /**
      * CartController constructor.
-     * @param CartRepository $cartRepository
+     * @param CartService $cartRepository
      */
-    public function __construct(CartRepository $cartRepository)
+    public function __construct(CartService $cartService)
     {
-        $this->cartRepository = $cartRepository;
+        $this->cartService = $cartService;
     }
 
     /**
@@ -30,7 +30,7 @@ class CartController extends Controller
             'productId' => 'required|numeric'
         ]);
 
-        $this->cartRepository->updateContent($validatedData);
+        $this->cartService->updateContent($validatedData);
 
         return response()->json(['status' => true]);
     }
@@ -45,7 +45,7 @@ class CartController extends Controller
             'productQuantity' => 'required|numeric'
         ]);
 
-        $this->cartRepository->updateQuantity($validatedData);
+        $this->cartService->updateQuantity($validatedData);
 
         return response()->json(['status' => true]);
     }

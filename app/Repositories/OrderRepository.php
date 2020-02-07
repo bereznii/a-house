@@ -2,17 +2,25 @@
 
 namespace App\Repositories;
 
-use App\Entities\Order;
+use App\Entities\Order as Model;
 
 class OrderRepository
 {
+    /**
+     * @return mixed|string
+     */
+    protected function instantiate()
+    {
+        return Model::class;
+    }
+
     /**
      * @param array $orderData
      * @return bool
      */
     public function storeOrder(array $orderData): bool
     {
-        $order = app(Order::class);
+        $order = $this->instantiate();
         $order->name = $orderData['firstName'];
         $order->surname = $orderData['lastName'];
         $order->email = $orderData['email'];
@@ -36,6 +44,6 @@ class OrderRepository
      */
     public static function getOrdersStatus(int $statusId): string
     {
-        return Order::STATUS_TEXTS[$statusId];
+        return Model::STATUS_TEXTS[$statusId];
     }
 }

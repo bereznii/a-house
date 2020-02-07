@@ -2,17 +2,25 @@
 
 namespace App\Repositories;
 
-use App\Entities\Product;
+use App\Entities\Product as Model;
 
 class ProductRepository
 {
+    /**
+     * @return mixed|string
+     */
+    protected function instantiate()
+    {
+        return Model::class;
+    }
+
     /**
      * @param int $id
      * @return mixed
      */
     public function getProduct(int $id)
     {
-        $product = Product::find($id);
+        $product = $this->instantiate()->find($id);
 
         return $product;
     }
@@ -27,7 +35,7 @@ class ProductRepository
         $model = $validatedData['models'] ?? null;
         $type = $validatedData['types'] ?? null;
 
-        $products = Product::where('make_id', $make);
+        $products = $this->instantiate()->where('make_id', $make);
 
         if (isset($model)) {
             $products = $products->where('model_id', $model);
@@ -63,7 +71,7 @@ class ProductRepository
     {
         $query = $validatedData['query'];
 
-        $products = Product::where('stock_code', 'like', "{$query}%")
+        $products = $this->instantiate()->where('stock_code', 'like', "{$query}%")
             ->where('in_stock', '>', 0)
             ->paginate(9);
         $products->appends(['query' => $query]);
@@ -76,7 +84,7 @@ class ProductRepository
      */
     public function getProductForSitemap()
     {
-        $products = Product::select(['id', 'updated_at'])->get();
+        $products = $this->instantiate()->select(['id', 'updated_at'])->get();
 
         return $products;
     }

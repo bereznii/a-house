@@ -2,17 +2,25 @@
 
 namespace App\Repositories;
 
-use App\Entities\CallbackRequest;
+use App\Entities\CallbackRequest as Model;
 
 class CallbackRequestRepository
 {
+    /**
+     * @return mixed|string
+     */
+    protected function instantiate()
+    {
+        return Model::class;
+    }
+
     /**
      * @param array $data
      * @return bool
      */
     public function saveCallbackRequest(array $data): bool
     {
-        $record = app(CallbackRequest::class);
+        $record = $this->instantiate();
         $record->name = $data['name'] ?? '';
         $record->phone = $data['phone'] ?? '';
         $record->comment = $data['comment'] ?? '';
@@ -28,7 +36,7 @@ class CallbackRequestRepository
     public function confirmCallbackRequest(int $isChecked): bool
     {
         $status = false;
-        $record = CallbackRequest::find(request('recordId'));
+        $record = $this->instantiate()->find(request('recordId'));
 
         if (isset($record)) {
             $status = $record->update(['is_called' => $isChecked]);

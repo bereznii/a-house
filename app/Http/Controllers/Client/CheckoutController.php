@@ -4,17 +4,17 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
-use App\Repositories\CartRepository;
 use App\Repositories\OrderRepository;
+use App\Services\CartService;
 use App\Services\ClientService;
 use App\Services\MetaDataService;
 
 class CheckoutController extends Controller
 {
     /**
-     * @var CartRepository
+     * @var CartService
      */
-    private CartRepository $cartRepository;
+    private CartService $cartService;
 
     /**
      * @var ClientService
@@ -34,18 +34,18 @@ class CheckoutController extends Controller
 
     /**
      * CheckoutController constructor.
-     * @param CartRepository $cartRepository
+     * @param CartService $cartService
      * @param ClientService $clientService
      * @param OrderRepository $orderRepository
      */
     public function __construct(
-        CartRepository $cartRepository,
+        ClientService $cartService,
         ClientService $clientService,
         OrderRepository $orderRepository,
         MetaDataService $metaDataService
     )
     {
-        $this->cartRepository = $cartRepository;
+        $this->cartService = $cartService;
         $this->clientService = $clientService;
         $this->orderRepository = $orderRepository;
         $this->metaDataService = $metaDataService;
@@ -58,7 +58,7 @@ class CheckoutController extends Controller
      */
     public function checkout()
     {
-        $content = $this->cartRepository->getContent();
+        $content = $this->cartService->getContent();
 
         return view('client.checkout.index')->with([
             'sidebarData' => $this->clientService->sidebarData(),
@@ -93,7 +93,7 @@ class CheckoutController extends Controller
      */
     public function removeFromCart($id)
     {
-        $this->cartRepository->removeFromCartById($id);
+        $this->cartService->removeFromCartById($id);
 
         return $this->checkout();
     }
