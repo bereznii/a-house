@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\ClientRepository;
 use App\Repositories\ProductRepository;
+use App\Services\ClientService;
 use App\Services\MetaDataService;
 
 class ProductController extends Controller
 {
     /**
-     * @var ClientRepository
+     * @var ClientService
      */
-    private ClientRepository $clientRepository;
+    private ClientService $clientService;
 
     /**
      * @var ProductRepository
@@ -26,11 +26,11 @@ class ProductController extends Controller
 
     /**
      * ProductController constructor.
-     * @param ClientRepository $clientRepository
+     * @param ClientService $clientService
      */
-    public function __construct(ClientRepository $clientRepository, ProductRepository $productRepository, MetaDataService $metaDataService)
+    public function __construct(ClientService $clientService, ProductRepository $productRepository, MetaDataService $metaDataService)
     {
-        $this->clientRepository = $clientRepository;
+        $this->clientService = $clientService;
         $this->productRepository = $productRepository;
         $this->metaDataService = $metaDataService;
     }
@@ -44,7 +44,7 @@ class ProductController extends Controller
         $product = $this->productRepository->getProduct($id);
 
         return view('client.item.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('product', $product),
             'product' => $product
         ]);
@@ -65,7 +65,7 @@ class ProductController extends Controller
 
         session()->flashInput(request()->input());
 
-        $sideBar = $this->clientRepository->sidebarData();
+        $sideBar = $this->clientService->sidebarData();
 
         return view('client.catalog.index')->with([
             'sidebarData' => $sideBar,
@@ -88,7 +88,7 @@ class ProductController extends Controller
         session()->flashInput(request()->input());
 
         return view('client.catalog.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('catalog'),
             'products' => $products
         ]);

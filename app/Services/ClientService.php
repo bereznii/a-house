@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Repositories;
+namespace App\Services;
 
 use App\Entities\Make;
 use App\Entities\MakeModel;
 use App\Entities\Product;
 use App\Entities\Type;
 
-class ClientRepository
+class ClientService
 {
     /**
      * @return array

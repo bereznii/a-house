@@ -2,9 +2,6 @@
 
 namespace App\Services;
 
-use App\Entities\Product;
-use App\Repositories\ClientRepository;
-
 class MetaDataService
 {
     /**
@@ -39,11 +36,6 @@ class MetaDataService
                 $metaTitle = "{$obj->type->translation} для {$obj->model->name} купить по лучшей цене. Интернет магазин Autoglass House";
                 break;
             case 'catalog':
-//                if (isset($obj['types']['selectedId'])) {
-//                    $autoglassFor = $obj['types']['list']->where('id', $obj['types']['selectedId'])->first()->translation .
-//                        ' для ' . $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
-//                } else
-
                 if (isset($obj['models']['selectedId'])) {
                     $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
                 } elseif (isset($obj['makes']['selectedId'])) {

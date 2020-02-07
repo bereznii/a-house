@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Client;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Repositories\CartRepository;
-use App\Repositories\ClientRepository;
 use App\Repositories\OrderRepository;
+use App\Services\ClientService;
 use App\Services\MetaDataService;
 
 class CheckoutController extends Controller
@@ -17,9 +17,9 @@ class CheckoutController extends Controller
     private CartRepository $cartRepository;
 
     /**
-     * @var ClientRepository
+     * @var ClientService
      */
-    private ClientRepository $clientRepository;
+    private ClientService $clientService;
 
     /**
      * @var OrderRepository
@@ -35,18 +35,18 @@ class CheckoutController extends Controller
     /**
      * CheckoutController constructor.
      * @param CartRepository $cartRepository
-     * @param ClientRepository $clientRepository
+     * @param ClientService $clientService
      * @param OrderRepository $orderRepository
      */
     public function __construct(
         CartRepository $cartRepository,
-        ClientRepository $clientRepository,
+        ClientService $clientService,
         OrderRepository $orderRepository,
         MetaDataService $metaDataService
     )
     {
         $this->cartRepository = $cartRepository;
-        $this->clientRepository = $clientRepository;
+        $this->clientService = $clientService;
         $this->orderRepository = $orderRepository;
         $this->metaDataService = $metaDataService;
     }
@@ -61,7 +61,7 @@ class CheckoutController extends Controller
         $content = $this->cartRepository->getContent();
 
         return view('client.checkout.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'content' => $content
         ]);
     }
@@ -81,7 +81,7 @@ class CheckoutController extends Controller
         session()->flashInput(request()->input());
 
         return view('client.checkout.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('catalog'),
             'thank' => true
         ]);

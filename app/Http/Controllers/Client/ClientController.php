@@ -4,16 +4,16 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\CallbackRequestRepository;
-use App\Repositories\ClientRepository;
+use App\Services\ClientService;
 use App\Services\MetaDataService;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
     /**
-     * @var ClientRepository
+     * @var ClientService
      */
-    private ClientRepository $clientRepository;
+    private ClientService $clientService;
 
     /**
      * @var CallbackRequestRepository
@@ -27,16 +27,16 @@ class ClientController extends Controller
 
     /**
      * ClientController constructor.
-     * @param ClientRepository $clientRepository
+     * @param ClientService $clientService
      * @param CallbackRequestRepository $callbackRequestRepository
      */
     public function __construct(
-        ClientRepository $clientRepository,
+        ClientService $clientService,
         CallbackRequestRepository $callbackRequestRepository,
         MetaDataService $metaDataService
     )
     {
-        $this->clientRepository = $clientRepository;
+        $this->clientService = $clientService;
         $this->callbackRequestRepository = $callbackRequestRepository;
         $this->metaDataService = $metaDataService;
     }
@@ -49,7 +49,7 @@ class ClientController extends Controller
     public function index()
     {
         return view('client.catalog.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('catalog')
         ]);
     }
@@ -62,7 +62,7 @@ class ClientController extends Controller
     public function about()
     {
         return view('client.about.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('about')
         ]);
     }
@@ -75,7 +75,7 @@ class ClientController extends Controller
     public function contact()
     {
         return view('client.contact.index')->with([
-            'sidebarData' => $this->clientRepository->sidebarData(),
+            'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('contact')
         ]);
     }
@@ -91,7 +91,7 @@ class ClientController extends Controller
             'selectedMake' => 'required|numeric'
         ]);
 
-        $models = $this->clientRepository->getModelsByMakeId($validatedData['selectedMake']);
+        $models = $this->clientService->getModelsByMakeId($validatedData['selectedMake']);
 
         request()->session()->put('models', $models);
         request()->session()->put('selectedMake', request('selectedMake'));
@@ -113,7 +113,7 @@ class ClientController extends Controller
             'selectedModel' => 'required|numeric'
         ]);
 
-        $types = $this->clientRepository->getTypesByModelId($validatedData['selectedModel']);
+        $types = $this->clientService->getTypesByModelId($validatedData['selectedModel']);
 
         request()->session()->put('types', $types);
         request()->session()->put('selectedModel', request('selectedModel'));
