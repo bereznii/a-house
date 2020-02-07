@@ -26,7 +26,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('callbacks', 'HomeController@callbackPage')->name('home.callbacks');
     Route::post('import', 'HomeController@import')->name('home.import.action');
     Route::get('manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
-    Route::get('user-activity', 'HomeController@userActivity')->name('home.user-activity');
     Route::resource('orders', 'Admin\OrderController');
 
     Route::post('confirm-callback-request', 'HomeController@confirmCallback');
