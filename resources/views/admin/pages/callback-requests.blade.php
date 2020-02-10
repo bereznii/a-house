@@ -14,8 +14,8 @@
                       <th scope="col">#</th>
                       <th scope="col">Имя</th>
                       <th scope="col">Номер телефона</th>
-                      <th scope="col">Время создания</th>
                       <th scope="col">Комментарий</th>
+                      <th scope="col">Время создания</th>
                       <th scope="col">Перезвонил</th>
                   </tr>
               </thead>
