@@ -79,7 +79,7 @@ class CheckoutController extends Controller
 
         session()->flush();
         session()->flashInput(request()->input());
-dd('done');
+
         return view('client.checkout.index')->with([
             'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('catalog'),
