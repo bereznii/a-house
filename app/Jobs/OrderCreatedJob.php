@@ -21,6 +21,11 @@ class OrderCreatedJob implements ShouldQueue
     private string $email;
 
     /**
+     * @var string
+     */
+    private string $subject;
+
+    /**
      * @var int
      */
     private int $orderId;

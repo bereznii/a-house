@@ -35,6 +35,6 @@ class OrderCreated extends Mailable
     {
         $order = $this->order;
 
-        return $this->view('emails.order-created', compact('order'));
+        return $this->subject('Новый заказ!')->view('emails.order-created', compact('order'));
     }
 }

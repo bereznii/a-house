@@ -4,7 +4,7 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Send notifications to
+    | Send notifications to.
     |--------------------------------------------------------------------------
     |
     | Specifies where to send admin notifications.

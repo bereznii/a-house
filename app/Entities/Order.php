@@ -2,7 +2,6 @@
 
 namespace App\Entities;
 
-use App\Observers\OrderObserver;
 use Illuminate\Database\Eloquent\Model;
 
 /**
