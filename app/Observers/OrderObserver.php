@@ -15,7 +15,9 @@ class OrderObserver
      */
     public function created(Order $order)
     {
+        $adminEmail = config('notification.admin_email');
+
         $service = app(NotificationService::class);
-        $service->sendEmailNotification('autoglasshouse20@gmail.com', $order->id);
+        $service->sendEmailNotification($adminEmail, $order->id);
     }
 }
