@@ -16,6 +16,6 @@ class OrderObserver
     public function created(Order $order)
     {
         $service = app(NotificationService::class);
-        $service->sendEmailNotification('dima.berezniy.13@gmail.com', $order->id);
+        $service->sendEmailNotification('autoglasshouse20@gmail.com', $order->id);
     }
 }

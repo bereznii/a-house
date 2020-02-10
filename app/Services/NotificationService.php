@@ -3,8 +3,6 @@
 namespace App\Services;
 
 use App\Jobs\OrderCreatedJob;
-use App\Mail\OrderCreated;
-use Illuminate\Support\Facades\Mail;
 
 class NotificationService
 {
@@ -16,6 +14,6 @@ class NotificationService
     {
         dispatch(new OrderCreatedJob($email, $orderId));
 
-        logger('notification sent');
+        logger("ORDER {$orderId} | Notification sent to {$email}");
     }
 }
