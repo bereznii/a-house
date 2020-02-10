@@ -2,8 +2,14 @@
 
 namespace App\Entities;
 
+use App\Observers\OrderObserver;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Class Order
+ * @package App\Entities
+ * @mixin \Eloquent
+ */
 class Order extends Model
 {
     /**

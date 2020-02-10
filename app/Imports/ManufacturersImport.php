@@ -3,8 +3,6 @@
 namespace App\Imports;
 
 use App\Entities\ManufacturerCharge;
-use Illuminate\Support\Collection;
-use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\ToModel;
 
 class ManufacturersImport implements ToModel

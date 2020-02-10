@@ -8,6 +8,36 @@
         </div>
             <div class="card-body">
                 <div class="row">
+                    <div class="col-md-4 order-md-2 mb-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Корзина</span>
+                        </h4>
+                        <ul class="list-group mb-3">
+                            @foreach($order->products as $product)
+                                <li class="list-group-item lh-condensed">
+                                    <div>
+                                        <h6 class="my-0">{{ $product->model->name ?? '-' }}</h6>
+                                    </div>
+                                    <div>
+                                        <p class="text-muted cart-item-description">{{ $product->type->translation }}
+                                            <br>
+                                            <b>Штрихкод: </b>{{ $product->barcode }}
+                                            <br>
+                                            <b>Складской код: </b>{{ $product->stock_code }}
+                                        </p>
+                                    </div>
+                                    <div class="text-right">
+                                        <span class="text-muted">&#8372; {{ $product->retail_price }} x {{ $product->getOriginal('pivot_quantity') ?? '-' }} = {{ $product->getOriginal('pivot_price') ?? '-' }}</span>
+                                    </div>
+                                    <input type="hidden" name="products[]" value="{{ $product->id }}">
+                                </li>
+                            @endforeach
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Итого (ГРН)</span>
+                                <strong>&#8372; {{ $order->totalPrice ?? '0.00' }}</strong>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="col-md-8 order-md-1">
                         @csrf
                         <div class="row">
@@ -125,36 +155,6 @@
                             </div>
                             <button class="btn btn-success btn-lg btn-block" type="submit">Обновить заказ</button>
                         </form>
-                    </div>
-                    <div class="col-md-4 order-md-2 mb-4">
-                        <h4 class="d-flex justify-content-between align-items-center mb-3">
-                            <span class="text-muted">Корзина</span>
-                        </h4>
-                            <ul class="list-group mb-3">
-                                @foreach($order->products as $product)
-                                    <li class="list-group-item lh-condensed">
-                                        <div>
-                                            <h6 class="my-0">{{ $product->model->name ?? '-' }}</h6>
-                                        </div>
-                                        <div>
-                                            <p class="text-muted cart-item-description">{{ $product->type->translation }}
-                                                <br>
-                                                <b>Штрихкод: </b>{{ $product->barcode }}
-                                                <br>
-                                                <b>Складской код: </b>{{ $product->stock_code }}
-                                            </p>
-                                        </div>
-                                        <div class="text-right">
-                                            <span class="text-muted">&#8372; {{ $product->retail_price }} x {{ $product->getOriginal('pivot_quantity') ?? '-' }} = {{ $product->getOriginal('pivot_price') ?? '-' }}</span>
-                                        </div>
-                                        <input type="hidden" name="products[]" value="{{ $product->id }}">
-                                    </li>
-                                @endforeach
-                                <li class="list-group-item d-flex justify-content-between">
-                                    <span>Итого (ГРН)</span>
-                                    <strong>&#8372; {{ $order->totalPrice ?? '0.00' }}</strong>
-                                </li>
-                            </ul>
                     </div>
                 </div>
             </div>
