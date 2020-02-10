@@ -8,7 +8,8 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }} Admin Panel</title>
+    <title>{{ config('app.name', 'Autoglass House') }} Admin Panel</title>
+    <link rel="icon" href="{{ asset('storage/icon-sm.ico') }}" type="image/icon type">
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
