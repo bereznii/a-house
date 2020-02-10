@@ -18,6 +18,7 @@
     <meta name="google-site-verification" content="WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE">
 
     <title>{{ $metaData['title'] ?? 'Интернет-магазин Autoglass House' }}</title>
+    <link rel="icon" href="{{ asset('storage/icon-sm.ico') }}" type="image/icon type">
     <meta name="description" content="{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}">
     <meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
     <meta name="robots" content="index, follow">
