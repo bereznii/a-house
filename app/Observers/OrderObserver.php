@@ -3,7 +3,7 @@
 namespace App\Observers;
 
 use App\Entities\Order;
-use App\Services\NotificationService;
+use App\Services\EmailNotificationService;
 
 class OrderObserver
 {
@@ -15,9 +15,7 @@ class OrderObserver
      */
     public function created(Order $order)
     {
-        $adminEmail = config('notification.admin_email');
-
-        $service = app(NotificationService::class);
-        $service->sendEmailNotification($adminEmail, $order->id);
+        $service = app(EmailNotificationService::class);
+        $service->sendCreatedOrderNotification($order->id);
     }
 }

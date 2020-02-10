@@ -33,35 +33,35 @@
             <tbody>
                 <tr>
                     <td><b>Имя</b></td>
-                    <td>{{ $order->name }}</td>
+                    <td>{{ $order->name ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Фамилия</b></td>
-                    <td>{{ $order->surname }}</td>
+                    <td>{{ $order->surname ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Почта</b></td>
-                    <td>{{ $order->email }}</td>
+                    <td>{{ $order->email ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Телефон</b></td>
-                    <td>{{ $order->phone }}</td>
+                    <td>{{ $order->phone ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Адрес</b></td>
-                    <td>{{ $order->address }}</td>
+                    <td>{{ $order->address ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Страна</b></td>
-                    <td>{{ $order->country }}</td>
+                    <td>{{ $order->country ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Город</b></td>
-                    <td>{{ $order->city }}</td>
+                    <td>{{ $order->city ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Комментарий</b></td>
-                    <td>{{ $order->comment }}</td>
+                    <td>{{ $order->comment ?? '-' }}</td>
                 </tr>
                 <tr>
                     <td><b>Обратный звонок</b></td>
@@ -69,7 +69,7 @@
                 </tr>
                 <tr>
                     <td><b>Дата создания</b></td>
-                    <td>{{ $order->created_at }}</td>
+                    <td>{{ $order->created_at ?? '-' }}</td>
                 </tr>
             </tbody>
         </table>

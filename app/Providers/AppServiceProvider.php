@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Entities\CallbackRequest;
 use App\Entities\Order;
+use App\Observers\CallbackRequestObserver;
 use App\Observers\OrderObserver;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Order::observe(OrderObserver::class);
+
+        CallbackRequest::observe(CallbackRequestObserver::class);
     }
 }

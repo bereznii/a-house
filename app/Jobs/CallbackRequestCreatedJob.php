@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
-use App\Entities\Order;
-use App\Mail\OrderCreated;
+use App\Entities\CallbackRequest;
+use App\Mail\CallbackRequestCreated;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -11,7 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class OrderCreatedJob implements ShouldQueue
+class CallbackRequestCreatedJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -23,19 +23,19 @@ class OrderCreatedJob implements ShouldQueue
     /**
      * @var int
      */
-    private int $orderId;
+    private int $callbackRequestId;
 
     /**
      * Create a new job instance.
      *
-     * @param string $request
-     * @param int $orderId
+     * @param string $email
+     * @param int $callbackRequestId
      * @return void
      */
-    public function __construct(string $email, int $orderId)
+    public function __construct(string $email, int $callbackRequestId)
     {
         $this->email = $email;
-        $this->orderId = $orderId;
+        $this->callbackRequestId = $callbackRequestId;
     }
 
     /**
@@ -45,8 +45,8 @@ class OrderCreatedJob implements ShouldQueue
      */
     public function handle()
     {
-        $order = Order::find($this->orderId);
+        $request = CallbackRequest::find($this->callbackRequestId);
 
-        Mail::to($this->email)->send(new OrderCreated($order));
+        Mail::to($this->email)->send(new CallbackRequestCreated($request));
     }
 }
