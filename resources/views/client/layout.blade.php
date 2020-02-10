@@ -20,7 +20,7 @@
     <title>{{ $metaData['title'] ?? 'Интернет-магазин Autoglass House' }}</title>
     <meta name="description" content="{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}">
     <meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
-    <meta name="robots" content="noindex, nofollow" />
+    <meta name="robots" content="index, follow">
 
     <!-- Sitemap -->
     <link href='{{ url('sitemap.xml') }}' rel='alternate' title='Sitemap' type='application/rss+xml'/>
