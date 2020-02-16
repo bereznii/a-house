@@ -20,7 +20,6 @@ class RepositoryServiceProvider extends ServiceProvider
             return new CallbackRequestRepository();
         });
 
-
         $this->app->singleton(OrderRepository::class, function () {
             return new OrderRepository();
         });
