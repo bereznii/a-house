@@ -97,7 +97,7 @@ class HomeController extends Controller
         $import = new Import();
         $import->onlySheets(0);
 
-        Excel::import($import, \Storage::path($path), null, \Maatwebsite\Excel\Excel::XLSX);
+        Excel::import($import, \Storage::path($path), null, \Maatwebsite\Excel\Excel::XLS);
 
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);
