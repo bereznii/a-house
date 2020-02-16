@@ -36,9 +36,9 @@ class MetaDataService
                 $metaTitle = "{$obj->type->translation} для {$obj->model->name} купить по лучшей цене. Интернет магазин Autoglass House";
                 break;
             case 'catalog':
-                if (isset($obj['models']['selectedId'])) {
+                if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
-                } elseif (isset($obj['makes']['selectedId'])) {
+                } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
                     $autoglassFor = 'любого автомобиля';
@@ -69,9 +69,9 @@ class MetaDataService
                 $metaTitle = "{$obj->type->translation} для {$obj->model->name} высокого качества по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее стекло по лучшей цене. Если вам неудобно приехать к нам, мы доставим стекло по указаному адресу. {$obj->translated_description}. {$obj->detailed_description}";
                 break;
             case 'catalog':
-                if (isset($obj['models']['selectedId'])) {
+                if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
-                } elseif (isset($obj['makes']['selectedId'])) {
+                } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
                     $autoglassFor = 'любого автомобиля';
@@ -107,9 +107,9 @@ class MetaDataService
                     " купить по лучшей цене, Autoglass House, доставка автостека, установка автостекла";
                 break;
             case 'catalog':
-                if (isset($obj['models']['selectedId'])) {
+                if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
-                } elseif (isset($obj['makes']['selectedId'])) {
+                } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
                     $autoglassFor = 'любого автомобиля';
