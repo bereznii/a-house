@@ -87,8 +87,6 @@ class HomeController extends Controller
      */
     public function import()
     {
-        $path = request()->file('catalog')->store('catalog');
-
         $time_start = microtime(true);
 
         ini_set('memory_limit', '128M');
@@ -97,7 +95,7 @@ class HomeController extends Controller
         $import = new Import();
         $import->onlySheets(0);
 
-        Excel::import($import, \Storage::path($path), null, \Maatwebsite\Excel\Excel::XLS);
+        Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLS);
 
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);
