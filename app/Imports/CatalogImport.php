@@ -18,7 +18,7 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
      */
     private static int $i = 0;
 
-    const REGEX = '/^[A-Z\s\p{Lu}\/]+$/u'; //regex for uppercase latin and cyrillic chars. Matches car makes
+    const REGEX = '/^[A-Z\s\p{Lu}\/\-]+$/iu'; //regex for uppercase latin and cyrillic chars. Matches car makes
 
     /**
     * @param array $row
