@@ -78,7 +78,7 @@
             <h6><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
             @if(isset($product->translated_description) || !empty(trim($product->detailed_description)))
                 <h6><b>Описание:</b></h6>
-                <p class="card-text">{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}</p>
+                <p class="card-text">{{ $product->translated_description ?? '' }} {{ $product->detailed_description ?? '' }}</p>
             @endif
             <hr>
             <button class="btn btn-success addToCart-btn" data-productid="{{ $product->id }}">

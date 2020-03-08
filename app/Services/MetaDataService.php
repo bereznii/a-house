@@ -27,13 +27,13 @@ class MetaDataService
     {
         switch ($page) {
             case 'contact':
-                $metaTitle = 'Контактные данные Autoglass House. Поможем подобрать нужно стекло по лучшей цене';
+                $metaTitle = 'Купить автостекло | Подобрать автостекло | Контакты Autoglass House';
                 break;
             case 'about':
-                $metaTitle = 'Интернет-магазин Autoglass House. Поможем подобрать нужно стекло по лучшей цене';
+                $metaTitle = 'Купить автостекло | Подобрать автостекло | Замена автостекла | Autoglass House';
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation} для {$obj->model->name} купить по лучшей цене. Интернет магазин Autoglass House";
+                $metaTitle = "{$obj->type->translation} на {$obj->model->name} купить | Autoglass House";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -44,7 +44,7 @@ class MetaDataService
                     $autoglassFor = 'любого автомобиля';
                 }
 
-                $metaTitle = "Автостёкла для {$autoglassFor} купить по лучшей цене. Интернет магазин Autoglass House";
+                $metaTitle = "Автостекло на {$autoglassFor} купить | Autoglass House";
                 break;
         }
 
@@ -60,13 +60,13 @@ class MetaDataService
     {
         switch ($page) {
             case 'contact':
-                $metaTitle = "Наш интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов. Мы подберём Вам любое стекло на любой автомобиль. Если вам неудобно приехать к нам, мы доставим стекло по указаному адресу. Всегда готовы помочь Вам в вопросе подбора, доставки и установки нужного стекла!";
+                $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
                 break;
             case 'about':
-                $metaTitle = "Наш интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов. Мы подберём Вам любое стекло на любой автомобиль. Если вам неудобно приехать к нам, мы доставим стекло по указаному адресу. Всегда готовы помочь Вам в вопросе подбора, доставки и установки нужного стекла!";
+                $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation} для {$obj->model->name} высокого качества по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее стекло по лучшей цене. Если вам неудобно приехать к нам, мы доставим стекло по указаному адресу. {$obj->translated_description}. {$obj->detailed_description}";
+                $metaTitle = "{$obj->type->translation} на {$obj->model->name} дёшево. {$obj->translated_description}. {$obj->detailed_description}. Доставим, либо установим в кратчайшие сроки.";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -77,7 +77,7 @@ class MetaDataService
                     $autoglassFor = 'любого автомобиля';
                 }
 
-                $metaTitle = "Автостёкла для {$autoglassFor} купить высокого качества по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее стекло по лучшей цене. Если вам неудобно приехать к нам, мы доставим стекло по указаному адресу. Интернет магазин Autoglass House";
+                $metaTitle = "Автостекло на {$autoglassFor} купить по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее автостекло. Autoglass House";
                 break;
         }
 
@@ -93,18 +93,16 @@ class MetaDataService
     {
         switch ($page) {
             case 'contact':
-                $metaTitle = 'Контактные данные Autoglass House, Autoglass House электронная почта, подобрать стекло, ' .
-                    'лучшая цена, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, Sekurit, Pilkington,' .
-                    ' AGC, Splintex, Autover, PGW, SafeGlass';
+                $metaTitle = 'Контакты Autoglass House, Autoglass House почта, подобрать автостекло, ' .
+                    'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
             case 'about':
-                $metaTitle = 'Интернет-магазин Autoglass House, Autoglass House электронная почта, подобрать стекло, ' .
-                    'лучшая цена, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, Sekurit, Pilkington,' .
-                    ' AGC, Splintex, Autover, PGW, SafeGlass';
+                $metaTitle = 'Интернет магазин автостекла, подобрать автостекло, установка автостекла, ' .
+                    'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
             case 'product':
                 $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->make->name}, {$obj->type->code}" .
-                    " купить по лучшей цене, Autoglass House, доставка автостека, установка автостекла";
+                    " купить автостекло, Autoglass House, доставка автостека, установка автостекла";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -115,9 +113,9 @@ class MetaDataService
                     $autoglassFor = 'любого автомобиля';
                 }
 
-                $metaTitle = "Автостёкла для {$autoglassFor} купить по лучшей цене, Autoglass House, доставка " .
-                    "автостека, установка автостекла, подобрать стекло, лучшая цена, дёшево, быстро, автостекло Киев," .
-                    " автостекло Украина, автостекло, Sekurit, Pilkington, AGC, Splintex, Autover, PGW, SafeGlass";
+                $metaTitle = "Автостекло на {$autoglassFor} купить, Autoglass House, доставка " .
+                    "автостекло, установка автостекла, подобрать автостекло, лучшая цена, дёшево, быстро, автостекло Киев," .
+                    " автостекло Украина, автостекло";
                 break;
         }
 
