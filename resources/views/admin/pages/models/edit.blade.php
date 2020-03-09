@@ -18,6 +18,10 @@
                     <label for="shortName">Короткое название модели</label>
                     <input type="text" class="form-control" name="shortName" id="shortName" value="{{ $model->model_name }}">
                 </div>
+                <div class="form-group">
+                    <label for="cyrillicName">Короткое название модели</label>
+                    <input type="text" class="form-control" name="cyrillicName" id="cyrillicName" value="{{ $model->cyrillic_name }}">
+                </div>
 
                 <button class="btn btn-success btn-lg btn-block" type="submit">Обновить модель</button>
             </form>
