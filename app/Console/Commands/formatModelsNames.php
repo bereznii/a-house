@@ -50,7 +50,11 @@ class formatModelsNames extends Command
             $modelYears = null;
             $modelBody = null;
 
-            echo $model->id . ' -> ' . $modelShortName . "\n";
+            $roman = array("Sch", 'peugeot', 'ault', 'lv', 'q', 'co', 'vw', 'oo', 'chr', 'ee', 'j', 'ph', 'lt', 'cr', 'ea', 'sc',"sch",'Yo','Zh','Kh','Ts','Ch','Sh','Yu','ya','yo','zh','kh','ts','ch','sh','yu','ya','A','B','V','G','D','E','Z','I','Y','K','L','M','N','O','P','R','S','T','U','F','','Y','','E','a','b','v','g','d','e','z','i','y','k','l','m','n','o','p','r','s','t','u','f','','y','','e', 'w', 'W', 'h');
+            $cyrillic = array("Щ", 'пежо', 'о', 'льв', 'к', 'ко', 'фольцваген', "у", 'кр', 'и', 'дж', 'ф', 'льт', 'кр', 'иа', 'ск', "щ",'Ё','Ж','Х','Ц','Ч','Ш','Ю','я','йо','ж','х','ц','ч','ш','ю','я','А','Б','В','Г','Д','Е','З','И','Й','К','Л','М','Н','О','П','Р','С','Т','У','Ф','Ь','Ы','Ъ','Э','а','б','в','г','д','е','з','и','й','к','л','м','н','о','п','р','с','т','у','ф','ь','ы','ъ','э', 'в', 'В', 'х');
+            $cyrillicName = str_replace($roman, $cyrillic, strtolower($modelShortName));
+
+            echo $model->id . ' -> ' . $modelShortName . ' -> ' . $cyrillicName . "\n";
 
             try {
                 ModelsNameOptions::updateOrCreate(
@@ -62,7 +66,8 @@ class formatModelsNames extends Command
                         'model_id' => $model->id,
                         'model_name' => $modelShortName,
                         'model_years' => $modelYears,
-                        'model_body' => $modelBody
+                        'model_body' => $modelBody,
+                        'cyrillic_name' => $cyrillicName
                     ]
                 );
             } catch (\Exception $e) {

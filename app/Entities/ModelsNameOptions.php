@@ -19,7 +19,8 @@ class ModelsNameOptions extends Model
         'model_name',
         'model_years',
         'model_body',
-        'is_user_edit'
+        'is_user_edit',
+        'cyrillicName'
     ];
 
     /**

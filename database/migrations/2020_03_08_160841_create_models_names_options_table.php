@@ -19,6 +19,7 @@ class CreateModelsNamesOptionsTable extends Migration
             $table->string('model_name')->nullable();
             $table->string('model_years')->nullable();
             $table->string('model_body')->nullable();
+            $table->string('cyrillic_name')->nullable();
             $table->tinyInteger('is_user_edit')->default(0);
             $table->timestamps();
         });
