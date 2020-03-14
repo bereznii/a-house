@@ -19,4 +19,12 @@ class MakeModel extends Model
         'name',
         'make_id'
     ];
+
+    /**
+     * Get the model name options record associated with the model.
+     */
+    public function modelNameOption()
+    {
+        return $this->belongsTo('App\Entities\ModelsNameOptions', 'id', 'model_id');
+    }
 }

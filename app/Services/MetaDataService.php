@@ -27,24 +27,29 @@ class MetaDataService
     {
         switch ($page) {
             case 'contact':
-                $metaTitle = 'Купить автостекло | Подобрать автостекло | Контакты Autoglass House';
+                $metaTitle = 'Купить автостекло | Подобрать автостекло | Контакты';
                 break;
             case 'about':
-                $metaTitle = 'Купить автостекло | Подобрать автостекло | Замена автостекла | Autoglass House';
+                $metaTitle = 'Купить автостекло | Подобрать автостекло | Замена автостекла';
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation} на {$obj->model->name} купить | Autoglass House";
+                $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name;
+                $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name;
+                $metaTitle = "{$obj->type->translation} на {$modelName} купить ($modelNameCyrillic)";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
-                    $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
+                    $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
+                    $modelName = $modelObj->modelNameOption->model_name;
+                    $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                    $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
                     $autoglassFor = 'любой автомобиля';
                 }
 
-                $metaTitle = "Автостекло на {$autoglassFor} купить | Autoglass House";
+                $metaTitle = "Автостекло на {$autoglassFor} купить";
                 break;
         }
 
@@ -66,11 +71,14 @@ class MetaDataService
                 $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation} на {$obj->model->name} дёшево. {$obj->translated_description}. {$obj->detailed_description}. Доставим, либо установим в кратчайшие сроки.";
+                $metaTitle = "{$obj->type->translation} на {$obj->model->modelNameOption->model_name} ({$obj->model->modelNameOption->cyrillic_name}). {$obj->translated_description}. {$obj->detailed_description}. Доставим, либо установим в кратчайшие сроки.";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
-                    $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
+                    $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
+                    $modelName = $modelObj->modelNameOption->model_name;
+                    $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                    $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
@@ -101,12 +109,15 @@ class MetaDataService
                     'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->make->name}, {$obj->type->code}." .
+                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->model->modelNameOption->model_name}, {$obj->model->modelNameOption->cyrillic_name}, {$obj->make->name}, {$obj->type->code}." .
                     " купить автостекло, Autoglass House, доставка автостека, установка автостекла";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
-                    $autoglassFor = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first()->name;
+                    $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
+                    $modelName = $modelObj->modelNameOption->model_name;
+                    $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                    $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
