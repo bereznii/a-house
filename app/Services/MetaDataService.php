@@ -41,7 +41,7 @@ class MetaDataService
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
-                    $autoglassFor = 'любого автомобиля';
+                    $autoglassFor = 'любой автомобиля';
                 }
 
                 $metaTitle = "Автостекло на {$autoglassFor} купить | Autoglass House";
@@ -101,7 +101,7 @@ class MetaDataService
                     'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->make->name}, {$obj->type->code}" .
+                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->make->name}, {$obj->type->code}." .
                     " купить автостекло, Autoglass House, доставка автостека, установка автостекла";
                 break;
             case 'catalog':

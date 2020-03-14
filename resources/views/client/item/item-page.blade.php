@@ -41,9 +41,9 @@
     {
       "@context": "https://schema.org/",
       "@type": "Product",
-      "name": "{{ $product->type->translation }} для {{ $product->model->name }}",
+      "name": "{{ $product->type->translation }} на {{ $product->model->name }}",
       "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
-      "description": "{{ $product->translated_description ?? '' }}{{ $product->detailed_description ?? '' }}.",
+      "description": "{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}",
       "brand": {
         "@type": "Thing",
         "name": "{{ $product->manufacture }}"
@@ -69,9 +69,9 @@
     <div class="card my-4 mb-5">
         <img class="card-img-top img-fluid item-img" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}">
         <div class="card-body">
-            <h3 class="card-title">{{ $product->model->name ?? '' }}</h3>
-            <h4>{{ $product->type->translation ?? '' }}</h4>
-            <h4>{{ $product->retail_price ?? '' }}грн.</h4>
+            <h1 class="card-title" style="font-size: 2rem;">{{ $product->model->name ?? '' }}</h1>
+            <h2 style="font-size: 1.8rem;">{{ $product->type->translation ?? '' }}</h2>
+            <h3 style="font-size: 1.5rem;">{{ $product->retail_price ?? '' }}грн.</h3>
             <hr>
             <h6><b>Тип:</b> {{ $product->type->code ?? '' }}</h6>
             <h6><b>Еврокод:</b> {{ $product->stock_code ?? '' }}</h6>

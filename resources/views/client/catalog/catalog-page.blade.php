@@ -30,10 +30,10 @@
                     <div class="card h-100 item-card" id="{{ $product->id }}">
                         <a href="{{ route('client.product.show', ['id' => $product->id]) }}"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}"></a>
                         <div class="card-body">
-                            <h5 class="card-title">
+                            <h3 class="card-title" style="font-size: 1.5rem;">
                                 <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
                                     {{ mb_strtolower($product->type->translation ?? '') }}</a>
-                            </h5>
+                            </h3>
                             <h5>{{ $product->retail_price ?? '' }}грн.</h5>
                             <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
                             <h6><b>Еврокод:</b>  {{ $product->stock_code ?? '' }}</h6>

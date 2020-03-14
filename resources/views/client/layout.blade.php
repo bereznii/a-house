@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru-UA">
 
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->

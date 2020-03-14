@@ -23,7 +23,7 @@ class ModelController extends Controller
      */
     public function index()
     {
-        $models = ModelsNameOptions::orderBy('created_at', 'desc')->paginate(100);
+        $models = ModelsNameOptions::orderBy('id', 'asc')->paginate(100);
         $modelsCount = ModelsNameOptions::all()->count();
 
         return view('admin.pages.models.index')->with([

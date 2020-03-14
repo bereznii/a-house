@@ -2,7 +2,7 @@
 
     <div class="form-group d-none d-lg-block" itemscope itemtype="http://schema.org/Organization">
         <a href="{{ route('client.index') }}" itemprop="url">
-            <img style="width: 100%" itemprop="logo" src="{{ asset('storage/logo.png') }}" alt="Логотипа Autoglass House">
+            <img style="width: 100%" itemprop="logo" src="{{ asset('storage/logo.png') }}" alt="Логотип Autoglass House">
         </a>
     </div>
 
