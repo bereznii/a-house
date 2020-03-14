@@ -71,7 +71,15 @@ class MetaDataService
                 $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation} на {$obj->model->modelNameOption->model_name} ({$obj->model->modelNameOption->cyrillic_name}). {$obj->translated_description}. {$obj->detailed_description}. Доставим, либо установим в кратчайшие сроки.";
+                $translatedDesc = !empty(trim($obj->translated_description))
+                                    ? $obj->translated_description
+                                    : '';
+
+                $detailedDesc = !empty(trim($obj->detailed_description))
+                                    ? $obj->detailed_description . '. '
+                                    : '';
+
+                $metaTitle = "{$obj->type->translation} на {$obj->model->modelNameOption->model_name} ({$obj->model->modelNameOption->cyrillic_name}).{$translatedDesc}{$detailedDesc}Доставим, либо установим в кратчайшие сроки.";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -109,7 +117,7 @@ class MetaDataService
                     'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->model->modelNameOption->model_name}, {$obj->model->modelNameOption->cyrillic_name}, {$obj->make->name}, {$obj->type->code}." .
+                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->model->modelNameOption->model_name}, {$obj->model->modelNameOption->cyrillic_name}, {$obj->make->name}, {$obj->type->code}," .
                     " купить автостекло, Autoglass House, доставка автостека, установка автостекла";
                 break;
             case 'catalog':
