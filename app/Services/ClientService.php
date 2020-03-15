@@ -16,7 +16,7 @@ class ClientService
     {
         $makes = null;
         if (!request()->session()->has('makes')) {
-            $makes = Make::all();
+            $makes = Make::orderBy('name', 'asc')->get();
         }
 
         $selectedMake = request()->session()->get('selectedMake', null);
@@ -81,6 +81,7 @@ class ClientService
     public function getModelsByMakeId(int $makeId)
     {
         $models = MakeModel::where('make_id', $makeId)
+            ->orderBy('name', 'asc')
             ->get();
 
         return $models;

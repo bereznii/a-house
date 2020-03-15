@@ -40,9 +40,14 @@ class MetaDataService
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
-                    $modelName = $modelObj->modelNameOption->model_name;
-                    $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
-                    $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
+
+                    if(isset($modelObj)) {
+                        $modelName = $modelObj->modelNameOption->model_name;
+                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                        $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
+                    } else {
+                        $autoglassFor = 'любой автомобиля';
+                    }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
@@ -84,9 +89,14 @@ class MetaDataService
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
-                    $modelName = $modelObj->modelNameOption->model_name;
-                    $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
-                    $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
+
+                    if(isset($modelObj)) {
+                        $modelName = $modelObj->modelNameOption->model_name;
+                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                        $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
+                    } else {
+                        $autoglassFor = 'любой автомобиля';
+                    }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
@@ -123,9 +133,14 @@ class MetaDataService
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
-                    $modelName = $modelObj->modelNameOption->model_name;
-                    $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
-                    $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
+
+                    if(isset($modelObj)) {
+                        $modelName = $modelObj->modelNameOption->model_name;
+                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                        $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
+                    } else {
+                        $autoglassFor = 'любой автомобиля';
+                    }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
