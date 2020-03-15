@@ -35,7 +35,7 @@ class MetaDataService
             case 'product':
                 $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name;
                 $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name;
-                $metaTitle = "{$obj->type->translation} на {$modelName} купить ($modelNameCyrillic)";
+                $metaTitle = "{$obj->type->translation} {$modelName} купить ($modelNameCyrillic)";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -49,7 +49,7 @@ class MetaDataService
                     $autoglassFor = 'любой автомобиля';
                 }
 
-                $metaTitle = "Автостекло на {$autoglassFor} купить";
+                $metaTitle = "Автостекло {$autoglassFor} купить";
                 break;
         }
 
@@ -79,7 +79,7 @@ class MetaDataService
                                     ? $obj->detailed_description . '. '
                                     : '';
 
-                $metaTitle = "{$obj->type->translation} на {$obj->model->modelNameOption->model_name} ({$obj->model->modelNameOption->cyrillic_name}).{$translatedDesc}{$detailedDesc}Доставим, либо установим в кратчайшие сроки.";
+                $metaTitle = "{$obj->type->translation} {$obj->model->modelNameOption->model_name} ({$obj->model->modelNameOption->cyrillic_name}).{$translatedDesc}{$detailedDesc}Доставим, либо установим в кратчайшие сроки.";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -93,7 +93,7 @@ class MetaDataService
                     $autoglassFor = 'любого автомобиля';
                 }
 
-                $metaTitle = "Автостекло на {$autoglassFor} купить по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее автостекло. Autoglass House";
+                $metaTitle = "Автостекло {$autoglassFor} купить по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее автостекло. Autoglass House";
                 break;
         }
 
@@ -132,7 +132,7 @@ class MetaDataService
                     $autoglassFor = 'любого автомобиля';
                 }
 
-                $metaTitle = "Автостекло на {$autoglassFor} купить, Autoglass House, доставка " .
+                $metaTitle = "Автостекло {$autoglassFor} купить, Autoglass House, доставка " .
                     "автостекло, установка автостекла, подобрать автостекло, лучшая цена, дёшево, быстро, автостекло Киев," .
                     " автостекло Украина, автостекло";
                 break;
