@@ -152,4 +152,9 @@ $(document).ready(function() {
     {
         $(this).toggleClass('classWithShadow');
     });
+
+    $('#search_input').on('keyup', function() {
+        var value = $(this).val();
+        $(this).val(value.replace(/[^a-z0-9]/i, ""));
+    });
 });

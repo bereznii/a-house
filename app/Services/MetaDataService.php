@@ -27,34 +27,34 @@ class MetaDataService
     {
         switch ($page) {
             case 'contact':
-                $metaTitle = 'Купить автостекло | Подобрать автостекло | Контакты';
+                $metaTitle = 'Автостекло Киев | Контакты | Продажа | Установка | Замена';
                 break;
             case 'about':
-                $metaTitle = 'Купить автостекло | Подобрать автостекло | Замена автостекла';
+                $metaTitle = 'Автомобильное стекло | Автостекло | Продажа | Установка | Гарантия | Качество';
                 break;
             case 'product':
                 $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name;
                 $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name;
-                $metaTitle = "{$obj->type->translation} {$modelName} купить ($modelNameCyrillic)";
+                $metaTitle = "{$obj->type->translation} {$modelName} купить ($modelNameCyrillic) | Замена автостекла Киев | Широкий выбор | Автостекло купить Киев";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
 
-                    if(isset($modelObj)) {
+                    if (isset($modelObj)) {
                         $modelName = $modelObj->modelNameOption->model_name;
                         $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                     } else {
-                        $autoglassFor = 'любой автомобиля';
+                        $autoglassFor = 'на любой автомобиль';
                     }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
-                    $autoglassFor = 'любой автомобиля';
+                    $autoglassFor = 'на любой автомобиль';
                 }
 
-                $metaTitle = "Автостекло {$autoglassFor} купить";
+                $metaTitle = "Автостекло {$autoglassFor} купить | Автостекло | Установка | Замена | Купить автомобильное стекло | Качество";
                 break;
         }
 
@@ -95,12 +95,12 @@ class MetaDataService
                         $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                     } else {
-                        $autoglassFor = 'любой автомобиля';
+                        $autoglassFor = 'на любой автомобиль';
                     }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
-                    $autoglassFor = 'любого автомобиля';
+                    $autoglassFor = 'на любой автомобиль';
                 }
 
                 $metaTitle = "Автостекло {$autoglassFor} купить по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее автостекло. Autoglass House";
@@ -139,12 +139,12 @@ class MetaDataService
                         $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                     } else {
-                        $autoglassFor = 'любой автомобиля';
+                        $autoglassFor = 'на любой автомобиль';
                     }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
                     $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
                 } else {
-                    $autoglassFor = 'любого автомобиля';
+                    $autoglassFor = 'на любой автомобиль';
                 }
 
                 $metaTitle = "Автостекло {$autoglassFor} купить, Autoglass House, доставка " .
