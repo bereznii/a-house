@@ -41,7 +41,7 @@ class MetaDataService
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
 
-                    if (isset($modelObj)) {
+                    if (isset($modelObj) && isset($modelObj->modelNameOption)) {
                         $modelName = $modelObj->modelNameOption->model_name;
                         $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
@@ -90,7 +90,7 @@ class MetaDataService
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
 
-                    if(isset($modelObj)) {
+                    if(isset($modelObj) && isset($modelObj->modelNameOption)) {
                         $modelName = $modelObj->modelNameOption->model_name;
                         $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
@@ -134,7 +134,7 @@ class MetaDataService
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
 
-                    if(isset($modelObj)) {
+                    if(isset($modelObj) && isset($modelObj->modelNameOption)) {
                         $modelName = $modelObj->modelNameOption->model_name;
                         $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
