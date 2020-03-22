@@ -23,10 +23,6 @@ class CreateModelsNamesOptionsTable extends Migration
             $table->tinyInteger('is_user_edit')->default(0);
             $table->timestamps();
         });
-
-        Schema::table('models_names_options', function($table) {
-            $table->foreign('model_id')->references('id')->on('models')->onDelete('cascade');
-        });
     }
 
     /**

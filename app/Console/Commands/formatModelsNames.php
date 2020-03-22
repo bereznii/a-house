@@ -57,10 +57,13 @@ class formatModelsNames extends Command
             echo $model->id . ' -> ' . $modelShortName . ' -> ' . $cyrillicName . "\n";
 
             try {
+                if (ModelsNameOptions::where('model_id', $model->id)->first()->is_user_edit == 1) {
+                    continue;
+                }
+
                 ModelsNameOptions::updateOrCreate(
                     [
-                        'model_id' => $model->id,
-                        'is_user_edit' => 0
+                        'model_id' => $model->id
                     ],
                     [
                         'model_id' => $model->id,
