@@ -101,10 +101,10 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                 Product::updateOrCreate(
                     [
                         'barcode' => $row[0],
-                        'manufacture' => $row[6],
-                        'stock_code' => $row[1]
+                        'manufacture' => $row[6]
                     ],
                     [
+                        'stock_code' => $row[1],
                         'make_id' => Cache::get('make_id'),
                         'model_id' => $model->id,
                         'type_id' => ImportService::getProductTypeId($row[2]),
