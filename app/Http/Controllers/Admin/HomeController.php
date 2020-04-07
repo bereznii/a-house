@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CatalogExport;
 use App\Imports\Import;
 use App\Entities\CallbackRequest;
 use App\Repositories\CallbackRequestRepository;
@@ -80,6 +81,24 @@ class HomeController extends Controller
     public function userActivity()
     {
         return view('admin.pages.user-activity-history');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function exportForAutopro()
+    {
+        return view('admin.pages.autopro');
+    }
+
+    /**
+     * @return \Maatwebsite\Excel\BinaryFileResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function downloadAutoproCatalog()
+    {
+        return Excel::download(new CatalogExport(), 'catalog.xls');
     }
 
     /**

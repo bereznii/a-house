@@ -24,7 +24,8 @@ class Product extends Model
         'in_stock',
         'dealer_price',
         'retail_price',
-        'manufacture'
+        'manufacture',
+        'original_code'
     ];
 
     /**

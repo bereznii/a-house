@@ -112,18 +112,18 @@ class ImportService
     {
         if (preg_match('/WS.*/', $row[0])) {
             if (trim($row[6]) == 'SafeGlass') {
-                $percent = 40;
+                $percent = 35;
             } else {
-                $percent = 25;
+                $percent = 20;
             }
         } elseif (preg_match('/RW.*/', $row[0])) {
             if (trim($row[6]) == 'SafeGlass') {
-                $percent = 40;
+                $percent = 35;
             } else {
-                $percent = 30;
+                $percent = 25;
             }
         } else {
-            $percent = 40;
+            $percent = 35;
         }
 
         $price = $row[5] + ($row[5] * ($percent / 100));

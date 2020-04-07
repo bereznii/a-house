@@ -24,6 +24,8 @@ Auth::routes([
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::get('home', 'HomeController@index')->name('home');
     Route::get('callbacks', 'HomeController@callbackPage')->name('home.callbacks');
+    Route::get('autopro', 'HomeController@exportForAutopro')->name('home.autopro');
+    Route::get('download-autopro', 'HomeController@downloadAutoproCatalog')->name('home.download-autopro');
     Route::post('import', 'HomeController@import')->name('home.import.action');
     Route::get('manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
     Route::resource('orders', 'Admin\OrderController');
