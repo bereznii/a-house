@@ -115,7 +115,7 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                         'in_stock' => $row[4],
                         'dealer_price' => $row[5],
                         'retail_price' => ImportService::calculateRetailPriceWithCharge($row),
-                        'original_code' => trim($row[8], ', ')
+                        'original_code' => !empty(trim($row[8], ',- ')) ? trim($row[8], ',- ') : null
                     ]
                 );
 

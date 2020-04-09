@@ -11,15 +11,24 @@ use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColumnFormatting
 {
+    private $products;
+
+    /**
+     * CatalogExport constructor.
+     * @param $products
+     */
+    public function __construct($products)
+    {
+        $this->products = $products;
+    }
+
     /**
      * @return array
      */
     public function array(): array
     {
-        $products = Product::where('make_id', 109)->where('in_stock', '!=', 0)->limit(70)->get();
-
         $result = [];
-        foreach ($products as $key => $product) {
+        foreach ($this->products as $key => $product) {
             $result[$key][] = $product->manufacture;
             $result[$key][] = $product->stock_code;
             $result[$key][] = $product->type->translation . ' ' . $product->model->name;
@@ -50,7 +59,6 @@ class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColu
      */
     public function headings(): array
     {
-        //renault
         return [
             'Производитель',
             'Еврокод',

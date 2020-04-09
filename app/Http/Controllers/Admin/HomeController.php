@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Make;
+use App\Entities\MakeModel;
+use App\Entities\Product;
 use App\Exports\CatalogExport;
 use App\Imports\Import;
 use App\Entities\CallbackRequest;
 use App\Repositories\CallbackRequestRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
@@ -88,7 +92,9 @@ class HomeController extends Controller
      */
     public function exportForAutopro()
     {
-        return view('admin.pages.autopro');
+        return view('admin.pages.autopro', [
+            'makes' => Make::all()->pluck('name', 'id')->toArray()
+        ]);
     }
 
     /**
@@ -98,7 +104,21 @@ class HomeController extends Controller
      */
     public function downloadAutoproCatalog()
     {
-        return Excel::download(new CatalogExport(), 'catalog.xls');
+        $type = request('reportType');
+
+        switch ($type) {
+            case 'all_products':
+                $products = Product::where('in_stock', '!=', 0)->get();
+                break;
+            case 'only_original_products':
+                $products = Product::where('in_stock', '!=', 0)->whereNotNull('original_code')->get();
+                break;
+            case 'specific_make_products':
+                $products = Product::where('make_id', request('make', 0))->where('in_stock', '!=', 0)->get();
+                break;
+        }
+
+        return Excel::download(new CatalogExport($products), 'catalog.xls');
     }
 
     /**
