@@ -157,4 +157,6 @@ $(document).ready(function() {
         var value = $(this).val();
         $(this).val(value.replace(/[^a-z0-9]/i, ""));
     });
+
+    (function(){function r(n,t){for(var r=document.querySelectorAll(t),i=0;i<r.length;i++)n(r[i])}function u(t,i,u){var f=u?"https://a1.avto.pro/img/verified_logo.svg":"https://a1.avto.pro/img/verified_robo.svg",e='<a href="https://avto.pro" target="_blank" class="'+n+'"><div class="'+n+'__logo-box"><div class="'+n+'__logo"><img src="'+f+'" alt="" class="'+n+'__logo__img" /></div></div><div class="'+n+'__text">'+t+"</div></a>";r(function(n){n.innerHTML=e},i)}var n="Logo_1_0_0_22221",t,i;(function(){for(var t=document.querySelectorAll(".pro-seller-label-anchor"),n=0;n<t.length;n++)t[n].parentNode.removeChild(t[n])})(),t='.pro-seller-label-banner[data-style="logo"]',i='<div class="'+n+"__text-item "+n+"__text-item--top "+n+'__text-item--big">Autoglass House</div>',u(i,t,!0)})()
 });
