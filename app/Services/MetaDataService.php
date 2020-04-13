@@ -33,9 +33,10 @@ class MetaDataService
                 $metaTitle = 'Автомобильное стекло | Автостекло | Продажа | Установка | Гарантия | Качество';
                 break;
             case 'product':
-                $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name;
-                $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name;
-                $metaTitle = "{$obj->type->translation} {$modelName} купить ($modelNameCyrillic) | Замена автостекла Киев | Широкий выбор | Автостекло купить Киев";
+                $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name ?? '';
+                $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name ?? 'Киев';
+                $translation = $obj->type->translation ?? 'Автостекло';
+                $metaTitle = "{$translation} {$modelName} купить ($modelNameCyrillic) | Замена автостекла Киев | Широкий выбор | Автостекло купить Киев";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -84,15 +85,19 @@ class MetaDataService
                                     ? $obj->detailed_description . '. '
                                     : '';
 
-                $metaTitle = "{$obj->type->translation} {$obj->model->modelNameOption->model_name} ({$obj->model->modelNameOption->cyrillic_name}).{$translatedDesc}{$detailedDesc}Доставим, либо установим в кратчайшие сроки.";
+                $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name ?? '';
+                $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name ?? 'Киев';
+                $translation = $obj->type->translation ?? 'Автостекло';
+
+                $metaTitle = "{$translation} {$modelName} ({$modelNameCyrillic}).{$translatedDesc}{$detailedDesc}Доставим, либо установим в кратчайшие сроки.";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
 
                     if(isset($modelObj) && isset($modelObj->modelNameOption)) {
-                        $modelName = $modelObj->modelNameOption->model_name;
-                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                        $modelName = $modelObj->modelNameOption->model_name ?? '';
+                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name ?? 'Киев';
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                     } else {
                         $autoglassFor = 'на любой автомобиль';
@@ -127,7 +132,15 @@ class MetaDataService
                     'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
             case 'product':
-                $metaTitle = "{$obj->type->translation}, {$obj->model->name}, {$obj->model->modelNameOption->model_name}, {$obj->model->modelNameOption->cyrillic_name}, {$obj->make->name}, {$obj->type->code}," .
+
+                $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name ?? '';
+                $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name ?? 'Киев';
+                $translation = $obj->type->translation ?? 'Автостекло';
+                $makeName = $obj->make->name ?? '';
+                $typeCode = $obj->type->code ?? '';
+                $modelNameShort = $obj->model->name ?? $modelName;
+
+                $metaTitle = "{$translation}, {$modelNameShort}, {$modelName}, {$modelNameCyrillic}, {$makeName}, {$typeCode}," .
                     " купить автостекло, Autoglass House, доставка автостека, установка автостекла";
                 break;
             case 'catalog':
@@ -135,8 +148,8 @@ class MetaDataService
                     $modelObj = $obj['models']['list']->where('id', $obj['models']['selectedId'])->first();
 
                     if(isset($modelObj) && isset($modelObj->modelNameOption)) {
-                        $modelName = $modelObj->modelNameOption->model_name;
-                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name;
+                        $modelName = $modelObj->modelNameOption->model_name ?? '';
+                        $modelNameCyrillic = $modelObj->modelNameOption->cyrillic_name ?? 'Киев';
                         $autoglassFor = "{$modelName} ({$modelNameCyrillic})";
                     } else {
                         $autoglassFor = 'на любой автомобиль';
