@@ -77,12 +77,14 @@ class MetaDataService
                 $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
                 break;
             case 'product':
-                $translatedDesc = !empty(trim($obj->translated_description))
-                                    ? $obj->translated_description
+                $translatedDesc = $obj->translated_description ?? '';
+                $translatedDesc = !empty(trim($translatedDesc))
+                                    ? $translatedDesc
                                     : '';
 
-                $detailedDesc = !empty(trim($obj->detailed_description))
-                                    ? $obj->detailed_description . '. '
+                $detailedDesc = $obj->translated_description ?? '';
+                $detailedDesc = !empty(trim($detailedDesc))
+                                    ? $detailedDesc . '. '
                                     : '';
 
                 $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name ?? '';
