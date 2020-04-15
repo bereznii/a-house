@@ -29,13 +29,14 @@ class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColu
     {
         $result = [];
         foreach ($this->products as $key => $product) {
+
             $result[$key][] = $product->manufacture;
             $result[$key][] = $product->stock_code;
             $result[$key][] = $product->type->translation . ' ' . $product->model->name;
-            $result[$key][] = number_format((float)$product->retail_price, 2, '.', '');
+            $result[$key][] = (float)number_format((float)$product->retail_price, 2, '.', '');
             $result[$key][] = $product->in_stock;
             $result[$key][] = '';
-            $result[$key][] = $product->original_code;
+            $result[$key][] = trim($product->original_code, " \t\n\r\0\x0B");
         }
 
         return $result;
@@ -66,7 +67,7 @@ class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColu
             'Цена',
             'Количество',
             'Ссылки фото', //empty
-            'Оригинальный код', //empty
+            'Оригинальный код',
         ];
     }
 }
