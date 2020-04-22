@@ -47,6 +47,7 @@
             <div class="d-none d-lg-block">
                 <div class="pro-seller-label-banner" data-style="logo"></div>
                 <link rel="stylesheet" href="https://a1.avto.pro/partnership/css?bt=3">
+                <script async="" type="text/javascript" src="https://a1.avto.pro/partnership/js?bt=3&amp;sid=506506"></script>
                 <a href="https://avto.pro" class="pro-seller-label-anchor">Avto.pro</a>
             </div>
 
@@ -79,6 +80,7 @@
                         <div class="d-block d-sm-none">
                             <div class="pro-seller-label-banner" data-style="logo"></div>
                             <link rel="stylesheet" href="https://a1.avto.pro/partnership/css?bt=3">
+                            <script async="" type="text/javascript" src="https://a1.avto.pro/partnership/js?bt=3&amp;sid=506506"></script>
                             <a href="https://avto.pro" class="pro-seller-label-anchor">Avto.pro</a>
                         </div>
                     </li>
