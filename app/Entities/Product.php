@@ -31,7 +31,8 @@ class Product extends Model
         'dealer_price',
         'retail_price',
         'manufacture',
-        'original_code'
+        'original_code',
+        'deleted_at'
     ];
 
     /**

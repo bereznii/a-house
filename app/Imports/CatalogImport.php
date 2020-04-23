@@ -114,7 +114,8 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                         'in_stock' => $row[4],
                         'dealer_price' => $row[5],
                         'retail_price' => ImportService::calculateRetailPriceWithCharge($row),
-                        'original_code' => !empty(trim($row[8], ',- ')) ? trim($row[8], ',- ') : null
+                        'original_code' => !empty(trim($row[8], ',- ')) ? trim($row[8], ',- ') : null,
+                        'deleted_at' => null
                     ]
                 );
 
@@ -124,21 +125,6 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                 continue;
             }
         }
-
-        //Restore soft deleted products updated in last 2 minutes
-        $updatedProductsTime = Carbon::now()
-            ->subMinutes(2)
-            ->format('Y-m-d H:i:s');
-        Product::withTrashed()
-            ->where('updated_at', '>', $updatedProductsTime)
-            ->whereNotNull('deleted_at')
-            ->restore();
-
-        //Soft delete products, that were last updated more than 5 min ago
-        $oldProductsTime = Carbon::now()
-            ->subMinutes(4)
-            ->format('Y-m-d H:i:s');
-        Product::where('updated_at', '<=', $oldProductsTime)->delete();
     }
 
     /**

@@ -9,6 +9,7 @@ use App\Exports\CatalogExport;
 use App\Imports\Import;
 use App\Entities\CallbackRequest;
 use App\Repositories\CallbackRequestRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -147,6 +148,12 @@ class HomeController extends Controller
         Cache::forget('modelCount');
         $countedRows['productCount'] = Cache::get('productCount', 0);
         Cache::forget('productCount');
+
+        //Soft delete products, that were last updated more than 5 min ago
+        $oldProductsTime = Carbon::now()
+            ->subMinutes(5)
+            ->format('Y-m-d H:i:s');
+        Product::where('updated_at', '<', $oldProductsTime)->delete();
 
         return $this->index($countedRows);
     }
