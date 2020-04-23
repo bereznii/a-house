@@ -6,6 +6,7 @@ use App\Entities\Make;
 use App\Entities\MakeModel;
 use App\Entities\Product;
 use App\Services\ImportService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\ToArray;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
@@ -21,10 +22,9 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
     const REGEX = '/^[A-Z\s\p{Lu}\/\-]+$/iu'; //regex for uppercase latin and cyrillic chars. Matches car makes
 
     /**
-    * @param array $row
-    *
-    * @return mixed
-    */
+     * @param array $rows
+     * @return mixed
+     */
     public function array(array $rows)
     {
         foreach ($this->generator($rows) as $row) {
@@ -94,11 +94,10 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
              * PRODUCTS
              */
             if (isset($row[0]) && isset($row[1]) && isset($row[2]) && Cache::has('make_id')) {
-//            logger($row[2] . ' -> ' . self::$i++);
 
                 $model = MakeModel::where('name', Cache::get('model'))->first();
 
-                Product::updateOrCreate(
+                Product::withTrashed()->updateOrCreate(
                     [
                         'barcode' => $row[0],
                         'manufacture' => $row[6]
@@ -125,6 +124,21 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                 continue;
             }
         }
+
+        //Restore soft deleted products updated in last 2 minutes
+        $updatedProductsTime = Carbon::now()
+            ->subMinutes(2)
+            ->format('Y-m-d H:i:s');
+        Product::withTrashed()
+            ->where('updated_at', '>', $updatedProductsTime)
+            ->whereNotNull('deleted_at')
+            ->restore();
+
+        //Soft delete products, that were last updated more than 5 min ago
+        $oldProductsTime = Carbon::now()
+            ->subMinutes(4)
+            ->format('Y-m-d H:i:s');
+        Product::where('updated_at', '<=', $oldProductsTime)->delete();
     }
 
     /**
