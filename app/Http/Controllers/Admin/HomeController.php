@@ -115,7 +115,10 @@ class HomeController extends Controller
                 $products = Product::where('in_stock', '!=', 0)->whereNotNull('original_code')->get();
                 break;
             case 'specific_make_products':
-                $products = Product::where('make_id', request('make', 0))->where('in_stock', '!=', 0)->get();
+                $products = Product::whereIn('make_id', request('make', []))
+                    ->where('in_stock', '!=', 0)
+                    ->orderBy('stock_code', 'ASC')
+                    ->get();
                 break;
         }
 

@@ -4,7 +4,7 @@
 
 <div class="card">
     <div class="card-header">
-        Каталог для autopro (работает для Renault)
+        Каталог для autopro
     </div>
     <div class="card-body">
         <form action="{{ route('home.download-autopro') }}" method="get">
@@ -32,7 +32,7 @@
                     <br>
                     <div class="form-group">
                         <label for="exampleFormControlSelect2">Выбрать марку  для экспорта</label>
-                        <select class="form-control" name="make" id="exampleFormControlSelect2">
+                        <select class="form-control" name="make[]" id="exampleFormControlSelect2" multiple size="20">
                             @foreach($makes as $key => $make)
                                 <option value="{{ $key }}">{{ $make }}</option>
                             @endforeach
