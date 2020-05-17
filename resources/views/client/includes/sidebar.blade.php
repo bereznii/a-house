@@ -47,7 +47,7 @@
                 @if(isset($sidebarData['types']['list']) && !empty($sidebarData['models']['selectedId']))
                     <option value=''>Тип стекла</option>
                     @foreach($sidebarData['types']['list'] as $type)
-                        <option value="{{ $type->id }}" @if($sidebarData['types']['selectedId'] == $type->id) selected @endif>{{ $type->translation }}</option>
+                        <option value="{{ $type->id }}" @if($sidebarData['types']['selectedId'] == $type->id) selected @endif>{{ $type->translation ?? '' }}</option>
                     @endforeach
                 @endif
             </select>

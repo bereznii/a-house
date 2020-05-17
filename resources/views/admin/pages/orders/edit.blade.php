@@ -19,7 +19,7 @@
                                         <h6 class="my-0">{{ $product->model->name ?? '-' }}</h6>
                                     </div>
                                     <div>
-                                        <p class="text-muted cart-item-description">{{ $product->type->translation }}
+                                        <p class="text-muted cart-item-description">{{ $product->type->translation ?? '' }}
                                             <br>
                                             <b>Штрихкод: </b>{{ $product->barcode }}
                                             <br>

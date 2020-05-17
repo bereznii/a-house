@@ -41,7 +41,7 @@
     {
       "@context": "https://schema.org/",
       "@type": "Product",
-      "name": "{{ $product->type->translation }} на {{ $product->model->name }}",
+      "name": "{{ $product->type->translation ?? '' }} на {{ $product->model->name }}",
       "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
       "description": "{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}",
       "brand": {
