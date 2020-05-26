@@ -27,7 +27,7 @@
             Новый запрос на обратный звонок! №{{ $request->id }}
         </p>
         <p>
-            Ссылка: {{ url("admin/callbacks") }}
+            Ссылка: https://autoglasshouse.com.ua/admin/callbacks
         </p>
         <table>
             <tbody>

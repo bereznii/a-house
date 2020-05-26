@@ -27,7 +27,7 @@
             Новый заказ! №{{ $order->id }}
         </p>
         <p>
-            Ссылка: {{ url("admin/orders/{$order->id}/edit") }}
+            Ссылка: https://autoglasshouse.com.ua/admin/orders/{{$order->id}}/edit
         </p>
         <table class="table table-bordered">
             <tbody>
