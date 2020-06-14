@@ -114,7 +114,7 @@ class ImportService
             if (trim($row[6]) == 'SafeGlass') {
                 $percent = 34.88;
             } else {
-                $percent = 20.12;
+                $percent = 18;
             }
         } elseif (preg_match('/RW.*/', $row[0])) {
             if (trim($row[6]) == 'SafeGlass') {
