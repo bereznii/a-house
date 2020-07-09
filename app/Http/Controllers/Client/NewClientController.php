@@ -19,7 +19,11 @@ class NewClientController extends Controller
      */
     public function contacts()
     {
-        return view('client.v2.pages.contacts');
+        return view('client.v2.pages.contacts', [
+            'breadcrumbs' => [
+                'title' => 'Контакты'
+            ]
+        ]);
     }
 
     /**
@@ -27,7 +31,11 @@ class NewClientController extends Controller
      */
     public function about()
     {
-        return view('client.v2.pages.about');
+        return view('client.v2.pages.about', [
+            'breadcrumbs' => [
+                'title' => 'О нас'
+            ]
+        ]);
     }
 }
 

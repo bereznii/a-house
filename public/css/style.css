@@ -261,19 +261,19 @@ h1, h2, h3, h4, h5, h6 {
 /* Get Startet Button */
 .get-started-btn {
   margin-left: 25px;
-  color: #5cb874;
+  color: #ff3333;
   border-radius: 4px;
   padding: 7px 25px 8px 25px;
   white-space: nowrap;
   transition: 0.3s;
   font-size: 14px;
-  border: 2px solid #5cb874;
+  border: 2px solid #ff3333;
   display: inline-block;
   font-weight: 600;
 }
 
 .get-started-btn:hover {
-  background: #5cb874;
+  background: #ff3333;
   color: #fff;
 }
 
@@ -940,8 +940,8 @@ section {
 }
 
 .cta .cta-btn:hover {
-  background: #fff;
-  color: #5cb874;
+  background: #ff3333;
+  color: #fff;
 }
 
 @media (max-width: 1024px) {
