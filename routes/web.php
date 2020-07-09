@@ -32,8 +32,13 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
     Route::post('confirm-callback-request', 'Admin\HomeController@confirmCallback');
 });
 
-Route::group(['name' => 'new-client.', 'prefix' => 'v2'], function (){
-    Route::get('', 'Client\NewClientController@index')->name('home');
+Route::group(['prefix' => 'v2'], function (){
+    Route::name('new-client.')->group(function (){
+        Route::get('', 'Client\NewClientController@index')->name('landing');
+        Route::get('contact', 'Client\NewClientController@contacts')->name('contacts');
+        Route::get('about', 'Client\NewClientController@about')->name('about-us');
+        Route::get('catalog', 'Client\NewClientController@catalog')->name('catalog');
+    });
 });
 
 Route::name('client.')->group(function (){
