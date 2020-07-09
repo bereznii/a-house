@@ -12,7 +12,7 @@
 
 namespace App{
 /**
- * App\User
+ * App\Entities\User
  *
  * @property int $id
  * @property string $name

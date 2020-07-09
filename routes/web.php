@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,10 +13,6 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Auth::routes([
     'register' => false,
     'verify' => false,
@@ -22,16 +20,16 @@ Auth::routes([
 ]);
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
-    Route::get('home', 'HomeController@index')->name('home');
-    Route::get('callbacks', 'HomeController@callbackPage')->name('home.callbacks');
-    Route::get('autopro', 'HomeController@exportForAutopro')->name('home.autopro');
-    Route::get('download-autopro', 'HomeController@downloadAutoproCatalog')->name('home.download-autopro');
-    Route::post('import', 'HomeController@import')->name('home.import.action');
-    Route::get('manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
+    Route::get('home', 'Admin\HomeController@index')->name('home');
+    Route::get('callbacks', 'Admin\HomeController@callbackPage')->name('home.callbacks');
+    Route::get('autopro', 'Admin\HomeController@exportForAutopro')->name('home.autopro');
+    Route::get('download-autopro', 'Admin\HomeController@downloadAutoproCatalog')->name('home.download-autopro');
+    Route::post('import', 'Admin\HomeController@import')->name('home.import.action');
+    Route::get('manufacturer-charge', 'Admin\HomeController@manufacturerCharge')->name('home.manufacturer-charge');
     Route::resource('orders', 'Admin\OrderController');
     Route::resource('models', 'Admin\ModelController');
 
-    Route::post('confirm-callback-request', 'HomeController@confirmCallback');
+    Route::post('confirm-callback-request', 'Admin\HomeController@confirmCallback');
 });
 
 Route::name('client.')->group(function (){
@@ -49,7 +47,6 @@ Route::name('client.')->group(function (){
         Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
         Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
     });
-
 });
 
 Route::group(['prefix' => 'ajax'], function (){
