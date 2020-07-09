@@ -1,12 +1,12 @@
 $(document).ready(function() {
 
-    $(document).on('change', '#makes', function() {
+    $(document).on('change', '#makes', function () {
 
         var selectedMake = $(this).val();
 
         $.ajax({
             headers: {
-                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
             },
             type: "get",
             dataType: "json", //Expected data format from server
@@ -14,15 +14,15 @@ $(document).ready(function() {
             data: {
                 selectedMake: selectedMake,
             },
-            success: function(data) {
+            success: function (data) {
 
                 $("#models option").remove();
                 $("#types option").remove();
 
                 var select = "<option value=''>Модель автомобиля</option>";
 
-                $.each(data, function(key, value) {
-                    select += "<option value='"+value.id+"'>"+value.name+"</option>";
+                $.each(data, function (key, value) {
+                    select += "<option value='" + value.id + "'>" + value.name + "</option>";
                 });
 
                 select += "</select></div>";
@@ -34,13 +34,13 @@ $(document).ready(function() {
 
     });
 
-    $(document).on('change', '#models', function() {
+    $(document).on('change', '#models', function () {
 
         var selectedModel = $(this).val();
 
         $.ajax({
             headers: {
-                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
             },
             type: "get",
             dataType: "json", //Expected data format from server
@@ -48,14 +48,14 @@ $(document).ready(function() {
             data: {
                 selectedModel: selectedModel,
             },
-            success: function(data) {
+            success: function (data) {
 
                 $("#types option").remove();
 
                 var select = "<option value=''>Тип стекла</option>";
 
-                $.each(data, function(key, value) {
-                    select += "<option value='"+value.id+"'>"+value.translation+"</option>";
+                $.each(data, function (key, value) {
+                    select += "<option value='" + value.id + "'>" + value.translation + "</option>";
                 });
 
                 select += "</select></div>";
@@ -67,14 +67,14 @@ $(document).ready(function() {
 
     });
 
-    $(document).on('click', '.addToCart-btn', function() {
+    $(document).on('click', '.addToCart-btn', function () {
 
         var productId = $(this).data('productid');
         var currentInCartQuantity = $('#cartQuantity').data('currentquantity');
 
         $.ajax({
             headers: {
-                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
             },
             type: "get",
             dataType: "json", //Expected data format from server
@@ -82,23 +82,23 @@ $(document).ready(function() {
             data: {
                 productId: productId,
             },
-            success: function(data) {
+            success: function (data) {
                 newQuantity = currentInCartQuantity + 1;
-                $('.cartQuantity').text('('+newQuantity+')');
+                $('.cartQuantity').text('(' + newQuantity + ')');
                 $('.cartQuantity').data('currentquantity', newQuantity);
             }
         });
 
     });
 
-    $(document).on('change', '.quantity-input', function() {
+    $(document).on('change', '.quantity-input', function () {
 
         var productId = $(this).data('productid');
         var productQuantity = $(this).val();
 
         $.ajax({
             headers: {
-                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
             },
             type: "get",
             dataType: "json", //Expected data format from server
@@ -107,14 +107,14 @@ $(document).ready(function() {
                 productId: productId,
                 productQuantity: productQuantity
             },
-            success: function(data) {
+            success: function (data) {
                 location.reload();
             }
         });
 
     });
 
-    $(document).on('click', '.sendCallbackRequest-btn', function(event) {
+    $(document).on('click', '.sendCallbackRequest-btn', function (event) {
         event.preventDefault();
 
         var name = $('[name="callbackName"]').val();
@@ -122,14 +122,14 @@ $(document).ready(function() {
         var comment = $('[name="callbackComment"]').val();
 
         var myForm = $('.modal-form');
-        if(! myForm[0].checkValidity()) {
+        if (!myForm[0].checkValidity()) {
             myForm[0].reportValidity();
             return;
         }
 
         $.ajax({
             headers: {
-                'X-CSRF-TOKEN':  '{{csrf_token()}}'
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
             },
             type: "get",
             dataType: "json", //Expected data format from server
@@ -139,7 +139,7 @@ $(document).ready(function() {
                 phone: phone,
                 comment: comment,
             },
-            success: function(data) {
+            success: function (data) {
                 $('.callback-modal-content').empty();
                 $('#exampleModalLabel').empty();
                 $('#exampleModalLabel').text('Спасибо! Менеджер свяжется с Вами в ближайшее время.');
@@ -148,8 +148,12 @@ $(document).ready(function() {
 
     });
 
-    $(".item-card").hover(function()
-    {
+    $(".item-card").hover(function () {
         $(this).toggleClass('classWithShadow');
+    });
+
+    $('#search_input').on('keyup', function () {
+        var value = $(this).val();
+        $(this).val(value.replace(/[^a-z0-9]/i, ""));
     });
 });

@@ -9,7 +9,7 @@
     <form action="{{ route('client.search') }}" method="GET">
         <div class="form-group">
             <div class="input-group">
-                <input required type="text" value="{{ old('query') }}" name="query" placeholder="Поиск по еврокоду..." class="form-control" aria-label="Поиск" maxlength="20">
+                <input required type="text" value="{{ old('query') }}" name="query" id="search_input" placeholder="Поиск по еврокоду..." class="form-control" aria-label="Поиск" maxlength="20">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success">Поиск</button>
                 </div>
@@ -47,7 +47,7 @@
                 @if(isset($sidebarData['types']['list']) && !empty($sidebarData['models']['selectedId']))
                     <option value=''>Тип стекла</option>
                     @foreach($sidebarData['types']['list'] as $type)
-                        <option value="{{ $type->id }}" @if($sidebarData['types']['selectedId'] == $type->id) selected @endif>{{ $type->translation }}</option>
+                        <option value="{{ $type->id }}" @if($sidebarData['types']['selectedId'] == $type->id) selected @endif>{{ $type->translation ?? '' }}</option>
                     @endforeach
                 @endif
             </select>

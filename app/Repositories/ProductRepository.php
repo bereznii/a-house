@@ -20,7 +20,7 @@ class ProductRepository extends CoreRepository
      */
     public function getProduct(int $id)
     {
-        $product = $this->instantiate()->find($id);
+        $product = $this->instantiate()->findOrFail($id);
 
         return $product;
     }

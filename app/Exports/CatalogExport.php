@@ -3,23 +3,56 @@
 namespace App\Exports;
 
 use App\Entities\Product;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromArray;
+use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 use Maatwebsite\Excel\Concerns\WithHeadings;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
-class CatalogExport implements FromCollection, WithHeadings
+class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColumnFormatting
 {
+    private $products;
+
     /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+     * CatalogExport constructor.
+     * @param $products
+     */
+    public function __construct($products)
     {
-        return Product::select([
-            'barcode',
-            'stock_code',
-            'nomenclature',
-            'original_description',
-            'translated_description'
-        ])->skip(4654)->limit(4654)->get();
+        $this->products = $products;
+    }
+
+    /**
+     * @return array
+     */
+    public function array(): array
+    {
+        $result = [];
+        foreach ($this->products as $key => $product) {
+
+            $result[$key][] = $product->manufacture;
+            $result[$key][] = $product->stock_code;
+            $result[$key][] = $product->type->translation . ' ' . $product->model->name;
+            $result[$key][] = (float)number_format((float)$product->retail_price, 2, '.', '');
+            $result[$key][] = $product->in_stock;
+            $result[$key][] = '';
+            $result[$key][] = trim($product->original_code, " \t\n\r\0\x0B");
+        }
+
+        return $result;
+    }
+
+    public function columnFormats(): array
+    {
+        return [
+            'A' => NumberFormat::FORMAT_GENERAL,
+            'B' => NumberFormat::FORMAT_GENERAL,
+            'C' => NumberFormat::FORMAT_GENERAL,
+            'D' => NumberFormat::FORMAT_NUMBER_00,
+            'E' => NumberFormat::FORMAT_GENERAL,
+            'F' => NumberFormat::FORMAT_GENERAL,
+            'G' => NumberFormat::FORMAT_TEXT,
+        ];
     }
 
     /**
@@ -28,11 +61,13 @@ class CatalogExport implements FromCollection, WithHeadings
     public function headings(): array
     {
         return [
-            'Штрихкод',
-            'Складской код',
-            'Номенклатура',
-            'Описание из номенклатуры',
-            'Расшифровка описания из номеклатуры'
+            'Производитель',
+            'Еврокод',
+            'Описание', //Лобовое стекло, {название модели}
+            'Цена',
+            'Количество',
+            'Ссылки фото', //empty
+            'Оригинальный код',
         ];
     }
 }

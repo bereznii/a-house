@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Entities\Make;
+use App\Entities\MakeModel;
+use App\Entities\Product;
+use App\Exports\CatalogExport;
 use App\Imports\Import;
 use App\Entities\CallbackRequest;
 use App\Repositories\CallbackRequestRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
@@ -85,6 +91,43 @@ class HomeController extends Controller
     /**
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function exportForAutopro()
+    {
+        return view('admin.pages.autopro', [
+            'makes' => Make::all()->pluck('name', 'id')->toArray()
+        ]);
+    }
+
+    /**
+     * @return \Maatwebsite\Excel\BinaryFileResponse|\Symfony\Component\HttpFoundation\BinaryFileResponse
+     * @throws \PhpOffice\PhpSpreadsheet\Exception
+     * @throws \PhpOffice\PhpSpreadsheet\Writer\Exception
+     */
+    public function downloadAutoproCatalog()
+    {
+        $type = request('reportType');
+
+        switch ($type) {
+            case 'all_products':
+                $products = Product::where('in_stock', '!=', 0)->get();
+                break;
+            case 'only_original_products':
+                $products = Product::where('in_stock', '!=', 0)->whereNotNull('original_code')->get();
+                break;
+            case 'specific_make_products':
+                $products = Product::whereIn('make_id', request('make', []))
+                    ->where('in_stock', '!=', 0)
+                    ->orderBy('stock_code', 'ASC')
+                    ->get();
+                break;
+        }
+
+        return Excel::download(new CatalogExport($products), 'catalog.xls');
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
     public function import()
     {
         $time_start = microtime(true);
@@ -108,6 +151,12 @@ class HomeController extends Controller
         Cache::forget('modelCount');
         $countedRows['productCount'] = Cache::get('productCount', 0);
         Cache::forget('productCount');
+
+        //Soft delete products, that were last updated more than 5 min ago
+        $oldProductsTime = Carbon::now()
+            ->subMinutes(5)
+            ->format('Y-m-d H:i:s');
+        Product::where('updated_at', '<', $oldProductsTime)->delete();
 
         return $this->index($countedRows);
     }

@@ -46,7 +46,9 @@ class ProductController extends Controller
         return view('client.item.index')->with([
             'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('product', $product),
-            'product' => $product
+            'product' => $product,
+            'shortModelName' => $product->model->modelNameOption->model_name ?? '',
+            'cyrillicModelName' => $product->model->modelNameOption->cyrillic_name ?? ''
         ]);
     }
 

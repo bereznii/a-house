@@ -20,7 +20,7 @@
                                     </div>
                                     <div>
                                         <h6 class="my-0"><a href="{{ route('client.product.show', ['id' => $product->id]) }}" target="_blank">{{ $product->model->name ?? '-' }}</a></h6>
-                                        <p class="text-muted cart-item-description">{{ $product->type->translation }}</p>
+                                        <p class="text-muted cart-item-description">{{ $product->type->translation ?? '' }}</p>
                                     </div>
                                     <div class="justify-content-end d-flex mb-1">
                                         <input type="text" class="form-control col-md-3 float-right quantity-input" data-productid="{{ $product->id }}" name="products[{{ $key }}][quantity]" value="{{ $content['quantities'][$product->id] ?? old('products')[$key]['quantity'] ?? 1 }}">

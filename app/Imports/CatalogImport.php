@@ -6,6 +6,7 @@ use App\Entities\Make;
 use App\Entities\MakeModel;
 use App\Entities\Product;
 use App\Services\ImportService;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Cache;
 use Maatwebsite\Excel\Concerns\ToArray;
 use Maatwebsite\Excel\Concerns\WithBatchInserts;
@@ -21,10 +22,9 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
     const REGEX = '/^[A-Z\s\p{Lu}\/\-]+$/iu'; //regex for uppercase latin and cyrillic chars. Matches car makes
 
     /**
-    * @param array $row
-    *
-    * @return mixed
-    */
+     * @param array $rows
+     * @return mixed
+     */
     public function array(array $rows)
     {
         foreach ($this->generator($rows) as $row) {
@@ -94,17 +94,16 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
              * PRODUCTS
              */
             if (isset($row[0]) && isset($row[1]) && isset($row[2]) && Cache::has('make_id')) {
-//            logger($row[2] . ' -> ' . self::$i++);
 
                 $model = MakeModel::where('name', Cache::get('model'))->first();
 
-                Product::updateOrCreate(
+                Product::withTrashed()->updateOrCreate(
                     [
                         'barcode' => $row[0],
-                        'manufacture' => $row[6],
-                        'stock_code' => $row[1]
+                        'manufacture' => $row[6]
                     ],
                     [
+                        'stock_code' => $row[1],
                         'make_id' => Cache::get('make_id'),
                         'model_id' => $model->id,
                         'type_id' => ImportService::getProductTypeId($row[2]),
@@ -114,7 +113,9 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                         'translated_description' => ImportService::getTranslatedDescription($row[2]),
                         'in_stock' => $row[4],
                         'dealer_price' => $row[5],
-                        'retail_price' => ImportService::calculateRetailPriceWithCharge($row)
+                        'retail_price' => ImportService::calculateRetailPriceWithCharge($row),
+                        'original_code' => !empty(trim($row[8], ',- ')) ? trim($row[8], ',- ') : null,
+                        'deleted_at' => null
                     ]
                 );
 
