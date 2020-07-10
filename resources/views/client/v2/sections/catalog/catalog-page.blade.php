@@ -56,7 +56,7 @@
             <div class="col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <p class="card-title text-center mt-3">Воспользуйтесь фильтром или поиском, чтобы найти интересущее Вас стекло</p>
+                        <p class="card-title text-center mt-3">Воспользуйтесь фильтром или поиском, чтобы найти интересущее стекло</p>
                     </div>
                 </div>
             </div>

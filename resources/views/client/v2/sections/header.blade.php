@@ -15,7 +15,7 @@
             </ul>
         </nav>
 
-        <a href="#contact" class="get-started-btn scrollto">Заказать обратный звонок</a>
+        <a href="{{ route('new-client.contacts') }}" class="get-started-btn scrollto">Заказать обратный звонок</a>
 
     </div>
 </header>
