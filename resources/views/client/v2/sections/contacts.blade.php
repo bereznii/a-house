@@ -43,11 +43,6 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Тема</label>
-                        <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
-                        <div class="validate"></div>
-                    </div>
-                    <div class="form-group">
                         <label for="message">Текст обращения</label>
                         <textarea class="form-control" id="message" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
                         <div class="validate"></div>

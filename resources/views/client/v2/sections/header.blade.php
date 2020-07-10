@@ -7,10 +7,11 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li><a href="{{ route('new-client.landing') }}">Главная</a></li>
-                <li><a href="{{ route('new-client.about-us') }}">О нас</a></li>
-                <li><a href="{{ route('new-client.catalog') }}">Каталог</a></li>
-                <li><a href="{{ route('new-client.contacts') }}">Контакты</a></li>
+                @php $currentUrl = url()->current(); @endphp
+                <li class="@if(route('new-client.landing') == $currentUrl) active @endif"><a href="{{ route('new-client.landing') }}">Главная</a></li>
+                <li class="@if(route('new-client.about-us') == $currentUrl) active @endif"><a href="{{ route('new-client.about-us') }}">О нас</a></li>
+                <li class="@if(route('new-client.catalog') == $currentUrl) active @endif"><a href="{{ route('new-client.catalog') }}">Каталог</a></li>
+                <li class="contactsItem @if(route('new-client.contacts') == $currentUrl) active @endif"><a href="{{ route('new-client.contacts') }}">Контакты</a></li>
             </ul>
         </nav>
 

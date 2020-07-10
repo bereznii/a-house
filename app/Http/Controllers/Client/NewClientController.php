@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Services\ClientService;
 
 class NewClientController extends Controller
 {
@@ -35,6 +36,19 @@ class NewClientController extends Controller
             'breadcrumbs' => [
                 'title' => 'О нас'
             ]
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function catalog()
+    {
+        return view('client.v2.pages.catalog', [
+            'breadcrumbs' => [
+                'title' => 'Каталог'
+            ],
+            'sidebarData' => (new ClientService())->sidebarData()
         ]);
     }
 }

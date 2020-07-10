@@ -10,11 +10,9 @@
 
     @include('client.v2.sections.about-us')
 
-    @include('client.v2.sections.why-us')
+    @include('client.v2.sections.services')
 
     @include('client.v2.sections.vendors')
-
-    @include('client.v2.sections.services')
 
     @include('client.v2.sections.cta')
 

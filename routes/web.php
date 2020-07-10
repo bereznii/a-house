@@ -19,7 +19,7 @@ Auth::routes([
     'reset' => false
 ]);
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
+Route::group(['prefix' => 'admin'], function (){
     Route::get('home', 'Admin\HomeController@index')->name('home');
     Route::get('callbacks', 'Admin\HomeController@callbackPage')->name('home.callbacks');
     Route::get('autopro', 'Admin\HomeController@exportForAutopro')->name('home.autopro');
