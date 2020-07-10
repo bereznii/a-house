@@ -1,11 +1,5 @@
 <div class="col-lg-3 my-4">
 
-    <div class="form-group d-none d-lg-block" itemscope itemtype="http://schema.org/Organization">
-        <a href="{{ route('client.index') }}" itemprop="url">
-            <img style="width: 100%" itemprop="logo" src="{{ asset('storage/img/logo_low.png') }}" alt="Логотип Autoglass House">
-        </a>
-    </div>
-
     <form action="{{ route('client.search') }}" method="GET">
         <div class="form-group">
             <div class="input-group">

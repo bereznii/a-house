@@ -8,6 +8,20 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+footer {
+    margin-top: auto;
+}
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -857,6 +871,18 @@ section {
 
 .services .iconbox-orange:hover .icon path {
   fill: #ffa76e;
+}
+
+.services .iconbox-green i {
+  color: #5cd65c;
+}
+
+.services .iconbox-green:hover .icon i {
+  color: #fff;
+}
+
+.services .iconbox-green:hover .icon path {
+  fill: #85e085;
 }
 
 .services .iconbox-pink i {
