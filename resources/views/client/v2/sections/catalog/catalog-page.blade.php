@@ -53,11 +53,9 @@
             @endforeach
             {{ $products->links() }}
         @else
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-header">
-                        <p class="card-title text-center mt-3">Воспользуйтесь фильтром или поиском, чтобы найти интересущее стекло</p>
-                    </div>
+            <div class="col-lg-12 contact">
+                <div class="info">
+                    <p class="card-title text-center p-0 m-0" style="font-size: 1.1em;">Воспользуйтесь фильтром или поиском, чтобы найти интересущее стекло</p>
                 </div>
             </div>
         @endif

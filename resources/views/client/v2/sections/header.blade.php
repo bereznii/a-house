@@ -14,7 +14,7 @@
                 <li class="contactsItem @if(route('new-client.contacts') == $currentUrl) active @endif"><a href="{{ route('new-client.contacts') }}">Контакты</a></li>
                 <li class="@if(route('new-client.cart') == $currentUrl) active @endif">
                     <a href="{{ route('new-client.cart') }}">
-                        <i class="icofont-cart" style="font-size: 1.5em;"></i>
+                        <i class="icofont-cart"></i>
                         Корзина
                     </a>
                 </li>

@@ -1,6 +1,6 @@
 <div class="col-lg-12">
 
-    <div class="card mt-4 mb-4">
+    <div class="card mt-4 mb-4 cart-card">
         <div class="card-header">
             Оформление заказа
         </div>

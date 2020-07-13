@@ -1300,7 +1300,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"] {
-  background: #5cb874;
+  /*background: #5cb874;*/
   border: 0;
   padding: 10px 24px;
   color: #fff;
@@ -1309,7 +1309,7 @@ section {
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-  background: #6ec083;
+  /*background: #6ec083;*/
 }
 
 @-webkit-keyframes animate-loading {
@@ -1529,4 +1529,15 @@ section {
 
 #footer .credits {
   font-size: 13px;
+}
+
+/*Custom Styles*/
+
+.cart-card {
+    border-top: 3px solid #5cb874;
+    border-bottom: 3px solid #5cb874;
+}
+
+.nav-menu .icofont-cart {
+    font-size: 1.5em;
 }
