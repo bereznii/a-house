@@ -38,6 +38,8 @@ Route::group(['prefix' => 'v2'], function (){
         Route::get('contact', 'Client\NewClientController@contacts')->name('contacts');
         Route::get('about', 'Client\NewClientController@about')->name('about-us');
         Route::get('catalog', 'Client\NewClientController@catalog')->name('catalog');
+        Route::get('delivery', 'Client\NewClientController@delivery')->name('delivery');
+        Route::get('cart', 'Client\NewClientController@cart')->name('cart');
     });
 });
 

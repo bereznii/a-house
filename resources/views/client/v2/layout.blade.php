@@ -26,6 +26,24 @@
 
         <!-- Template Main CSS File -->
         <link href="{{ url('css/style.css') }}" rel="stylesheet">
+
+        @if(route('new-client.landing') !== $currentUrl)
+            <style>
+                html, body {
+                    height: 100%;
+                }
+
+                body {
+                    display: flex;
+                    flex-direction: column;
+                    height: 100%;
+                }
+
+                footer {
+                    margin-top: auto;
+                }
+            </style>
+        @endif
     </head>
 
     <body>

@@ -12,7 +12,9 @@ class NewClientController extends Controller
      */
     public function index()
     {
-        return view('client.v2.pages.landing');
+        return view('client.v2.pages.landing', [
+            'currentUrl' => url()->current()
+        ]);
     }
 
     /**
@@ -23,7 +25,8 @@ class NewClientController extends Controller
         return view('client.v2.pages.contacts', [
             'breadcrumbs' => [
                 'title' => 'Контакты'
-            ]
+            ],
+            'currentUrl' => url()->current()
         ]);
     }
 
@@ -35,7 +38,35 @@ class NewClientController extends Controller
         return view('client.v2.pages.about', [
             'breadcrumbs' => [
                 'title' => 'О нас'
-            ]
+            ],
+            'currentUrl' => url()->current()
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function cart()
+    {
+        return view('client.v2.pages.cart', [
+            'breadcrumbs' => [
+                'title' => 'Корзина'
+            ],
+            'currentUrl' => url()->current(),
+            'content' => null
+        ]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function delivery()
+    {
+        return view('client.v2.pages.delivery', [
+            'breadcrumbs' => [
+                'title' => 'Доставка и оплата'
+            ],
+            'currentUrl' => url()->current()
         ]);
     }
 
@@ -48,7 +79,8 @@ class NewClientController extends Controller
             'breadcrumbs' => [
                 'title' => 'Каталог'
             ],
-            'sidebarData' => (new ClientService())->sidebarData()
+            'sidebarData' => (new ClientService())->sidebarData(),
+            'currentUrl' => url()->current()
         ]);
     }
 }

@@ -8,20 +8,6 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
-html, body {
-    height: 100%;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-footer {
-    margin-top: auto;
-}
-
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -1350,7 +1336,7 @@ section {
 .breadcrumbs {
   padding: 15px 0;
   background: #fbfbfb;
-  min-height: 40px;
+  /*min-height: 40px;*/
   margin-top: 122px;
 }
 

@@ -6,9 +6,11 @@
 
     @include('client.v2.sections.breadcrumbs')
 
-    @include('client.v2.sections.about-us')
-
-    @include('client.v2.sections.cta')
+    <div class="container">
+        <div class="row">
+            @include('client.v2.sections.cart.checkout')
+        </div>
+    </div>
 
     @include('client.v2.sections.footer')
 
