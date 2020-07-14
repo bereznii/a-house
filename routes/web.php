@@ -40,6 +40,11 @@ Route::group(['prefix' => 'v2'], function (){
         Route::get('catalog', 'Client\NewClientController@catalog')->name('catalog');
         Route::get('delivery', 'Client\NewClientController@delivery')->name('delivery');
         Route::get('cart', 'Client\NewClientController@cart')->name('cart');
+
+        Route::get('/automotive/{id}', 'Client\NewClientController@show')->name('product.show');
+
+        Route::get('/filter', 'Client\NewClientController@getFilteredProducts')->name('filter');
+        Route::get('/search', 'Client\NewClientController@getSearchedProducts')->name('search');
     });
 });
 

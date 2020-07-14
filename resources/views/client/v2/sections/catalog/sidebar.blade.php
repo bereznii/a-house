@@ -13,7 +13,7 @@
 
     <hr>
 
-    <form action="{{ route('client.filter') }}" method="GET">
+    <form action="{{ route('new-client.filter') }}" method="GET">
         <div class="form-group">
             <label for="makes">Марка:</label>
             <select name="makes" class="form-control" id="makes">

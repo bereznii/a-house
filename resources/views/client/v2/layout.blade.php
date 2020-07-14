@@ -77,6 +77,7 @@
 
     <!-- Template Main JS File -->
     <script src="{{ url('js/main.js') }}"></script>
+    <script src="{{ url('/js/shop-scripts.js') }}"></script>
 
     </body>
 

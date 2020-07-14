@@ -28,10 +28,10 @@
             @foreach ($products as $product)
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card h-100 item-card" id="{{ $product->id }}">
-                        <a href="{{ route('client.product.show', ['id' => $product->id]) }}"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}"></a>
+                        <a href="{{ route('new-client.product.show', ['id' => $product->id]) }}"><img class="card-img-top" src="{{ asset('storage/'. $product->type->code .'.png') }}" alt="{{ $product->model->name ?? '' }}, {{ mb_strtolower($product->type->translation ?? '') }}"></a>
                         <div class="card-body">
                             <h3 class="card-title" style="font-size: 1.5rem;">
-                                <a href="{{ route('client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
+                                <a href="{{ route('new-client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
                                     {{ mb_strtolower($product->type->translation ?? '') }}</a>
                             </h3>
                             <h5>{{ $product->retail_price ?? '' }}грн.</h5>
@@ -43,9 +43,6 @@
                             <button class="btn btn-success btn-sm addToCart-btn" data-productid="{{ $product->id }}">
                                 <i class="fas fa-cart-plus"></i>
                                 Добавить
-                            </button>
-                            <button class="btn btn-danger btn-sm"  data-toggle="modal" data-target="#exampleModal">
-                                Перезвонить
                             </button>
                         </div>
                     </div>
