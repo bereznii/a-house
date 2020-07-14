@@ -6,7 +6,7 @@
         <div class="carousel-inner" role="listbox">
 
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url({{ asset('storage/img/header1.jpg') }}">
+            <div class="carousel-item active" style="background-image: url({{ asset('landing_img/hero/header1.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Вас приветствует <span> Autoglass House</span></h2>
@@ -17,7 +17,7 @@
             </div>
 
             <!-- Slide 2 -->
-            <div class="carousel-item" style="background-image: url({{ asset('storage/img/header2.jpg') }})">
+            <div class="carousel-item" style="background-image: url({{ asset('landing_img/hero/header2.jpg') }})">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">При оформлении заказа на сайте -5%</h2>
@@ -27,7 +27,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="carousel-item" style="background-image: url({{ asset('storage/img/header3.jpg') }}">
+            <div class="carousel-item" style="background-image: url({{ asset('landing_img/hero/header3.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Помощь в подборе нужного стекла по фото</h2>
