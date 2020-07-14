@@ -3,7 +3,11 @@
 
         <div class="section-title">
             <h2>Услуги</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <p>
+                На многих новых и современных автомобилях стекло является не только как защита от внешней среды,
+                а также как многофункциональное приспособление для облегчения, водителю, управления автомобилем.
+                У нас Вы сможете найти нужное стекло на свой автомобиль!
+            </p>
         </div>
 
         <div class="row">
@@ -16,7 +20,9 @@
                         <i class="bx bxs-basket"></i>
                     </div>
                     <h4><a href="">Продажа</a></h4>
-                    <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                    <p>
+                        Наш сервис представляет различных мировых производителей по лучшей цене
+                    </p>
                 </div>
             </div>
 
@@ -29,7 +35,9 @@
                         <i class="bx bxs-car-mechanic"></i>
                     </div>
                     <h4><a href="">Установка</a></h4>
-                    <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+                    <p>
+                        Замена, установка автостекла в Киеве возможна на нашем СТО
+                    </p>
                 </div>
             </div>
 
@@ -42,7 +50,9 @@
                         <i class="bx bx-home"></i>
                     </div>
                     <h4><a href="">Выездная установка</a></h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
+                    <p>
+                        Так же заменить, либо установить стекло в Киеве возможно на выезде у клиента
+                    </p>
                 </div>
             </div>
 
@@ -55,20 +65,9 @@
                         <i class="bx bxs-truck"></i>
                     </div>
                     <h4><a href="">Доставка</a></h4>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
-                <div class="icon-box iconbox-green">
-                    <div class="icon">
-                        <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
-                        </svg>
-                        <i class="bx bx-help-circle"></i>
-                    </div>
-                    <h4><a href="">Консультация</a></h4>
-                    <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
+                    <p>
+                        Доставка в кратчайшие сроки различными способами, в том числе нашим курьером и Новой Почтой
+                    </p>
                 </div>
             </div>
 
@@ -81,7 +80,24 @@
                         <i class="bx bx-shield-alt-2"></i>
                     </div>
                     <h4><a href="">Гарантия</a></h4>
-                    <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+                    <p>
+                        Мы гарантируем качество и скорость предоставляемых услуг, а так же отвечаем за правильно подобранное стекло!
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="icon-box iconbox-green">
+                    <div class="icon">
+                        <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
+                        </svg>
+                        <i class="bx bx-help-circle"></i>
+                    </div>
+                    <h4><a href="">Консультация</a></h4>
+                    <p>
+                        Если не удалось найти нужного стекла в каталоге, Свяжитесь с нами, и мы Вам поможем
+                    </p>
                 </div>
             </div>
 

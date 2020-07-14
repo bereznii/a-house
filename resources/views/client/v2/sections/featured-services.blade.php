@@ -6,21 +6,27 @@
                 <div class="icon-box">
                     <div class="icon"><i class="icofont-question-circle"></i></div>
                     <h4 class="title"><a href="">Помощь в подборе</a></h4>
-                    <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
+                    <p class="description">
+                        Иногда подобрать и купить нужное оказывается сложной задачей. Свяжитесь с нами, и мы Вам поможем в подборе.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="icon-box">
                     <div class="icon"><i class="icofont-delivery-time"></i></div>
                     <h4 class="title"><a href="">Доставка</a></h4>
-                    <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
+                    <p class="description">
+                        Доставим гарантированно в кратчайшие сроки. Возможны различные варианты доставки, в том числе нашим курьером, либо Новой Почтой.
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="icon-box">
                     <div class="icon"><i class="icofont-workers-group"></i></div>
                     <h4 class="title"><a href="">Установка</a></h4>
-                    <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur trade stravi</p>
+                    <p class="description">
+                        Замена, установка автостекла в Киеве возможна на нашем СТО, а также на выезде у клиента.
+                    </p>
                 </div>
             </div>
         </div>

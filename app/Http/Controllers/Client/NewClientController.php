@@ -179,7 +179,7 @@ class NewClientController extends Controller
             'shortModelName' => $product->model->modelNameOption->model_name ?? '',
             'cyrillicModelName' => $product->model->modelNameOption->cyrillic_name ?? '',
             'breadcrumbs' => [
-                'title' => 'Автомобильное стекло'
+                'title' => $product->model->name
             ],
             'currentUrl' => url()->current()
         ]);
