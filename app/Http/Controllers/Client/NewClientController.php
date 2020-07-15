@@ -41,7 +41,7 @@ class NewClientController extends Controller
     public function index()
     {
         return view('client.v2.pages.landing', [
-            'currentUrl' => url()->current()
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
@@ -51,10 +51,7 @@ class NewClientController extends Controller
     public function contacts()
     {
         return view('client.v2.pages.contacts', [
-            'breadcrumbs' => [
-                'title' => 'Контакты'
-            ],
-            'currentUrl' => url()->current()
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
@@ -64,37 +61,7 @@ class NewClientController extends Controller
     public function about()
     {
         return view('client.v2.pages.about', [
-            'breadcrumbs' => [
-                'title' => 'О нас'
-            ],
-            'currentUrl' => url()->current()
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function cart()
-    {
-        return view('client.v2.pages.cart', [
-            'breadcrumbs' => [
-                'title' => 'Корзина'
-            ],
-            'currentUrl' => url()->current(),
-            'content' => null
-        ]);
-    }
-
-    /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function delivery()
-    {
-        return view('client.v2.pages.delivery', [
-            'breadcrumbs' => [
-                'title' => 'Доставка и оплата'
-            ],
-            'currentUrl' => url()->current()
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
@@ -104,11 +71,8 @@ class NewClientController extends Controller
     public function catalog()
     {
         return view('client.v2.pages.catalog', [
-            'breadcrumbs' => [
-                'title' => 'Каталог'
-            ],
-            'sidebarData' => (new ClientService())->sidebarData(),
-            'currentUrl' => url()->current()
+            'sidebarData' => $this->clientService->sidebarData(),
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
@@ -133,10 +97,7 @@ class NewClientController extends Controller
             'sidebarData' => $sideBar,
             'metaData' => $this->metaDataService->collectMetaData('catalog', $sideBar),
             'products' => $products,
-            'breadcrumbs' => [
-                'title' => 'Каталог'
-            ],
-            'currentUrl' => url()->current()
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
@@ -157,10 +118,7 @@ class NewClientController extends Controller
             'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('catalog'),
             'products' => $products,
-            'breadcrumbs' => [
-                'title' => 'Каталог'
-            ],
-            'currentUrl' => url()->current()
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
@@ -178,10 +136,7 @@ class NewClientController extends Controller
             'product' => $product,
             'shortModelName' => $product->model->modelNameOption->model_name ?? '',
             'cyrillicModelName' => $product->model->modelNameOption->cyrillic_name ?? '',
-            'breadcrumbs' => [
-                'title' => $product->model->name
-            ],
-            'currentUrl' => url()->current()
+            'pageData' => $this->clientService->getPageData($product->model->name)
         ]);
     }
 }

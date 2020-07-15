@@ -8,7 +8,11 @@
 
     <div class="container">
         <div class="row">
-            @include('client.v2.sections.cart.checkout')
+            @if(isset($thank))
+                @include('client.v2.sections.cart.thank-page')
+            @else
+                @include('client.v2.sections.cart.checkout')
+            @endif
         </div>
     </div>
 

@@ -4,7 +4,8 @@
         <div class="card-header">
             Оформление заказа
         </div>
-        <form action="{{ route('client.checkout.order') }}" method="POST">
+        <form action="{{ route('new-client.checkout.order') }}" method="POST">
+            {{ csrf_field() }}
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-4 order-md-2 mb-4">
@@ -16,10 +17,10 @@
                                 @foreach($content['products'] as $key => $product)
                                     <li class="list-group-item lh-condensed">
                                         <div class="text-right">
-                                            <span><a href="{{ route('client.checkout.removeFromCart', ['id' => $product->id]) }}" class="text-danger"><i class="far fa-times-circle"></i></a></span>
+                                            <span><a href="{{ route('new-client.checkout.removeFromCart', ['id' => $product->id]) }}" class="text-danger"><i class="icofont-trash"></i></a></span>
                                         </div>
                                         <div>
-                                            <h6 class="my-0"><a href="{{ route('client.product.show', ['id' => $product->id]) }}" target="_blank">{{ $product->model->name ?? '-' }}</a></h6>
+                                            <h6 class="my-0"><a href="{{ route('new-client.product.show', ['id' => $product->id]) }}" target="_blank">{{ $product->model->name ?? '-' }}</a></h6>
                                             <p class="text-muted cart-item-description">{{ $product->type->translation ?? '' }}</p>
                                         </div>
                                         <div class="justify-content-end d-flex mb-1">
@@ -41,7 +42,6 @@
 
                     </div>
                     <div class="col-md-8 order-md-1">
-                        @csrf
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <label for="firstName">Имя</label>

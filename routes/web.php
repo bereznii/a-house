@@ -38,8 +38,13 @@ Route::group(['prefix' => 'v2'], function (){
         Route::get('contact', 'Client\NewClientController@contacts')->name('contacts');
         Route::get('about', 'Client\NewClientController@about')->name('about-us');
         Route::get('catalog', 'Client\NewClientController@catalog')->name('catalog');
-        Route::get('delivery', 'Client\NewClientController@delivery')->name('delivery');
-        Route::get('cart', 'Client\NewClientController@cart')->name('cart');
+//        Route::get('delivery', 'Client\NewClientController@delivery')->name('delivery');
+
+        Route::group(['prefix' => 'checkout'], function () {
+            Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
+            Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
+            Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
+        });
 
         Route::get('/automotive/{id}', 'Client\NewClientController@show')->name('product.show');
 
@@ -48,22 +53,22 @@ Route::group(['prefix' => 'v2'], function (){
     });
 });
 
-Route::name('client.')->group(function (){
-    Route::get('/', 'Client\ClientController@index')->name('index');
-    Route::get('/about', 'Client\ClientController@about')->name('about');
-    Route::get('/contact', 'Client\ClientController@contact')->name('contact');
-
-    Route::get('/automotive/{id}', 'Client\ProductController@show')->name('product.show');
-
-    Route::get('/filter', 'Client\ProductController@getFilteredProducts')->name('filter');
-    Route::get('/search', 'Client\ProductController@getSearchedProducts')->name('search');
-
-    Route::group(['prefix' => 'checkout'], function () {
-        Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
-        Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
-        Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
-    });
-});
+//Route::name('client.')->group(function (){
+//    Route::get('/', 'Client\ClientController@index')->name('index');
+//    Route::get('/about', 'Client\ClientController@about')->name('about');
+//    Route::get('/contact', 'Client\ClientController@contact')->name('contact');
+//
+//    Route::get('/automotive/{id}', 'Client\ProductController@show')->name('product.show');
+//
+//    Route::get('/filter', 'Client\ProductController@getFilteredProducts')->name('filter');
+//    Route::get('/search', 'Client\ProductController@getSearchedProducts')->name('search');
+//
+//    Route::group(['prefix' => 'checkout'], function () {
+//        Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
+//        Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
+//        Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
+//    });
+//});
 
 Route::group(['prefix' => 'ajax'], function (){
     Route::get('get-models', 'Client\ClientController@getModels');

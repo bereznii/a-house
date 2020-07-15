@@ -1,7 +1,6 @@
 <div class="col-lg-9">
 
     <div class="row my-4">
-
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">

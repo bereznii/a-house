@@ -7,15 +7,14 @@
 
         <nav class="nav-menu d-none d-lg-block">
             <ul>
-                <li class="@if(route('new-client.landing') == $currentUrl) active @endif"><a href="{{ route('new-client.landing') }}">Главная</a></li>
-                <li class="@if(route('new-client.about-us') == $currentUrl) active @endif"><a href="{{ route('new-client.about-us') }}">О нас</a></li>
-                <li class="@if(route('new-client.catalog') == $currentUrl) active @endif"><a href="{{ route('new-client.catalog') }}">Каталог</a></li>
-                <li class="@if(route('new-client.delivery') == $currentUrl) active @endif"><a href="{{ route('new-client.delivery') }}">Доставка и оплата</a></li>
-                <li class="contactsItem @if(route('new-client.contacts') == $currentUrl) active @endif"><a href="{{ route('new-client.contacts') }}">Контакты</a></li>
-                <li class="@if(route('new-client.cart') == $currentUrl) active @endif">
-                    <a href="{{ route('new-client.cart') }}">
+                <li class="@if(route('new-client.landing') == $pageData['currentUrl']) active @endif"><a href="{{ route('new-client.landing') }}">Главная</a></li>
+                <li class="@if(route('new-client.about-us') == $pageData['currentUrl']) active @endif"><a href="{{ route('new-client.about-us') }}">О нас</a></li>
+                <li class="@if(route('new-client.catalog') == $pageData['currentUrl']) active @endif"><a href="{{ route('new-client.catalog') }}">Каталог</a></li>
+                <li class="contactsItem @if(route('new-client.contacts') == $pageData['currentUrl']) active @endif"><a href="{{ route('new-client.contacts') }}">Контакты</a></li>
+                <li class="@if(route('new-client.checkout') == $pageData['currentUrl']) active @endif">
+                    <a href="{{ route('new-client.checkout') }}">
                         <i class="icofont-cart"></i>
-                        Корзина
+                         (777) Корзина
                     </a>
                 </li>
             </ul>

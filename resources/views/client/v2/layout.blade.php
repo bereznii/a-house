@@ -32,7 +32,7 @@
         <!-- Template Main CSS File -->
         <link href="{{ url('css/style.css') }}" rel="stylesheet">
 
-        @if(route('new-client.landing') !== $currentUrl)
+        @if(route('new-client.landing') !== $pageData['currentUrl'])
             <style>
                 html, body {
                     height: 100%;

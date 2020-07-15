@@ -1,6 +1,6 @@
 <div class="col-lg-3 my-4">
 
-    <form action="{{ route('client.search') }}" method="GET">
+    <form action="{{ route('new-client.search') }}" method="GET">
         <div class="form-group">
             <div class="input-group">
                 <input required type="text" value="{{ old('query') }}" name="query" id="search_input" placeholder="Поиск по еврокоду..." class="form-control" aria-label="Поиск" maxlength="20">

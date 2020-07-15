@@ -6,6 +6,8 @@ use App\Entities\Make;
 use App\Entities\MakeModel;
 use App\Entities\Product;
 use App\Entities\Type;
+use Illuminate\Routing\Route;
+use Illuminate\Support\Arr;
 
 class ClientService
 {
@@ -85,5 +87,44 @@ class ClientService
             ->get();
 
         return $models;
+    }
+
+    /**
+     * @return array
+     */
+    public function getPageData($specifiedName = null): array
+    {
+        $currentUrl = url()->current();
+
+        if (isset($specifiedName)) {
+            $title = $specifiedName;
+        } else {
+            $action = Arr::last(explode('/', $currentUrl));
+
+            switch ($action) {
+                case 'catalog':
+                    $title = 'Каталог';
+                    break;
+                case 'about':
+                    $title = 'О нас';
+                    break;
+                case 'contact':
+                    $title = 'Контакты';
+                    break;
+                case 'checkout':
+                    $title = 'Корзина';
+                    break;
+                default:
+                    $title = '';
+                    break;
+            }
+        }
+
+        return [
+            'breadcrumbs' => [
+                'title' => $title
+            ],
+            'currentUrl' => $currentUrl
+        ];
     }
 }
