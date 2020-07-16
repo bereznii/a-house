@@ -43,8 +43,7 @@ class PagesController extends Controller
     public function index()
     {
         return view('client.v2.pages.landing', [
-            'pageData' => $this->clientService->getPageData(),
-            'metaData' => $this->metaDataService->collectMetaData('landing')
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
