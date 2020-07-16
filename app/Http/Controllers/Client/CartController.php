@@ -14,7 +14,7 @@ class CartController extends Controller
 
     /**
      * CartController constructor.
-     * @param CartService $cartRepository
+     * @param CartService $cartService
      */
     public function __construct(CartService $cartService)
     {

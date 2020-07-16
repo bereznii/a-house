@@ -2,21 +2,33 @@
 <html lang="ru-UA">
 
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+{{--        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157621129-1"></script>--}}
+{{--        <script>--}}
+{{--            window.dataLayer = window.dataLayer || [];--}}
+{{--            function gtag(){dataLayer.push(arguments);}--}}
+{{--            gtag('js', new Date());--}}
+
+{{--            gtag('config', 'UA-157621129-1');--}}
+{{--        </script>--}}
+
         <meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+        <meta name="google-site-verification" content="WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE">
+
+        <title>{{ $metaData['title'] ?? 'Интернет-магазин Autoglass House' }}</title>
+        <link rel="icon" href="{{ asset('storage/icon-sm.ico') }}" type="image/icon type">
+        <link rel="apple-touch-icon" href="{{ asset('storage/icon-sm.ico') }}" type="image/icon type">
+        <meta name="description" content="{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}">
+        <meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
         <meta name="robots" content="noindex, nofollow" />
+
+        <!-- Sitemap -->
+        <link href='{{ url('sitemap.xml') }}' rel='alternate' title='Sitemap' type='application/rss+xml'/>
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>X</title>
-        <meta content="" name="description">
-        <meta content="" name="keywords">
-
-        <!-- Favicons -->
-        <link href="{{ url('landing_img/favicon.png') }}" rel="icon">
-        <link href="{{ url('landing_img/apple-touch-icon.png') }}" rel="apple-touch-icon">
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">

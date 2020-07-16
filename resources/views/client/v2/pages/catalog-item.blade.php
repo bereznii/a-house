@@ -2,6 +2,43 @@
 
 @section('v2.content')
 
+    <script type="application/ld+json">
+    {
+     "@context": "http://schema.org",
+     "@type": "BreadcrumbList",
+     "itemListElement":
+     [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "item":
+       {
+        "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}",
+        "name": "{{ $product->make->name ?? '' }}"
+        }
+      },
+      {
+       "@type": "ListItem",
+      "position": 2,
+      "item":
+       {
+         "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}&models={{ $product->model_id ?? '' }}",
+         "name": "{{ $product->model->name ?? '' }}"
+       }
+      },
+      {
+       "@type": "ListItem",
+      "position": 3,
+      "item":
+       {
+         "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}&models={{ $product->model_id ?? '' }}&types={{ $product->type_id ?? '' }}",
+         "name": "{{ $product->type->translation ?? '' }}"
+       }
+      }
+     ]
+    }
+    </script>
+
     @include('client.v2.sections.breadcrumbs')
 
     @include('client.v2.sections.header')

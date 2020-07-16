@@ -2,6 +2,29 @@
 
 @section('v2.content')
 
+    @if(isset($products))
+        <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "ItemList",
+            "url": "{{ url()->current() }}",
+            "numberOfItems": "{{ $products->count() }}",
+            "itemListElement": [
+            @foreach ($products as $key => $product)
+                {
+                    "@type": "ListItem",
+                    "position": {{ $key+1 }},
+                    "url": "https://autoglasshouse.com.ua/automotive/{{ $product->id }}"
+                }
+                @if($key != $products->count()-1)
+                        ,
+                @endif
+            @endforeach
+            ]
+        }
+        </script>
+    @endif
+
     @include('client.v2.sections.breadcrumbs')
 
     @include('client.v2.sections.header')

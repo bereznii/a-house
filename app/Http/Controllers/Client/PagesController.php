@@ -7,7 +7,7 @@ use App\Repositories\ProductRepository;
 use App\Services\ClientService;
 use App\Services\MetaDataService;
 
-class NewClientController extends Controller
+class PagesController extends Controller
 {
     /**
      * @var ClientService
@@ -27,6 +27,8 @@ class NewClientController extends Controller
     /**
      * ProductController constructor.
      * @param ClientService $clientService
+     * @param ProductRepository $productRepository
+     * @param MetaDataService $metaDataService
      */
     public function __construct(ClientService $clientService, ProductRepository $productRepository, MetaDataService $metaDataService)
     {
@@ -41,7 +43,8 @@ class NewClientController extends Controller
     public function index()
     {
         return view('client.v2.pages.landing', [
-            'pageData' => $this->clientService->getPageData()
+            'pageData' => $this->clientService->getPageData(),
+            'metaData' => $this->metaDataService->collectMetaData('landing')
         ]);
     }
 
@@ -51,7 +54,8 @@ class NewClientController extends Controller
     public function contacts()
     {
         return view('client.v2.pages.contacts', [
-            'pageData' => $this->clientService->getPageData()
+            'pageData' => $this->clientService->getPageData(),
+            'metaData' => $this->metaDataService->collectMetaData('contact')
         ]);
     }
 
@@ -61,7 +65,8 @@ class NewClientController extends Controller
     public function about()
     {
         return view('client.v2.pages.about', [
-            'pageData' => $this->clientService->getPageData()
+            'pageData' => $this->clientService->getPageData(),
+            'metaData' => $this->metaDataService->collectMetaData('about')
         ]);
     }
 
@@ -72,7 +77,9 @@ class NewClientController extends Controller
     {
         return view('client.v2.pages.catalog', [
             'sidebarData' => $this->clientService->sidebarData(),
-            'pageData' => $this->clientService->getPageData()
+            'pageData' => $this->clientService->getPageData(),
+            'metaData' => $this->metaDataService->collectMetaData('catalog')
+
         ]);
     }
 

@@ -32,43 +32,23 @@ Route::group(['prefix' => 'admin'], function (){
     Route::post('confirm-callback-request', 'Admin\HomeController@confirmCallback');
 });
 
-Route::group(['prefix' => 'v2'], function (){
-    Route::name('new-client.')->group(function (){
-        Route::get('', 'Client\NewClientController@index')->name('landing');
-        Route::get('contact', 'Client\NewClientController@contacts')->name('contacts');
-        Route::get('about', 'Client\NewClientController@about')->name('about-us');
-        Route::get('catalog', 'Client\NewClientController@catalog')->name('catalog');
-//        Route::get('delivery', 'Client\NewClientController@delivery')->name('delivery');
+Route::name('new-client.')->group(function (){
+    Route::get('', 'Client\PagesController@index')->name('landing');
+    Route::get('contact', 'Client\PagesController@contacts')->name('contacts');
+    Route::get('about', 'Client\PagesController@about')->name('about-us');
+    Route::get('catalog', 'Client\PagesController@catalog')->name('catalog');
 
-        Route::group(['prefix' => 'checkout'], function () {
-            Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
-            Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
-            Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
-        });
-
-        Route::get('/automotive/{id}', 'Client\NewClientController@show')->name('product.show');
-
-        Route::get('/filter', 'Client\NewClientController@getFilteredProducts')->name('filter');
-        Route::get('/search', 'Client\NewClientController@getSearchedProducts')->name('search');
+    Route::group(['prefix' => 'checkout'], function () {
+        Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
+        Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
+        Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
     });
-});
 
-//Route::name('client.')->group(function (){
-//    Route::get('/', 'Client\ClientController@index')->name('index');
-//    Route::get('/about', 'Client\ClientController@about')->name('about');
-//    Route::get('/contact', 'Client\ClientController@contact')->name('contact');
-//
-//    Route::get('/automotive/{id}', 'Client\ProductController@show')->name('product.show');
-//
-//    Route::get('/filter', 'Client\ProductController@getFilteredProducts')->name('filter');
-//    Route::get('/search', 'Client\ProductController@getSearchedProducts')->name('search');
-//
-//    Route::group(['prefix' => 'checkout'], function () {
-//        Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
-//        Route::post('/', 'Client\CheckoutController@store')->name('checkout.order');
-//        Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
-//    });
-//});
+    Route::get('/automotive/{id}', 'Client\PagesController@show')->name('product.show');
+
+    Route::get('/filter', 'Client\PagesController@getFilteredProducts')->name('filter');
+    Route::get('/search', 'Client\PagesController@getSearchedProducts')->name('search');
+});
 
 Route::group(['prefix' => 'ajax'], function (){
     Route::get('get-models', 'Client\ClientController@getModels');
