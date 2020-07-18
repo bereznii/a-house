@@ -1546,6 +1546,10 @@ section {
     font-family: "Open Sans", sans-serif;
 }
 
+#topbar .contact-info i.icofont-calendar {
+    margin-left: 15px;
+}
+
 /* Modal Fade */
 .modalfade {
     animation: fadeIn 2s;
