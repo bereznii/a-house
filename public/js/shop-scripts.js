@@ -83,12 +83,13 @@ $(document).ready(function() {
                 productId: productId,
             },
             success: function (data) {
-                newQuantity = currentInCartQuantity + 1;
-                $('.cartQuantity').text('(' + newQuantity + ')');
-                $('.cartQuantity').data('currentquantity', newQuantity);
+                if (data.status) {
+                    newQuantity = currentInCartQuantity + 1;
+                    $('.cartQuantity').text('(' + newQuantity + ')');
+                    $('.cartQuantity').data('currentquantity', newQuantity);
+                }
             }
         });
-
     });
 
     $(document).on('change', '.quantity-input', function () {
@@ -114,14 +115,14 @@ $(document).ready(function() {
 
     });
 
-    $(document).on('click', '.sendCallbackRequest-btn', function (event) {
+    $(document).on('click', '#sendCallbackRequest-btn', function (event) {
         event.preventDefault();
 
         var name = $('[name="callbackName"]').val();
         var phone = $('[name="callbackPhone"]').val();
         var comment = $('[name="callbackComment"]').val();
 
-        var myForm = $('.modal-form');
+        var myForm = $('.php-email-form');
         if (!myForm[0].checkValidity()) {
             myForm[0].reportValidity();
             return;
@@ -139,10 +140,13 @@ $(document).ready(function() {
                 phone: phone,
                 comment: comment,
             },
-            success: function (data) {
-                $('.callback-modal-content').empty();
-                $('#exampleModalLabel').empty();
-                $('#exampleModalLabel').text('Спасибо! Менеджер свяжется с Вами в ближайшее время.');
+            success: function () {
+                $('#formFields').empty();
+                $('#formCard').removeClass('d-flex align-items-stretch');
+                $('.php-email-form')
+                    .append('<h5 class="d-flex justify-content-center" id="formMessage" hidden>' +
+                        'Спасибо! Ваш запрос отправлен.<br> Менеджер свяжется с Вами в ближайшее время.' +
+                        '</h5>');
             }
         });
 

@@ -45,14 +45,21 @@ class CartService
 
     /**
      * @param array $validatedData
-     * @return void
+     * @return bool
      */
-    public function updateContent(array $validatedData)
+    public function updateContent(array $validatedData): bool
     {
         $productId = $validatedData['productId'];
 
         $existingQuantity = (session("cart.{$productId}", 0));
-        session(["cart.{$productId}" => $existingQuantity+1]);
+
+        if ($existingQuantity === 0) {
+            session(["cart.{$productId}" => $existingQuantity+1]);
+
+            return true;
+        }
+
+        return false;
     }
 
     /**

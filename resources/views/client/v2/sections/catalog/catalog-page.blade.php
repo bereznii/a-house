@@ -40,7 +40,7 @@
                             <h6><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-success btn-sm addToCart-btn" data-productid="{{ $product->id }}">
+                            <button class="btn btn-success btn-sm addToCart-btn" data-toggle="modal" data-target=".bd-example-modal-sm" data-productid="{{ $product->id }}">
                                 <i class="fas fa-cart-plus"></i>
                                 Добавить
                             </button>

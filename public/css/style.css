@@ -1545,3 +1545,43 @@ section {
 .catalog-item-card h1, h2, h3, h4, h5, h6{
     font-family: "Open Sans", sans-serif;
 }
+
+/* Modal Fade */
+.modalfade {
+    animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s; /* Firefox */
+    -webkit-animation: fadeIn 2s; /* Safari and Chrome */
+    -o-animation: fadeIn 2s; /* Opera */
+}
+@keyframes fadeIn {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadeIn { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadeIn { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadeIn { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}

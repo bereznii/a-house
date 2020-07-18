@@ -14,7 +14,8 @@
                 <li class="@if(route('new-client.checkout') == $pageData['currentUrl']) active @endif">
                     <a href="{{ route('new-client.checkout') }}">
                         <i class="icofont-cart"></i>
-                         (777) Корзина
+                        <span class="cartQuantity" id="cartQuantity" data-currentQuantity="{{ $sidebarData['cartCount'] }}">@if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif</span>
+                        Корзина
                     </a>
                 </li>
             </ul>

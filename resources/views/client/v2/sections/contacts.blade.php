@@ -28,31 +28,33 @@
 
             </div>
 
-            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" id="formCard">
                 <form action="#" class="php-email-form">
-                    <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="name">Имя</label>
-                            <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                    <div id="formFields">
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="name">Имя</label>
+                                <input type="text" required name="callbackName" placeholder="Имя*" class="form-control" id="name"/>
+                                <div class="validate"></div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="email">Номер телефона</label>
+                                <input type="text" required class="form-control" placeholder="+38 Телефон*" name="callbackPhone" id="phone"/>
+                                <div class="validate"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Текст обращения</label>
+                            <textarea class="form-control" id="message" name="callbackComment" placeholder="Дополнительный комментарий..." rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
                             <div class="validate"></div>
                         </div>
-                        <div class="form-group col-md-6">
-                            <label for="email">Номер телефона</label>
-                            <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Please enter a valid email" />
-                            <div class="validate"></div>
+                        <div class="mb-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
                         </div>
+                        <div class="text-center"><button class="btn btn-success" id="sendCallbackRequest-btn" type="button">Отправить</button></div>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Текст обращения</label>
-                        <textarea class="form-control" id="message" name="message" rows="10" data-rule="required" data-msg="Please write something for us"></textarea>
-                        <div class="validate"></div>
-                    </div>
-                    <div class="mb-3">
-                        <div class="loading">Loading</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Your message has been sent. Thank you!</div>
-                    </div>
-                    <div class="text-center"><button class="btn btn-success" type="button">Отправить</button></div>
                 </form>
             </div>
 

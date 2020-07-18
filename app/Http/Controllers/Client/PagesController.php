@@ -43,6 +43,7 @@ class PagesController extends Controller
     public function index()
     {
         return view('client.v2.pages.landing', [
+            'sidebarData' => $this->clientService->sidebarData(),
             'pageData' => $this->clientService->getPageData()
         ]);
     }
@@ -53,6 +54,7 @@ class PagesController extends Controller
     public function contacts()
     {
         return view('client.v2.pages.contacts', [
+            'sidebarData' => $this->clientService->sidebarData(),
             'pageData' => $this->clientService->getPageData(),
             'metaData' => $this->metaDataService->collectMetaData('contact')
         ]);
@@ -64,6 +66,7 @@ class PagesController extends Controller
     public function about()
     {
         return view('client.v2.pages.about', [
+            'sidebarData' => $this->clientService->sidebarData(),
             'pageData' => $this->clientService->getPageData(),
             'metaData' => $this->metaDataService->collectMetaData('about')
         ]);
