@@ -4,19 +4,20 @@
         <div class="section-title">
             <h2>Производители</h2>
             <p>
-                Наш сервис предлагает автомобильные стёкла и аксессуары наивысшего качества от лучших мировых производителей: Pilkington, Sekurit, Splintex, AGC, Autover, PGW и многих других!
+                Наш сервис предлагает большой выбор автомобильного стёкла и аксессуаров от более чем 50 мировых производителей, среди которых: Pilkington, Sekurit, Splintex, AGC, Autover, PGW и другие.
             </p>
         </div>
 
         <div class="owl-carousel clients-carousel">
-            <img src="{{ url('landing_img/clients/client-1.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-2.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-3.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-4.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-5.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-6.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-7.png') }}" alt="">
-            <img src="{{ url('landing_img/clients/client-8.png') }}" alt="">
+            <img src="{{ asset('storage/img/vendors/pilkington-trans.png') }}" alt="Pilkington Logo">
+            <img src="{{ asset('storage/img/vendors/sekurit-trans.png') }}" alt="Sekurit Logo">
+            <img src="{{ asset('storage/img/vendors/agc-trans.png') }}" alt="AGC Logo">
+            <img src="{{ asset('storage/img/vendors/sg-trans.png') }}" alt="Safeglass Logo">
+            <img src="{{ asset('storage/img/vendors/pgw-trans.png') }}" alt="PGW Logo">
+            <img src="{{ asset('storage/img/vendors/starglass-trans.png') }}" alt="Starglass Logo">
+            <img src="{{ asset('storage/img/vendors/xyg-trans.png') }}" alt="XYG Logo">
+            <img src="{{ asset('storage/img/vendors/nordglass-trans.png') }}" alt="Nordglass Logo">
+            <img src="{{ asset('storage/img/vendors/guardianglass-trans.png') }}" alt="Guardianglass Logo">
         </div>
 
     </div>
