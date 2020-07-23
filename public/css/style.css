@@ -1594,3 +1594,18 @@ section {
     display: flex!important;
     align-items: center!important;
 }
+
+@media screen and ( max-width: 520px ){
+
+    li.page-item {
+
+        display: none;
+    }
+
+    .page-item:nth-child(-n+5),
+    .page-item:nth-last-child(-n+4),
+    .page-item.active {
+
+        display: block;
+    }
+}

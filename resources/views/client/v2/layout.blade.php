@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ru-UA">
-
     <head>
         <!-- Global site tag (gtag.js) - Google Analytics -->
 {{--        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-157621129-1"></script>--}}
@@ -39,7 +38,6 @@
         <link href="{{ url('landing_assets/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
         <link href="{{ url('landing_assets/animate.css/animate.min.css') }}" rel="stylesheet">
         <link href="{{ url('landing_assets/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-        <link href="{{ url('landing_assets/venobox/venobox.css') }}" rel="stylesheet">
 
         <!-- Template Main CSS File -->
         <link href="/css/style.css" rel="stylesheet">
@@ -62,42 +60,39 @@
             </style>
         @endif
     </head>
-
     <body>
 
-    <!-- ======= Top Bar ======= -->
-    <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
-        <div class="container d-flex">
-            <div class="contact-info mr-auto">
-                <i class="icofont-envelope"></i> <a href="mailto:autoglasshouse20@gmail.com">autoglasshouse20@gmail.com</a>
-                <i class="icofont-phone"></i> <a href="tel:+380986921349">+38 (098) 692 13 49</a>
-                <i class="icofont-calendar"></i> <a href="#"> Пн-Пт.: с 8:00 до 18:00</a>
+        <!-- ======= Top Bar ======= -->
+        <div id="topbar" class="d-none d-lg-flex align-items-center fixed-top">
+            <div class="container d-flex">
+                <div class="contact-info mr-auto">
+                    <i class="icofont-envelope"></i> <a href="mailto:autoglasshouse20@gmail.com">autoglasshouse20@gmail.com</a>
+                    <i class="icofont-phone"></i> <a href="tel:+380986921349">+38 (098) 692 13 49</a>
+                    <i class="icofont-calendar"></i> <a href="#"> Пн-Пт.: с 9:00 до 18:00</a>
+                </div>
             </div>
         </div>
-    </div>
 
-    @yield('v2.content')
+        @yield('v2.content')
 
-    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+        <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script
-        src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-        crossorigin="anonymous"></script>
-    <script src="/landing_assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/landing_assets/jquery.easing/jquery.easing.min.js"></script>
-    <script src="/landing_assets/owl.carousel/owl.carousel.min.js"></script>
-    <script src="/landing_assets/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/landing_assets/venobox/venobox.min.js"></script>
+        <!-- Vendor JS Files -->
+        <script
+            src="https://code.jquery.com/jquery-3.5.1.min.js"
+            integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+            crossorigin="anonymous"></script>
+        <script src="/landing_assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="/landing_assets/jquery.easing/jquery.easing.min.js"></script>
+        <script src="/landing_assets/owl.carousel/owl.carousel.min.js"></script>
+        <script src="/landing_assets/isotope-layout/isotope.pkgd.min.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 
-    <!-- Template Main JS File -->
-    <script src="/js/main.js"></script>
-    <script src="/js/shop-scripts.js"></script>
+        <!-- Template Main JS File -->
+        <script src="/js/main.js"></script>
+        <script src="/js/shop-scripts.js"></script>
 
     </body>
-
 </html>
