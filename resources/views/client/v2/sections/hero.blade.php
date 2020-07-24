@@ -9,9 +9,16 @@
             <div class="carousel-item active" style="background-image: url({{ asset('landing_img/hero/header1.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Вас приветствует <span> Autoglass House</span></h2>
-                        <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Подробнее</a>
+                        <h2 class="animate__animated animate__fadeInDown">Вас приветствует
+                            <span> Autoglass House</span>, интернет-магазин автомобильного стекла
+                        </h2>
+                        <p class="animate__animated animate__fadeInUp">Мы предлагаем качественное автостекло
+                            с Европы и отменный отечественный сервис. Больше 250 клиентов в месяц, 4500 позиций
+                            лобового, заднего, бокового стекла и аксессуаров для монтажа в наличии.
+                            <br>
+                            Для удобного подбора предлагаем наш онлайн-каталог.
+                        </p>
+                        <a href="{{ route('new-client.catalog') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Перейти в каталог</a>
                     </div>
                 </div>
             </div>
@@ -21,7 +28,10 @@
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">При оформлении заказа на сайте -5%</h2>
-                        <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                        <p class="animate__animated animate__fadeInUp">При оформлении заказа на покупку стекла онлайн на
+                            сайте скидка 5%, и при дополнительном оформлении замены стекла (работа по установке),
+                            скидка 7% на всю сумму (стекло + работа)!
+                        </p>
                     </div>
                 </div>
             </div>
@@ -30,9 +40,11 @@
             <div class="carousel-item" style="background-image: url({{ asset('landing_img/hero/header3.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Помощь в подборе нужного стекла по фото</h2>
-                        <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-                        <a href="#cta" class="btn-get-started animate__animated animate__fadeInUp scrollto">Подробнее</a>
+                        <h2 class="animate__animated animate__fadeInDown">Помощь в подборе по фото</h2>
+                        <p class="animate__animated animate__fadeInUp">Современное автостекло несёт в себе очень много
+                            функций. Вы можете сделать несколько фотографий стекла Вашего авто с нескольких ракурсов и
+                            мы сможем помочь в подборе подходящего.
+                        </p>
                     </div>
                 </div>
             </div>

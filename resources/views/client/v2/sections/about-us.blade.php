@@ -4,7 +4,7 @@
         @if(strpos(url()->current(), 'about') === false)
             <div class="section-title">
                 <h2>О нас</h2>
-                <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+{{--                <p>Почему мы, сервис по продаже и установке автостекла, именно те, кто Вам нужен?</p>--}}
             </div>
         @endif
 
@@ -13,20 +13,34 @@
                 <img src="{{ url('landing_img/about.jpg') }}" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                <p class="font-italic">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                    magna aliqua.
-                </p>
+                <h3>Почему мы, сервис по продаже и установке автостекла, именно те, кто Вам нужен?</h3>
                 <ul>
-                    <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                    <li><i class="icofont-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                    <li><i class="icofont-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                    <li><i class="icofont-check-circled"></i> Предлагаем Вам автостекло и аксессуары высокого качества
+                        от лучших мировых производителей автостекла: Pilkington, Sekurit, Splintex, AGC, PGW и других.
+                        Многолетний опыт мы подтверждаем гарантией на услуги 12 месяцев.
+                    </li>
+                    <li><i class="icofont-check-circled"></i> Купить стекло в нашем интернет-магазине очень легко и
+                        удобно. Мы даём Вам возможность найти нужное автостекло в каталоге по модели авто, либо по Еврокоду.
+                        У нас имеется широкий выбор производителей из Европы. Здесь Вы сможете быстро найти
+                        и выбрать нужное стекло дял своего автомобиля. Если не получится, мы Вам поможем!
+                    </li>
+                    <li><i class="icofont-check-circled"></i>
+                        Мы предоставляем выбор из более чем 4500 наименований лобового, заднего, бокового автостекла и
+                        аксессуаров для его замены.
+                    </li>
                 </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-sm-12 text-center">
                 <p>
-                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                    culpa qui officia deserunt mollit anim id est laborum
+                    Для установки автомобильного стекла, мы используем материалы мировых брендов:
+                    Sika, 3M и других. Это даёт гарантию качественной установки и долговечной службы.
+                    <br>
+                    Обратите внимание, нашим клиентам с других регионов, мы гарантируем отправку стекла
+                    перевозчиком "Новая почта" в день заказа! ГлавныЙ приоритет наших специалистов ー работа на
+                    результат. Решение проблем клиента и является сутью нашей работы. Мы всегда готовы выслушать и помочь
+                    Вам в выборе.
                 </p>
             </div>
         </div>
