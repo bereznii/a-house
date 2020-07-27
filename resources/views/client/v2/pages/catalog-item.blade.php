@@ -4,15 +4,16 @@
 
     <script type="application/ld+json">
         {
-            "@context": "http://schema.org",
-            "@type": "WebSite",
-            "url": "http://autoglasshouse.com.ua/",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://autoglasshouse.com.ua/search?query={query}",
-              "query": "required"
-            }
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "Autoglass House",
+        "url": "http://autoglasshouse.com.ua/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://autoglasshouse.com.ua/search?query={query}",
+          "query": "required"
         }
+    }
     </script>
     <script type="application/ld+json">
     {
@@ -25,13 +26,22 @@
        "position": 1,
        "item":
        {
+        "@id": "https://autoglasshouse.com.ua/",
+        "name": "Интернет-магазин Autoglass House"
+        }
+      },
+      {
+       "@type": "ListItem",
+       "position": 2,
+       "item":
+       {
         "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}",
         "name": "{{ $product->make->name ?? '' }}"
         }
       },
       {
        "@type": "ListItem",
-      "position": 2,
+      "position": 3,
       "item":
        {
          "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}&models={{ $product->model_id ?? '' }}",
@@ -40,7 +50,7 @@
       },
       {
        "@type": "ListItem",
-      "position": 3,
+      "position": 4,
       "item":
        {
          "@id": "https://autoglasshouse.com.ua/filter?makes={{ $product->make_id ?? '' }}&models={{ $product->model_id ?? '' }}&types={{ $product->type_id ?? '' }}",

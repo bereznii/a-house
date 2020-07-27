@@ -4,15 +4,16 @@
 
     <script type="application/ld+json">
         {
-            "@context": "http://schema.org",
-            "@type": "WebSite",
-            "url": "http://autoglasshouse.com.ua/",
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://autoglasshouse.com.ua/search?query={query}",
-              "query": "required"
-            }
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "Autoglass House",
+        "url": "http://autoglasshouse.com.ua/",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://autoglasshouse.com.ua/search?query={query}",
+          "query": "required"
         }
+    }
     </script>
     <script type="application/ld+json">
      {
@@ -31,6 +32,33 @@
          "telephone" : "+380986921349"
         }
      }
+    </script>
+    <script type="application/ld+json">
+    {
+     "@context": "http://schema.org",
+     "@type": "BreadcrumbList",
+     "itemListElement":
+     [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "item":
+       {
+        "@id": "https://autoglasshouse.com.ua/",
+        "name": "Интернет-магазин Autoglass House"
+        }
+      },
+      {
+       "@type": "ListItem",
+      "position": 2,
+      "item":
+       {
+         "@id": "https://autoglasshouse.com.ua/contact",
+         "name": "Контакты"
+       }
+      }
+     ]
+    }
     </script>
 
     @include('client.v2.sections.header')

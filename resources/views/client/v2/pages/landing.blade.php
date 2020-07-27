@@ -6,6 +6,7 @@
     {
         "@context": "http://schema.org",
         "@type": "WebSite",
+        "name": "Autoglass House",
         "url": "http://autoglasshouse.com.ua/",
         "potentialAction": {
           "@type": "SearchAction",

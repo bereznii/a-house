@@ -20,6 +20,33 @@
         }
      }
     </script>
+    <script type="application/ld+json">
+    {
+     "@context": "http://schema.org",
+     "@type": "BreadcrumbList",
+     "itemListElement":
+     [
+      {
+       "@type": "ListItem",
+       "position": 1,
+       "item":
+       {
+        "@id": "https://autoglasshouse.com.ua/",
+        "name": "Интернет-магазин Autoglass House"
+        }
+      },
+      {
+       "@type": "ListItem",
+      "position": 2,
+      "item":
+       {
+         "@id": "https://autoglasshouse.com.ua/about-us",
+         "name": "О Нас"
+       }
+      }
+     ]
+    }
+    </script>
 
     @include('client.v2.sections.header')
 
