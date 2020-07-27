@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function __construct(CallbackRequestRepository $callbackRequestRepository)
     {
-//        $this->middleware('auth');
+        $this->middleware('auth');
         $this->callbackRequestRepository = $callbackRequestRepository;
     }
 
