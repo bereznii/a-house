@@ -35,7 +35,7 @@ Route::group(['prefix' => 'admin'], function (){
 Route::name('new-client.')->group(function (){
     Route::get('', 'Client\PagesController@index')->name('landing');
     Route::get('contact', 'Client\PagesController@contacts')->name('contacts');
-    Route::get('about', 'Client\PagesController@about')->name('about-us');
+    Route::get('about-us', 'Client\PagesController@about')->name('about-us');
     Route::get('catalog', 'Client\PagesController@catalog')->name('catalog');
 
     Route::group(['prefix' => 'checkout'], function () {

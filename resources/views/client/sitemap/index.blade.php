@@ -21,7 +21,7 @@
             <priority>1.0</priority>
         </url>
         <url>
-            <loc>https://autoglasshouse.com.ua/about</loc>
+            <loc>https://autoglasshouse.com.ua/about-us</loc>
             <lastmod>{{ now()->tz('GMT')->toAtomString() }}</lastmod>
             <changefreq>always</changefreq>
             <priority>1.0</priority>

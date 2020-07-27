@@ -29,14 +29,17 @@ class MetaDataService
             case 'contact':
                 $metaTitle = 'Автостекло Киев | Контакты | Продажа | Установка | Замена';
                 break;
+            case 'landing':
+                $metaTitle = 'Автостекло Киев | Купить автомобильное стекло | Замена';
+                break;
             case 'about':
-                $metaTitle = 'Автомобильное стекло | Автостекло | Продажа | Установка | Гарантия | Качество';
+                $metaTitle = 'Автомобильное стекло | Автостекло | Продажа | Установка';
                 break;
             case 'product':
                 $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name ?? '';
                 $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name ?? 'Киев';
                 $translation = $obj->type->translation ?? 'Автостекло';
-                $metaTitle = "{$translation} {$modelName} купить ($modelNameCyrillic) | Замена автостекла Киев | Широкий выбор | Автостекло купить Киев";
+                $metaTitle = "{$translation} {$modelName} купить ($modelNameCyrillic) | Замена автостекла Киев | Автостекло купить Киев";
                 break;
             case 'catalog':
                 if (isset($obj['models']['selectedId']) && isset($obj['models']['list'])) {
@@ -55,7 +58,7 @@ class MetaDataService
                     $autoglassFor = 'на любой автомобиль';
                 }
 
-                $metaTitle = "Автостекло {$autoglassFor} купить | Автостекло | Установка | Замена | Купить автомобильное стекло | Качество";
+                $metaTitle = "Автостекло {$autoglassFor} купить | Установка | Замена";
                 break;
         }
 
@@ -73,8 +76,11 @@ class MetaDataService
             case 'contact':
                 $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
                 break;
+            case 'landing':
+                $metaTitle = "Autoglass House осуществляет продажу и установку автомобильных стёкол. Свяжитесь с нами по телефону, вайберу или по электронной почте, закажите обратный звонок, и мы Вам перезвоним в течении 15 минут";
+                break;
             case 'about':
-                $metaTitle = "Интернет-магазин 'Autoglass House' осуществляет продажу и установку автомобильных стёкол мировых брендов для любого автомобиля. Возможна доставка автостекла по вашему адресу";
+                $metaTitle = "В 'Autoglass House' возможно купить или заменить автомобильное стекло для любого автомобился. Доставка автостекла по адресу или перевозчиком 'Новая Почта'";
                 break;
             case 'product':
                 $translatedDesc = $obj->translated_description ?? '';
@@ -110,7 +116,7 @@ class MetaDataService
                     $autoglassFor = 'на любой автомобиль';
                 }
 
-                $metaTitle = "Автостекло {$autoglassFor} купить по лучшей цене. Доставим, либо установим в кратчайшие сроки. Поможем подобрать подходящее автостекло. Autoglass House";
+                $metaTitle = "Автостекло {$autoglassFor} купить по лучшей цене. Поможем подобрать подходящее автостекло. Autoglass House";
                 break;
         }
 
@@ -129,12 +135,15 @@ class MetaDataService
                 $metaTitle = 'Контакты Autoglass House, Autoglass House почта, подобрать автостекло, ' .
                     'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
-            case 'about':
+            case 'landing':
                 $metaTitle = 'Интернет магазин автостекла, подобрать автостекло, установка автостекла, ' .
                     'купить автостекло, дёшево, быстро, автостекло Киев, автостекло Украина, автостекло, замена автостекла';
                 break;
+            case 'about':
+                $metaTitle = 'Интернет-магазин автостекла, купить автостекло, подобрать автостекло, установка автостекла, ' .
+                    'замена автостекла, автостекло Киев, автостекло Украина, автостекло';
+                break;
             case 'product':
-
                 $modelName = $obj->model->modelNameOption->model_name ?? $obj->model->name ?? '';
                 $modelNameCyrillic = $obj->model->modelNameOption->cyrillic_name ?? $obj->model->name ?? 'Киев';
                 $translation = $obj->type->translation ?? 'Автостекло';

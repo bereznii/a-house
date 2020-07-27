@@ -44,7 +44,8 @@ class PagesController extends Controller
     {
         return view('client.v2.pages.landing', [
             'sidebarData' => $this->clientService->sidebarData(),
-            'pageData' => $this->clientService->getPageData()
+            'pageData' => $this->clientService->getPageData(),
+            'metaData' => $this->metaDataService->collectMetaData('landing')
         ]);
     }
 

@@ -15,7 +15,8 @@
      "contactPoint": {
          "@type": "ContactPoint",
          "contactType": "Customer support",
-         "email": "autoglasshouse20@gmail.com"
+         "email": "autoglasshouse20@gmail.com",
+         "telephone" : "+380986921349"
         }
      }
     </script>

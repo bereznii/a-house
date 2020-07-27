@@ -3,6 +3,18 @@
 @section('v2.content')
 
     <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "http://autoglasshouse.com.ua/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://autoglasshouse.com.ua/search?query={query}",
+              "query": "required"
+            }
+        }
+    </script>
+    <script type="application/ld+json">
     {
      "@context": "http://schema.org",
      "@type": "BreadcrumbList",

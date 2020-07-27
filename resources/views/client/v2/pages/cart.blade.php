@@ -2,6 +2,19 @@
 
 @section('v2.content')
 
+    <script type="application/ld+json">
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "url": "http://autoglasshouse.com.ua/",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://autoglasshouse.com.ua/search?query={query}",
+              "query": "required"
+            }
+        }
+    </script>
+
     @include('client.v2.sections.header')
 
     @include('client.v2.sections.breadcrumbs')
