@@ -11,14 +11,14 @@
         </div>
 
         <div class="owl-carousel clients-carousel">
-            <img src="{{ asset('storage/img/vendors/pilkington-trans.png') }}" alt="Pilkington Logo">
-            <img src="{{ asset('storage/img/vendors/sekurit-trans.png') }}" alt="Sekurit Logo">
-            <img src="{{ asset('storage/img/vendors/agc-trans.png') }}" alt="AGC Logo">
-            <img src="{{ asset('storage/img/vendors/sg-trans.png') }}" alt="Safeglass Logo">
-            <img src="{{ asset('storage/img/vendors/pgw-trans.png') }}" alt="PGW Logo">
-            <img src="{{ asset('storage/img/vendors/starglass-trans.png') }}" alt="Starglass Logo">
-            <img src="{{ asset('storage/img/vendors/nordglass-trans.png') }}" alt="Nordglass Logo">
-            <img src="{{ asset('storage/img/vendors/guardianglass-trans.png') }}" alt="Guardianglass Logo">
+            <img src="{{ asset('storage/img/pilkington-trans.png') }}" alt="Pilkington Logo">
+            <img src="{{ asset('storage/img/sekurit-trans.png') }}" alt="Sekurit Logo">
+            <img src="{{ asset('storage/img/agc-trans.png') }}" alt="AGC Logo">
+            <img src="{{ asset('storage/img/sg-trans.png') }}" alt="Safeglass Logo">
+            <img src="{{ asset('storage/img/pgw-trans.png') }}" alt="PGW Logo">
+            <img src="{{ asset('storage/img/starglass-trans.png') }}" alt="Starglass Logo">
+            <img src="{{ asset('storage/img/nordglass-trans.png') }}" alt="Nordglass Logo">
+            <img src="{{ asset('storage/img/guardianglass-trans.png') }}" alt="Guardianglass Logo">
         </div>
 
     </div>
