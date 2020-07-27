@@ -12,7 +12,7 @@
                         <h4 class="d-flex justify-content-between align-items-center mb-3">
                             <span class="text-muted">Корзина</span>
                         </h4>
-                        @if(isset($content))
+                        @if($content['products']->isNotEmpty())
                             <ul class="list-group mb-3">
                                 @foreach($content['products'] as $key => $product)
                                     <li class="list-group-item lh-condensed">
@@ -34,10 +34,15 @@
                                     </li>
                                 @endforeach
                                 <li class="list-group-item d-flex justify-content-between">
+                                    <span>Скидка</span>
+                                    <strong><span class="text-success">-5%</span></strong>
+                                </li>
+                                    <li class="list-group-item d-flex justify-content-between">
                                     <span>Итого (ГРН)</span>
-                                    <strong>&#8372; {{ $content['totalPrice'] ?? '0.00' }}</strong>
+                                    <strong> &#8372; {{ $content['totalPrice'] ?? '0.00' }}</strong>
                                 </li>
                             </ul>
+                            <small class="text-muted">* В случае необходимой замены стекла, скидка составляет 7% и оговаривается с менеджером.</small>
                         @endif
 
                     </div>
@@ -54,13 +59,13 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="email">Email <span class="text-muted">(Optional)</span></label>
-                            <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" value="{{ old('email') }}">
+                            <label for="email">Электронная почта <span class="text-muted">(Необязательно)</span></label>
+                            <input type="email" name="email" class="form-control" id="email" placeholder="address@gmail.com" value="{{ old('email') }}">
                         </div>
 
                         <div class="mb-3">
                             <label for="address">Номер телефона</label>
-                            <input type="text" name="phone" class="form-control" id="address" placeholder="+380(ХХ)ХХХ-ХХ-ХХ" value="{{ old('phone') }}" required>
+                            <input type="text" name="phone" class="form-control" id="address" placeholder="+38 Телефон*" value="{{ old('phone') }}" required>
                         </div>
 
                         <div class="mb-3">

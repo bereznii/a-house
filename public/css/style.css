@@ -555,6 +555,17 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 500px) {
+  #hero h2 {
+    font-size: 1.1rem;
+  }
+
+    #hero .carousel-container {
+        left: 10px;
+        right: 10px;
+    }
+}
+
 @media (min-width: 1024px) {
   #hero .carousel-control-prev, #hero .carousel-control-next {
     width: 5%;
