@@ -5,7 +5,7 @@
             <h2>Производители</h2>
             <p>
                 Наш более чем 15 летний опыт позволил отобрать лучших производителей автомобильных стёкол.
-                Мы предлагаем большой выбор автомобильного стёкла и аксессуаров от более чем 50 мировых производителей,
+                Мы предлагаем большой выбор автомобильного стёкла и аксессуаров от более чем 10 мировых производителей,
                 среди которых: Pilkington, Sekurit, Splintex, AGC, Autover, PGW и другие.
             </p>
         </div>
@@ -17,7 +17,6 @@
             <img src="{{ asset('storage/img/vendors/sg-trans.png') }}" alt="Safeglass Logo">
             <img src="{{ asset('storage/img/vendors/pgw-trans.png') }}" alt="PGW Logo">
             <img src="{{ asset('storage/img/vendors/starglass-trans.png') }}" alt="Starglass Logo">
-            <img src="{{ asset('storage/img/vendors/xyg-trans.png') }}" alt="XYG Logo">
             <img src="{{ asset('storage/img/vendors/nordglass-trans.png') }}" alt="Nordglass Logo">
             <img src="{{ asset('storage/img/vendors/guardianglass-trans.png') }}" alt="Guardianglass Logo">
         </div>
