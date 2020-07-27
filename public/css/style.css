@@ -564,6 +564,10 @@ h1, h2, h3, h4, h5, h6 {
         left: 10px;
         right: 10px;
     }
+
+    #header .logo {
+        font-size: 1.3rem;
+    }
 }
 
 @media (min-width: 1024px) {

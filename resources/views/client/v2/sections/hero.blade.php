@@ -29,7 +29,7 @@
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">При оформлении заказа на сайте -5%</h2>
                         <p class="animate__animated animate__fadeInUp">При оформлении заказа на покупку стекла онлайн на
-                            сайте скидка 5%, и при дополнительном оформлении замены стекла (работа по установке),
+                            сайте Вас ждёт скидка 5%, и при дополнительном оформлении замены стекла (работа по установке),
                             скидка 7% на всю сумму (стекло + работа)!
                         </p>
                     </div>
@@ -41,7 +41,7 @@
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Помощь в подборе по фото</h2>
-                        <p class="animate__animated animate__fadeInUp">Современное автостекло несёт в себе очень много
+                        <p class="animate__animated animate__fadeInUp">Современное автостекло часто имеет много
                             функций. Вы можете сделать несколько фотографий стекла Вашего авто с нескольких ракурсов и
                             мы сможем помочь в подборе подходящего.
                         </p>
