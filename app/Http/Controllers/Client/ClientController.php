@@ -29,6 +29,7 @@ class ClientController extends Controller
      * ClientController constructor.
      * @param ClientService $clientService
      * @param CallbackRequestRepository $callbackRequestRepository
+     * @param MetaDataService $metaDataService
      */
     public function __construct(
         ClientService $clientService,

@@ -80,5 +80,7 @@ class formatModelsNames extends Command
             }
 
         }
+
+        return 0;
     }
 }

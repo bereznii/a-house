@@ -21,7 +21,7 @@
     <link rel="icon" href="{{ asset('storage/icon-sm.ico') }}" type="image/icon type">
     <meta name="description" content="{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}">
     <meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
-    <meta name="robots" content="index, follow">
+    <meta name="robots" content="noindex, nofollow" />
 
     <!-- Sitemap -->
     <link href='{{ url('sitemap.xml') }}' rel='alternate' title='Sitemap' type='application/rss+xml'/>
@@ -75,14 +75,6 @@
                         <a class="nav-link" href="{{ route('client.checkout') }}"><i class="fas fa-shopping-cart"></i>
                             <span class="cartQuantity" id="cartQuantity" data-currentQuantity="{{ $sidebarData['cartCount'] }}">@if($sidebarData['cartCount'] > 0) ({{ $sidebarData['cartCount'] }}) @endif</span> Корзина
                         </a>
-                    </li>
-                    <li>
-                        <div class="d-block d-sm-none">
-                            <div class="pro-seller-label-banner" data-style="logo"></div>
-                            <link rel="stylesheet" href="https://a1.avto.pro/partnership/css?bt=3">
-                            <script async="" type="text/javascript" src="https://a1.avto.pro/partnership/js?bt=3&amp;sid=506506"></script>
-                            <a href="https://avto.pro" class="pro-seller-label-anchor">Avto.pro</a>
-                        </div>
                     </li>
                 </ul>
             </div>

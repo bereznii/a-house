@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use App\Services\CartService;
+use Illuminate\Http\JsonResponse;
 
 class CartController extends Controller
 {
@@ -14,7 +15,7 @@ class CartController extends Controller
 
     /**
      * CartController constructor.
-     * @param CartService $cartRepository
+     * @param CartService $cartService
      */
     public function __construct(CartService $cartService)
     {
@@ -22,23 +23,23 @@ class CartController extends Controller
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function update()
+    public function update(): JsonResponse
     {
         $validatedData = request()->validate([
             'productId' => 'required|numeric'
         ]);
 
-        $this->cartService->updateContent($validatedData);
+        $isAdded = $this->cartService->updateContent($validatedData);
 
-        return response()->json(['status' => true]);
+        return response()->json(['status' => $isAdded]);
     }
 
     /**
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
-    public function updateQuantity()
+    public function updateQuantity(): JsonResponse
     {
         $validatedData = request()->validate([
             'productId' => 'required|numeric',

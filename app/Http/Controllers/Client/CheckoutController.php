@@ -37,6 +37,7 @@ class CheckoutController extends Controller
      * @param CartService $cartService
      * @param ClientService $clientService
      * @param OrderRepository $orderRepository
+     * @param MetaDataService $metaDataService
      */
     public function __construct(
         CartService $cartService,
@@ -60,15 +61,17 @@ class CheckoutController extends Controller
     {
         $content = $this->cartService->getContent();
 
-        return view('client.checkout.index')->with([
+        return view('client.v2.pages.cart')->with([
             'sidebarData' => $this->clientService->sidebarData(),
-            'content' => $content
+            'content' => $content,
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 
     /**
      * Return client checkout page.
      *
+     * @param OrderRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store(OrderRequest $request)
@@ -77,13 +80,14 @@ class CheckoutController extends Controller
 
         $this->orderRepository->storeOrder($validated);
 
-        session()->flush();
+//        session()->flush();
         session()->flashInput(request()->input());
 
-        return view('client.checkout.index')->with([
+        return view('client.v2.pages.cart')->with([
             'sidebarData' => $this->clientService->sidebarData(),
             'metaData' => $this->metaDataService->collectMetaData('catalog'),
-            'thank' => true
+            'thank' => true,
+            'pageData' => $this->clientService->getPageData()
         ]);
     }
 

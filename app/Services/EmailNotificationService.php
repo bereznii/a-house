@@ -26,7 +26,9 @@ class EmailNotificationService implements NotificationInterface
      */
     public function sendCreatedOrderNotification(int $orderId)
     {
-        dispatch(new OrderCreatedJob($this->adminEmail, $orderId));
+        if (!empty($this->adminEmail)) {
+            dispatch(new OrderCreatedJob($this->adminEmail, $orderId));
+        }
 
         logger("ORDER {$orderId} | Notification sent to {$this->adminEmail}");
     }

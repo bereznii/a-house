@@ -27,6 +27,8 @@ class ProductController extends Controller
     /**
      * ProductController constructor.
      * @param ClientService $clientService
+     * @param ProductRepository $productRepository
+     * @param MetaDataService $metaDataService
      */
     public function __construct(ClientService $clientService, ProductRepository $productRepository, MetaDataService $metaDataService)
     {

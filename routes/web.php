@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,38 +13,30 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Auth::routes([
     'register' => false,
     'verify' => false,
     'reset' => false
 ]);
 
-Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function (){
-    Route::get('home', 'HomeController@index')->name('home');
-    Route::get('callbacks', 'HomeController@callbackPage')->name('home.callbacks');
-    Route::get('autopro', 'HomeController@exportForAutopro')->name('home.autopro');
-    Route::get('download-autopro', 'HomeController@downloadAutoproCatalog')->name('home.download-autopro');
-    Route::post('import', 'HomeController@import')->name('home.import.action');
-    Route::get('manufacturer-charge', 'HomeController@manufacturerCharge')->name('home.manufacturer-charge');
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('home', 'Admin\HomeController@index')->name('home');
+    Route::get('callbacks', 'Admin\HomeController@callbackPage')->name('home.callbacks');
+    Route::get('autopro', 'Admin\HomeController@exportForAutopro')->name('home.autopro');
+    Route::get('download-autopro', 'Admin\HomeController@downloadAutoproCatalog')->name('home.download-autopro');
+    Route::post('import', 'Admin\HomeController@import')->name('home.import.action');
+    Route::get('manufacturer-charge', 'Admin\HomeController@manufacturerCharge')->name('home.manufacturer-charge');
     Route::resource('orders', 'Admin\OrderController');
     Route::resource('models', 'Admin\ModelController');
 
-    Route::post('confirm-callback-request', 'HomeController@confirmCallback');
+    Route::post('confirm-callback-request', 'Admin\HomeController@confirmCallback');
 });
 
-Route::name('client.')->group(function (){
-    Route::get('/', 'Client\ClientController@index')->name('index');
-    Route::get('/about', 'Client\ClientController@about')->name('about');
-    Route::get('/contact', 'Client\ClientController@contact')->name('contact');
-
-    Route::get('/automotive/{id}', 'Client\ProductController@show')->name('product.show');
-
-    Route::get('/filter', 'Client\ProductController@getFilteredProducts')->name('filter');
-    Route::get('/search', 'Client\ProductController@getSearchedProducts')->name('search');
+Route::name('new-client.')->group(function (){
+    Route::get('', 'Client\PagesController@index')->name('landing');
+    Route::get('contact', 'Client\PagesController@contacts')->name('contacts');
+    Route::get('about-us', 'Client\PagesController@about')->name('about-us');
+    Route::get('catalog', 'Client\PagesController@catalog')->name('catalog');
 
     Route::group(['prefix' => 'checkout'], function () {
         Route::get('/', 'Client\CheckoutController@checkout')->name('checkout');
@@ -50,6 +44,10 @@ Route::name('client.')->group(function (){
         Route::get('/remove-from-order/{id}', 'Client\CheckoutController@removeFromCart')->name('checkout.removeFromCart');
     });
 
+    Route::get('/automotive/{id}', 'Client\PagesController@show')->name('product.show');
+
+    Route::get('/filter', 'Client\PagesController@getFilteredProducts')->name('filter');
+    Route::get('/search', 'Client\PagesController@getSearchedProducts')->name('search');
 });
 
 Route::group(['prefix' => 'ajax'], function (){

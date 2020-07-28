@@ -6,13 +6,15 @@ use App\Entities\Make;
 use App\Entities\MakeModel;
 use App\Entities\Product;
 use App\Entities\Type;
+use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Arr;
 
 class ClientService
 {
     /**
      * @return array
      */
-    public function sidebarData()
+    public function sidebarData(): array
     {
         $makes = null;
         if (!request()->session()->has('makes')) {
@@ -59,7 +61,7 @@ class ClientService
      * @param int $modelId
      * @return \Illuminate\Support\Collection
      */
-    public function getTypesByModelId($modelId)
+    public function getTypesByModelId($modelId): \Illuminate\Support\Collection
     {
         $typesForModel = Product::select('type_id')
             ->where('model_id', $modelId)
@@ -76,14 +78,51 @@ class ClientService
 
     /**
      * @param int $makeId
-     * @return MakeModel|\Illuminate\Database\Eloquent\Collection
+     * @return \Illuminate\Support\Collection
      */
-    public function getModelsByMakeId(int $makeId)
+    public function getModelsByMakeId(int $makeId): \Illuminate\Support\Collection
     {
         $models = MakeModel::where('make_id', $makeId)
             ->orderBy('name', 'asc')
             ->get();
 
         return $models;
+    }
+
+    /**
+     * @param string|null $specifiedName
+     * @return array
+     */
+    public function getPageData(string $specifiedName = null): array
+    {
+        $currentUrl = url()->current();
+
+        if (isset($specifiedName)) {
+            $title = $specifiedName;
+        } else {
+            $action = Arr::last(explode('/', $currentUrl));
+
+            switch ($action) {
+                case 'about':
+                    $title = 'О нас';
+                    break;
+                case 'contact':
+                    $title = 'Контакты';
+                    break;
+                case 'checkout':
+                    $title = 'Корзина';
+                    break;
+                default:
+                    $title = 'Каталог';
+                    break;
+            }
+        }
+
+        return [
+            'breadcrumbs' => [
+                'title' => $title
+            ],
+            'currentUrl' => $currentUrl
+        ];
     }
 }

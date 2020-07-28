@@ -1,18 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Entities\Make;
-use App\Entities\MakeModel;
 use App\Entities\Product;
 use App\Exports\CatalogExport;
+use App\Http\Controllers\Controller;
 use App\Imports\Import;
 use App\Entities\CallbackRequest;
 use App\Repositories\CallbackRequestRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 
 class HomeController extends Controller
@@ -25,7 +24,7 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param CallbackRequestRepository $callbackRequestRepository
      */
     public function __construct(CallbackRequestRepository $callbackRequestRepository)
     {
@@ -136,7 +135,7 @@ class HomeController extends Controller
         ini_set('max_execution_time', '90');
 
         $import = new Import();
-        $import->onlySheets(0);
+        $import->onlySheets(2);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLS);
 

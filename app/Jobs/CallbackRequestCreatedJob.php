@@ -45,6 +45,10 @@ class CallbackRequestCreatedJob implements ShouldQueue
      */
     public function handle()
     {
+        if (empty($this->email)) {
+            return;
+        }
+
         $request = CallbackRequest::find($this->callbackRequestId);
 
         Mail::to($this->email)->send(new CallbackRequestCreated($request));
