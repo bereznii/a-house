@@ -43,6 +43,11 @@
                     Вам в выборе.
                 </p>
             </div>
+            <div class="col-12 col-sm-12 text-center">
+                <a href="https://avto.pro/">
+                    <img class="avtopro-partner" src="{{ asset('landing_img/avtopro.png') }}" alt="Sekurit Logo">
+                </a>
+            </div>
         </div>
 
     </div>
