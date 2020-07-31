@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="col-lg-6 order-1 order-lg-2">
-                <img src="{{ asset('storage/medium.png') }}" class="img-fluid" alt="">
+                <img src="/landing_img/medium.png" class="img-fluid" alt="">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                 <h3>Почему мы, сервис по продаже и установке автостекла, именно те, кто Вам нужен?</h3>
