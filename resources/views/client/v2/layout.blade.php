@@ -33,7 +33,7 @@
         <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" onload="this.rel='stylesheet'">
 
         <!-- Vendor CSS Files -->
-        <link rel="preload" as="style" href="/landing_assets/bootstrap/css/bootstrap.min.css" onload="this.rel='stylesheet'">
+        <link href="/landing_assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="preload" as="style" href="/landing_assets/icofont/icofont.min.css" onload="this.rel='stylesheet'">
         <link rel="preload" as="style" href="/landing_assets/animate.css/animate.min.css" onload="this.rel='stylesheet'">
         <link rel="preload" as="style" href="/landing_assets/owl.carousel/assets/owl.carousel.min.css" onload="this.rel='stylesheet'">
