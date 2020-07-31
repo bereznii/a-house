@@ -706,6 +706,10 @@ section {
   margin-bottom: 0;
 }
 
+img.avtopro-partner {
+    max-width: 25rem;
+}
+
 /*--------------------------------------------------------------
 # Why Us
 --------------------------------------------------------------*/
@@ -1623,4 +1627,10 @@ section {
 
         display: block;
     }
+
+    img.avtopro-partner {
+        max-width: 20rem;
+    }
 }
+
+
