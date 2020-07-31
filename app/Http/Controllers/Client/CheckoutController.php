@@ -80,7 +80,7 @@ class CheckoutController extends Controller
 
         $this->orderRepository->storeOrder($validated);
 
-//        session()->flush();
+        session()->flush();
         session()->flashInput(request()->input());
 
         return view('client.v2.pages.cart')->with([
