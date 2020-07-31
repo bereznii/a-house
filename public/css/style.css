@@ -5,6 +5,21 @@
 * License: https://bootstrapmade.com/license/
 */
 
+@font-face {
+    font-family: "Open Sans";
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Raleway";
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Poppins";
+    font-display: swap;
+}
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1632,5 +1647,4 @@ img.avtopro-partner {
         max-width: 20rem;
     }
 }
-
 
