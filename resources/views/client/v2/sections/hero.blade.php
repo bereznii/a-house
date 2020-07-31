@@ -28,7 +28,7 @@
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">При оформлении заказа на сайте -5%</h2>
-                        <p class="animate__animated animate__fadeInUp">При оформлении заказа на покупку стекла онлайн на
+                        <p class="animate__animated animate__fadeInUp">При оформлении заказа на покупку автостекла онлайн на
                             сайте Вас ждёт скидка 5%, и при дополнительном оформлении замены стекла (работа по установке),
                             скидка 7% на всю сумму (стекло + работа)!
                         </p>
