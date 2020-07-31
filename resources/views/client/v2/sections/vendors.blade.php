@@ -11,14 +11,14 @@
         </div>
 
         <div class="owl-carousel clients-carousel">
-            <img src="{{ asset('landing_img/vendors/pilkington-trans.webp') }}" alt="Pilkington Logo">
-            <img src="{{ asset('landing_img/vendors/sekurit-trans.webp') }}" alt="Sekurit Logo">
-            <img src="{{ asset('landing_img/vendors/agc-trans.webp') }}" alt="AGC Logo">
-            <img src="{{ asset('landing_img/vendors/sg-trans.webp') }}" alt="Safeglass Logo">
-            <img src="{{ asset('landing_img/vendors/pgw-trans.webp') }}" alt="PGW Logo">
-            <img src="{{ asset('landing_img/vendors/starglass-trans.webp') }}" alt="Starglass Logo">
-            <img src="{{ asset('landing_img/vendors/nordglass-trans.webp') }}" alt="Nordglass Logo">
-            <img src="{{ asset('landing_img/vendors/guardianglass-trans.webp') }}" alt="Guardianglass Logo">
+            <img src="{{ asset('landing_img/vendors/pilkington-trans.jpg') }}" alt="Pilkington Logo">
+            <img src="{{ asset('landing_img/vendors/sekurit-trans.jpg') }}" alt="Sekurit Logo">
+            <img src="{{ asset('landing_img/vendors/agc-trans.jpg') }}" alt="AGC Logo">
+            <img src="{{ asset('landing_img/vendors/sg-trans.jpg') }}" alt="Safeglass Logo">
+            <img src="{{ asset('landing_img/vendors/pgw-trans.jpg') }}" alt="PGW Logo">
+            <img src="{{ asset('landing_img/vendors/starglass-trans.jpg') }}" alt="Starglass Logo">
+            <img src="{{ asset('landing_img/vendors/nordglass-trans.jpg') }}" alt="Nordglass Logo">
+            <img src="{{ asset('landing_img/vendors/guardianglass-trans.jpg') }}" alt="Guardianglass Logo">
         </div>
 
     </div>

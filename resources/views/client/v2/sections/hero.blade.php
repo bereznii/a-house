@@ -6,7 +6,7 @@
         <div class="carousel-inner" role="listbox">
 
             <!-- Slide 1 -->
-            <div class="carousel-item active" style="background-image: url({{ asset('landing_img/hero/header1.webp') }}">
+            <div class="carousel-item active" style="background-image: url({{ asset('landing_img/hero/header11.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
                         <h2 class="animate__animated animate__fadeInDown">Вас приветствует
