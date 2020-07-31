@@ -10,7 +10,7 @@
 
         <div class="row">
             <div class="col-lg-6 order-1 order-lg-2">
-                <img src="/landing_img/medium.png" class="img-fluid" alt="Autoglass House Logo">
+                <img src="/landing_img/medium.webp" class="img-fluid" alt="Autoglass House Logo">
             </div>
             <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
                 <h3>Почему мы, сервис по продаже и установке автостекла, именно те, кто Вам нужен?</h3>
@@ -45,7 +45,7 @@
             </div>
             <div class="col-12 col-sm-12 text-center">
                 <a href="https://avto.pro/">
-                    <img class="avtopro-partner" src="{{ asset('landing_img/avtopro.png') }}" alt="Sekurit Logo">
+                    <img class="avtopro-partner" src="/landing_img/avtopro.webp" alt="Sekurit Logo">
                 </a>
             </div>
         </div>
