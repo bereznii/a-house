@@ -35,7 +35,7 @@
         <!-- Vendor CSS Files -->
         <link href="/landing_assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/landing_assets/icofont/icofont.min.css" rel="stylesheet">
-        <link rel="preload" href="/landing_assets/boxicons/css/boxicons.min.css" as="style">
+        <link href="/landing_assets/boxicons/css/boxicons.min.css" as="style">
         <link href="/landing_assets/animate.css/animate.min.css" rel="stylesheet">
         <link href="/landing_assets/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
 
