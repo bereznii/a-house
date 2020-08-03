@@ -3,17 +3,17 @@
 @section('v2.content')
 
     <script type="application/ld+json">
-    {
-        "@context": "http://schema.org",
-        "@type": "WebSite",
-        "name": "Autoglass House",
-        "url": "http://autoglasshouse.com.ua/",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://autoglasshouse.com.ua/search?query={query}",
-          "query": "required"
+        {
+            "@context": "http://schema.org",
+            "@type": "WebSite",
+            "name": "Autoglass House",
+            "url": "http://autoglasshouse.com.ua/",
+            "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://autoglasshouse.com.ua/search?query={search_term_string}",
+                "query-input": "required name=search_term_string"
+            }
         }
-    }
     </script>
     <script type="application/ld+json">
      {
