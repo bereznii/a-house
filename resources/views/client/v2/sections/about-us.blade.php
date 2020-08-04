@@ -44,9 +44,9 @@
                 </p>
             </div>
             <div class="col-12 col-sm-12 text-center">
-                <a href="https://avto.pro/">
-                    <img class="avtopro-partner" src="/landing_img/avtopro.jpg" alt="Avtopro Logo">
-                </a>
+                <div class="pro-seller-label-banner"></div>
+                <script async="" type="text/javascript" src="https://a1.avto.pro/partnership/js?bt=4&amp;sid=506506&amp;s=avto.pro"></script>
+                <a href="https://avto.pro" class="pro-seller-label-anchor">Поиск запчастей на Автопро</a>
             </div>
         </div>
 
