@@ -34,7 +34,7 @@
                                 <a href="{{ route('new-client.product.show', ['id' => $product->id]) }}">{{ $product->model->name ?? '' }} |
                                     {{ mb_strtolower($product->type->translation ?? '') }}</a>
                             </h3>
-                            <h5>{{ $product->retail_price ?? '' }}грн.</h5>
+                            <h5>{{ ceil($product->retail_price ?? 0) }} грн</h5>
                             <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
                             <h6 style="font-size: 0.9rem;"><b>Еврокод:</b>  {{ $product->stock_code ?? '' }}</h6>
                             <h6 style="font-size: 0.9rem;"><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>

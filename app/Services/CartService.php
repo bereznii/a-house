@@ -21,7 +21,7 @@ class CartService
         $content['quantities'] = $cart;
         $content['prices'] = $this->getPrices($content);
 
-        $totalPrice = array_sum($content['prices']) * 0.95;
+        $totalPrice = array_sum($content['prices']) * 0.97;
 
         $content['totalPrice'] = number_format((float)$totalPrice, 2, '.', '');
 

@@ -27,22 +27,22 @@
                                             <input type="text" class="form-control col-md-3 float-right quantity-input" data-productid="{{ $product->id }}" name="products[{{ $key }}][quantity]" value="{{ $content['quantities'][$product->id] ?? old('products')[$key]['quantity'] ?? 1 }}">
                                         </div>
                                         <div class="text-right">
-                                            <span class="text-muted">&#8372; {{ $content['prices'][$product->id] ?? $product->retail_price }}</span>
+                                            <span class="text-muted">&#8372; {{ ceil($content['prices'][$product->id] ?? $product->retail_price) }}</span>
                                         </div>
                                         <input type="hidden" name="products[{{ $key }}][product_id]" value="{{ $product->id }}">
-                                        <input type="hidden" name="products[{{ $key }}][price]" value="{{ $content['prices'][$product->id] ?? old('products')[$key]['price'] ?? $product->retail_price }}">
+                                        <input type="hidden" name="products[{{ $key }}][price]" value="{{ ceil($content['prices'][$product->id] ?? old('products')[$key]['price'] ?? $product->retail_price) }}">
                                     </li>
                                 @endforeach
                                 <li class="list-group-item d-flex justify-content-between">
                                     <span>Скидка</span>
-                                    <strong><span class="text-success">-5%</span></strong>
+                                    <strong><span class="text-success">-3%</span></strong>
                                 </li>
                                     <li class="list-group-item d-flex justify-content-between">
                                     <span>Итого (ГРН)</span>
-                                    <strong> &#8372; {{ $content['totalPrice'] ?? '0.00' }}</strong>
+                                    <strong> &#8372; {{ ceil($content['totalPrice']) ?? '0.00' }}</strong>
                                 </li>
                             </ul>
-                            <small class="text-muted">* В случае необходимой замены стекла, скидка составляет 7% и оговаривается с менеджером.</small>
+                            <small class="text-muted">* В случае необходимой замены стекла, скидка составляет 5% и оговаривается с менеджером.</small>
                         @endif
 
                     </div>

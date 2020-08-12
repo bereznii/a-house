@@ -27,18 +27,18 @@
                                         </p>
                                     </div>
                                     <div class="text-right">
-                                        <span class="text-muted">&#8372; {{ $product->retail_price }} x {{ $product->getOriginal('pivot_quantity') ?? '-' }} = {{ $product->getOriginal('pivot_price') ?? '-' }}</span>
+                                        <span class="text-muted">&#8372; {{ ceil($product->retail_price) }} x {{ $product->getOriginal('pivot_quantity') ?? '-' }} = {{ $product->getOriginal('pivot_price') ?? '-' }}</span>
                                     </div>
                                     <input type="hidden" name="products[]" value="{{ $product->id }}">
                                 </li>
                             @endforeach
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Итого (ГРН)</span>
-                                <strong>&#8372; {{ $order->totalPrice ?? '0.00' }}</strong>
+                                <strong>&#8372; {{ ceil($order->totalPrice ?? 0) }}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>C учётом скидки 5%</span>
-                                <strong>&#8372; @if(isset($order->totalPrice)){{ number_format((float)$order->totalPrice * 0.95, 2, '.', '') }}@else 0.00 @endif</strong>
+                                <strong>&#8372; @if(isset($order->totalPrice)){{ ceil($order->totalPrice * 0.97) }}@else 0.00 @endif</strong>
                             </li>
                         </ul>
                     </div>

@@ -71,7 +71,7 @@
         <div class="card-body">
             <h1 class="card-title" style="font-size: 2rem;">{{ $product->model->name ?? '' }}</h1>
             <h2 style="font-size: 1.8rem;">{{ $product->type->translation ?? '' }}</h2>
-            <h3 style="font-size: 1.5rem;">{{ $product->retail_price ?? '' }} грн</h3>
+            <h3 style="font-size: 1.5rem;">{{ ceil($product->retail_price ?? 0) }} грн</h3>
             <hr>
             <h6><b>Тип:</b> {{ $product->type->code ?? '' }}</h6>
             <h6><b>Еврокод:</b> {{ $product->stock_code ?? '' }}</h6>
