@@ -66,7 +66,7 @@
             <div class="container d-flex">
                 <div class="contact-info mr-auto">
                     <i class="icofont-envelope"></i> <a href="mailto:autoglasshouse20@gmail.com">autoglasshouse20@gmail.com</a>
-                    <i class="icofont-phone"></i> <i class="icofont-brand-viber" style="color: #665CAC;"></i> <a href="tel:+380986921349">+38 (098) 692 13 49</a>
+                    <i class="icofont-phone"></i> <i class="icofont-brand-viber" style="color: #665CAC;"></i> <i class="icofont-telegram" style="color: #0088cc;"></i> <a href="tel:+380986921349">+38 (098) 692 13 49</a>
                     <i class="icofont-calendar"></i> <a href="#"> Пн-Пт.: с 9:30 до 17:00</a>
                 </div>
             </div>

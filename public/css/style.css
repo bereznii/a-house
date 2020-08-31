@@ -1246,7 +1246,7 @@ img.avtopro-partner {
   color: #fff;
 }
 
-.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i {
+.contact .info .email:hover i, .contact .info .address:hover i, .contact .info .phone:hover i.icofont-phone {
   background: #5cb874;
   color: #fff;
 }
@@ -1582,6 +1582,12 @@ img.avtopro-partner {
 
 #topbar .contact-info i.icofont-calendar {
     margin-left: 15px;
+}
+
+div.phone i.no-back {
+    width: auto;
+    height: auto;
+    background: none;
 }
 
 /* Modal Fade */
