@@ -17,7 +17,8 @@
           <p>Обновлено
               {{ $countedRows['makeCount'] ?? '-' }} марок,
               {{ $countedRows['modelCount'] ?? '-' }} моделей,
-              {{ $countedRows['productCount'] ?? '-' }} позиций
+              {{ $countedRows['productCount'] ?? '-' }} позиций.
+              Артикул добавлен для {{ $countedRows['vendorCodeCount'] ?? '-' }} позиций.
           </p>
       @endif
   </div>

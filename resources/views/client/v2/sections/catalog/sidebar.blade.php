@@ -3,7 +3,7 @@
     <form action="{{ route('new-client.search') }}" method="GET">
         <div class="form-group">
             <div class="input-group">
-                <input required type="text" value="{{ old('query') }}" name="query" id="search_input" placeholder="Поиск по еврокоду..." class="form-control" aria-label="Поиск" maxlength="20">
+                <input required type="text" value="{{ old('query') }}" name="query" id="search_input" placeholder="Еврокод или артикул..." class="form-control" aria-label="Поиск" maxlength="20">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-success">Поиск</button>
                 </div>

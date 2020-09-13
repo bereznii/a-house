@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entities\Product;
 use App\Entities\Shortcut;
 use App\Entities\Type;
 
@@ -110,24 +111,76 @@ class ImportService
      */
     public static function calculateRetailPriceWithCharge($row)
     {
-        if (preg_match('/WS.*/', $row[0])) {
+        if (preg_match('/WS.*/', $row[0])) { //переднее
             if (trim($row[6]) == 'SafeGlass') {
                 $percent = 34.88;
             } else {
                 $percent = 18;
             }
-        } elseif (preg_match('/RW.*/', $row[0])) {
+        } elseif (preg_match('/RW.*/', $row[0])) { //заднее
             if (trim($row[6]) == 'SafeGlass') {
                 $percent = 34.87;
             } else {
                 $percent = 25.17;
             }
-        } else {
+        } else { //боковое
             $percent = 34.47;
         }
 
         $price = $row[5] + ($row[5] * ($percent / 100));
 
         return number_format((float)$price, 2, '.', '');
+    }
+
+    /**
+     * @return int
+     * @throws \Exception
+     */
+    public function generateVendorCodes(): int
+    {
+        $products = Product::whereNull('vendor_code')->get();
+
+        foreach ($products as $key => $product) {
+            $this->insertVendorCode($product);
+        }
+
+        return $products->count();
+    }
+
+    /**
+     * @param Product $product
+     * @throws \Exception
+     */
+    private function insertVendorCode(Product $product): void
+    {
+        $vendorCode = '';
+
+        if (preg_match('/WS.*/', $product->barcode)) { //переднее
+            $vendorCode .= 'V';
+        } elseif (preg_match('/RW.*/', $product->barcode)) { //заднее
+            $vendorCode .= 'Z';
+        } elseif (preg_match('/BO.*/', $product->barcode)) { //боковое
+            $vendorCode .= 'B';
+        } else { //боковое
+            $vendorCode .= 'U';
+        }
+
+        $this->insertUniqueCombination($vendorCode, $product);
+    }
+
+    /**
+     * @param string $vendorCode
+     * @param Product $product
+     * @throws \Exception
+     */
+    private function insertUniqueCombination(string $vendorCode, Product $product): void
+    {
+        $code = $vendorCode . (string) random_int(100000, 999999);
+
+        try {
+            Product::where('id', $product->id)->update(['vendor_code' => $code]);
+        } catch (\Exception $e) {
+            $this->insertUniqueCombination($vendorCode, $product);
+        }
     }
 }

@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\Import;
 use App\Entities\CallbackRequest;
 use App\Repositories\CallbackRequestRepository;
+use App\Services\ImportService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -126,6 +127,7 @@ class HomeController extends Controller
 
     /**
      * @return \Illuminate\Contracts\Support\Renderable
+     * @throws \Exception
      */
     public function import()
     {
@@ -138,6 +140,7 @@ class HomeController extends Controller
         $import->onlySheets(0);
 
         Excel::import($import, request()->file('catalog'), null, \Maatwebsite\Excel\Excel::XLS);
+        $countedRows['vendorCodeCount'] = app(ImportService::class)->generateVendorCodes();
 
         $time_end = microtime(true);
         $execution_time = ($time_end - $time_start);

@@ -37,6 +37,7 @@
                             <h5>{{ ceil($product->retail_price ?? 0) }} грн</h5>
                             <p class="card-text">{{ $product->detailed_description ?? '' }}</p>
                             <h6 style="font-size: 0.9rem;"><b>Еврокод:</b>  {{ $product->stock_code ?? '' }}</h6>
+                            <h6 style="font-size: 0.9rem;"><b>Артикул:</b>  {{ $product->vendor_code ?? '' }}</h6>
                             <h6 style="font-size: 0.9rem;"><b>Производитель:</b> {{ $product->manufacture ?? '' }}</h6>
                         </div>
                         <div class="card-footer">

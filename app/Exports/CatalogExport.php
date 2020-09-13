@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Entities\Product;
+use Illuminate\Database\Eloquent\Collection;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
@@ -11,7 +12,10 @@ use PhpOffice\PhpSpreadsheet\Style\NumberFormat;
 
 class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColumnFormatting
 {
-    private $products;
+    /**
+     * @var Collection
+     */
+    private Collection $products;
 
     /**
      * CatalogExport constructor.
@@ -37,6 +41,7 @@ class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColu
             $result[$key][] = $product->in_stock;
             $result[$key][] = '';
             $result[$key][] = trim($product->original_code, " \t\n\r\0\x0B");
+            $result[$key][] = $product->vendor_code;
         }
 
         return $result;
@@ -52,6 +57,7 @@ class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColu
             'E' => NumberFormat::FORMAT_GENERAL,
             'F' => NumberFormat::FORMAT_GENERAL,
             'G' => NumberFormat::FORMAT_TEXT,
+            'H' => NumberFormat::FORMAT_GENERAL,
         ];
     }
 
@@ -68,6 +74,7 @@ class CatalogExport implements FromArray, WithHeadings, ShouldAutoSize, WithColu
             'Количество',
             'Ссылки фото', //empty
             'Оригинальный код',
+            'Артикул',
         ];
     }
 }

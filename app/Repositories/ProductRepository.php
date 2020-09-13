@@ -71,7 +71,11 @@ class ProductRepository extends CoreRepository
     {
         $query = $validatedData['query'];
 
-        $products = $this->instantiate()->where('stock_code', 'like', "{$query}%")
+        $products = $this->instantiate()
+            ->where(function($q) use ($query) {
+                $q->where('stock_code', 'like', "{$query}%")
+                    ->orWhere('vendor_code', '=', $query);
+            })
             ->where('in_stock', '>', 0)
             ->paginate(9);
         $products->appends(['query' => $query]);
