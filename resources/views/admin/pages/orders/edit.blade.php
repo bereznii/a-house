@@ -3,7 +3,7 @@
 @section('page')
 
     <div class="card">
-        <div class="card-header">
+        <div class="card-header" style="background-color: {{ $order->getStatusColor() }}">
             Заказ №{{ $order->id }}
         </div>
             <div class="card-body">
@@ -37,7 +37,7 @@
                                 <strong>&#8372; {{ ceil($order->totalPrice ?? 0) }}</strong>
                             </li>
                             <li class="list-group-item d-flex justify-content-between">
-                                <span>C учётом скидки 5%</span>
+                                <span>C учётом скидки 3%</span>
                                 <strong>&#8372; @if(isset($order->totalPrice)){{ ceil($order->totalPrice * 0.97) }}@else 0.00 @endif</strong>
                             </li>
                         </ul>
@@ -151,11 +151,15 @@
                             <div class="col-md-6 mb-3">
                                 <label for="state">Статус заказа</label>
                                 <select name="orderStatus" class="custom-select d-block w-100" id="state" required>
-                                    <option value="1" @if($order->status_id == 1) selected @endif>Новый</option>
-                                    <option value="2" @if($order->status_id == 2) selected @endif>Выполнен</option>
-                                    <option value="3" @if($order->status_id == 3) selected @endif>Подтверждён</option>
-                                    <option value="4" @if($order->status_id == 4) selected @endif>Отменён</option>
+                                    <option style="background-color: #b8daff;" value="1" @if($order->status_id == 1) selected @endif>Новый</option>
+                                    <option style="background-color: #c3e6cb;" value="2" @if($order->status_id == 2) selected @endif>Выполнен</option>
+                                    <option style="background-color: #ffeeba" value="3" @if($order->status_id == 3) selected @endif>Подтверждён</option>
+                                    <option style="background-color: #f5c6cb" value="4" @if($order->status_id == 4) selected @endif>Отменён</option>
                                 </select>
+                            </div>
+                            <div class="col-md-12 mb-3">
+                                <label for="comment">Комментарий менеджера</label>
+                                <textarea name="manager_comment" class="form-control" id="comment" rows="5">{{ $order->manager_comment ?? '' }}</textarea>
                             </div>
                             <button class="btn btn-success btn-lg btn-block" type="submit">Обновить заказ</button>
                         </form>

@@ -9,6 +9,16 @@
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-bordered">
+                <tr>
+                    <td class="w-25 text-center" style="background-color: #b8daff;">Новый</td>
+                    <td class="w-25 text-center" style="background-color: #c3e6cb;">Выполнен</td>
+                    <td class="w-25 text-center" style="background-color: #ffeeba">Подтверждён</td>
+                    <td class="w-25 text-center" style="background-color: #f5c6cb">Отменён</td>
+                </tr>
+            </table>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered">
                 <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -22,7 +32,7 @@
                 </thead>
                 <tbody>
                 @foreach($orders as $order)
-                    <tr>
+                    <tr style="background-color: {{ $order->getStatusColor() }}">
                         <th scope="row">{{ $order->id ?? '-' }}</th>
                         <td>{{ $order->name ?? '-' }} {{ $order->surname ?? '-' }}</td>
                         <td>{{ $order->phone ?? '-' }}</td>

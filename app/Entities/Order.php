@@ -73,6 +73,25 @@ class Order extends Model
     }
 
     /**
+     * @return string
+     */
+    public function getStatusColor(): string
+    {
+        switch ($this->status_id) {
+            case 1:
+                return '#b8daff';//'table-primary';
+            case 2:
+                return '#c3e6cb';//'table-success';
+            case 3:
+                return '#ffeeba';//'table-warning';
+            case 4:
+                return '#f5c6cb';//'table-danger';
+            default:
+                return '';
+        }
+    }
+
+    /**
      * Get the user's full name.
      *
      * @return string

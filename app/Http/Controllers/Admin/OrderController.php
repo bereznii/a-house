@@ -92,7 +92,8 @@ class OrderController extends Controller
 
         if (isset($order)) {
             $order->update([
-                'status_id' => $request->get('orderStatus')
+                'status_id' => $request->input('orderStatus'),
+                'manager_comment' => $request->input('manager_comment')
             ]);
         }
 
