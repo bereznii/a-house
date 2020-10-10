@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Entities\Order as Model;
+use App\Entities\Product;
 
 class OrderRepository extends CoreRepository
 {
@@ -22,6 +23,10 @@ class OrderRepository extends CoreRepository
     {
         $products = $orderData['products'];
         unset($orderData['products']);
+
+        foreach ($products as &$product) {
+            $product['price'] = ceil(Product::find($product['product_id'])->retail_price) * $product['quantity'];
+        }
 
         $order = $this->instantiate()->create($orderData);
         $order->products()->attach($products);

@@ -53,7 +53,11 @@ class MetaDataService
                         $autoglassFor = 'на любой автомобиль';
                     }
                 } elseif (isset($obj['makes']['selectedId']) && isset($obj['makes']['list'])) {
-                    $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first()->name;
+                    $autoglassFor = $obj['makes']['list']->where('id', $obj['makes']['selectedId'])->first();
+
+                    $autoglassFor = isset($autoglassFor)
+                        ? $autoglassFor->name
+                        : 'на любой автомобиль';
                 } else {
                     $autoglassFor = 'на любой автомобиль';
                 }

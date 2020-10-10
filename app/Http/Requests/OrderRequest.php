@@ -36,9 +36,9 @@ class OrderRequest extends FormRequest
             'need_callback' => 'required|integer',
             'comment' => 'max:10000',
             'products' => 'required',
-            'products.*.product_id' => 'required|integer',
+            'products.*.product_id' => 'required|integer|exists:products,id',
             'products.*.quantity' => 'required|integer',
-            'products.*.price' => 'required|numeric',
+            'products.*.price' => 'required|numeric|lte:1000000',
         ];
     }
 
@@ -73,9 +73,11 @@ class OrderRequest extends FormRequest
             'comment.max' => 'Комментарий должно состоять максимум из 10000 символов',
             'products.required' => 'В корзине нет товаров',
             'products.*.product_id.required' => 'Товар является обязательным полем',
+            'products.*.product_id.exists' => 'Товара с таким идентификатором не существует',
             'products.*.quantity.integer' => 'Количество товара должно быть числом',
             'products.*.price.required' => 'Цена товара является обязательным полем',
             'products.*.price.numeric' => 'Цена товара является обязательным полем',
+            'products.*.price.lte' => 'Цена на товар не является валидной'
         ];
     }
 }
