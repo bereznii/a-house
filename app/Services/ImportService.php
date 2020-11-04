@@ -114,8 +114,10 @@ class ImportService
         if (preg_match('/WS.*/', $row[0])) { //переднее
             if (trim($row[6]) == 'SafeGlass') {
                 $percent = 34.88;
+            } elseif (trim($row[6]) == 'Glaspo') {
+                $percent = 30;
             } else {
-                $percent = 18;
+                $percent = 20;
             }
         } elseif (preg_match('/RW.*/', $row[0])) { //заднее
             if (trim($row[6]) == 'SafeGlass') {
