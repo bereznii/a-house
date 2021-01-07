@@ -90,7 +90,7 @@
     <div class="container">
         <div class="row">
             @include('client.v2.sections.catalog.sidebar')
-            @if($products->count() === 0)
+            @if(isset($products) && $products->count() === 0)
                 @include('client.v2.sections.catalog.empty')
             @else
                 @include('client.v2.sections.catalog.catalog-page')
