@@ -7,6 +7,7 @@
             Каталог
         </div>
         <div class="card-body">
+            <p>* удалённые позиции не попадают в список</p>
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <thead>

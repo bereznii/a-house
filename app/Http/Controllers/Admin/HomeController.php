@@ -168,7 +168,7 @@ class HomeController extends Controller
      */
     public function catalog()
     {
-        $products = Product::orderBy('created_at', 'desc')->paginate(50);
+        $products = Product::orderBy('id', 'desc')->paginate(50);
 
         return view('admin.pages.products.index')->with([
             'products' => $products,
