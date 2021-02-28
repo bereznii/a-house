@@ -10,6 +10,7 @@
             <a href="{{ route('orders.index') }}" class="list-group-item @if(route('orders.index') == url()->current()) active @endif">Заказы</a>
             <a href="{{ route('models.index') }}" class="list-group-item @if(route('models.index') == url()->current()) active @endif">Дополнительная информация по моделям</a>
             <a href="{{ route('home.autopro') }}" class="list-group-item @if(route('home.autopro') == url()->current()) active @endif">Скачать каталог для автопро</a>
+            <a href="{{ route('catalog') }}" class="list-group-item @if(route('catalog') == url()->current()) active @endif">Каталог</a>
         </div>
 
     </div>

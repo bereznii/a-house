@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin'], function (){
     Route::get('download-autopro', 'Admin\HomeController@downloadAutoproCatalog')->name('home.download-autopro');
     Route::post('import', 'Admin\HomeController@import')->name('home.import.action');
     Route::get('manufacturer-charge', 'Admin\HomeController@manufacturerCharge')->name('home.manufacturer-charge');
+    Route::get('catalog', 'Admin\HomeController@catalog')->name('catalog');
     Route::resource('orders', 'Admin\OrderController');
     Route::resource('models', 'Admin\ModelController');
 

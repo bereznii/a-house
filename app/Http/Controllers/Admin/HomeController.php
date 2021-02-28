@@ -162,4 +162,16 @@ class HomeController extends Controller
 
         return $this->index($countedRows);
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function catalog()
+    {
+        $products = Product::orderBy('created_at', 'desc')->paginate(50);
+
+        return view('admin.pages.products.index')->with([
+            'products' => $products,
+        ]);
+    }
 }

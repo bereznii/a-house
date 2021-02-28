@@ -11,13 +11,19 @@
           <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">WS</label>
               <div class="col-sm-10">
-                  <input type="password" class="form-control" id="inputPassword" placeholder="18%" disabled>
+                  <input type="password" class="form-control" id="inputPassword" placeholder="20%" disabled>
               </div>
           </div>
           <div class="form-group row">
               <label for="inputPassword" class="col-sm-2 col-form-label">WS SafeGlass</label>
               <div class="col-sm-10">
                   <input type="password" class="form-control" id="inputPassword" placeholder="34.88%" disabled>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label for="inputPassword" class="col-sm-2 col-form-label">WS Glaspo</label>
+              <div class="col-sm-10">
+                  <input type="password" class="form-control" id="inputPassword" placeholder="30%" disabled>
               </div>
           </div>
           <div class="form-group row">
