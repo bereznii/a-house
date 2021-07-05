@@ -116,11 +116,15 @@ class ImportService
                 $percent = 34.88;
             } elseif (trim($row[6]) == 'Glaspo') {
                 $percent = 30;
+            } elseif (trim($row[6]) == 'XINYI') {
+                $percent = 30;
             } else {
                 $percent = 20;
             }
         } elseif (preg_match('/RW.*/', $row[0])) { //заднее
             if (trim($row[6]) == 'SafeGlass') {
+                $percent = 34.87;
+            } elseif (trim($row[6]) == 'XINYI') {
                 $percent = 34.87;
             } else {
                 $percent = 25.17;
