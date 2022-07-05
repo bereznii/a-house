@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  nginx:
+    build:
+      context: ./docker/development/nginx
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app
+    depends_on:
+      - php-fpm
+    ports:
+      - "8080:80"
+  php-fpm:
+    build:
+      context: ./docker/development/php-fpm
+      dockerfile: Dockerfile
+    user: "1000:1000"
+    volumes:
+      - ./:/app
+  php-cli:
+    build:
+      context: ./docker/development/php-cli
+      dockerfile: Dockerfile
+    user: "1000:1000"
+    volumes:
+      - ./:/app
+      - a-house-composer:/root/.composer/cache
+  mysql:
+    image: mysql:8.0
+    volumes:
+      - a-house-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: app
+    ports:
+      - "33061:3306"
+
+volumes:
+  a-house-db:
+  a-house-composer:
