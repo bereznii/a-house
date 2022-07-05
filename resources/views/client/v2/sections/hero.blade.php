@@ -9,16 +9,16 @@
             <div class="carousel-item active" style="background-image: url({{ asset('landing_img/hero/header11.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Вас приветствует
-                            <span> Autoglass House</span>, интернет-магазин автомобильного стекла
+                        <h2 class="animate__animated animate__fadeInDown">Вас вітає
+                            <span> Autoglass House</span>, <br> інтернет-магазин з продажу автомобільного скла
                         </h2>
-                        <p class="animate__animated animate__fadeInUp">Мы предлагаем качественное автостекло
-                            с Европы и отменный отечественный сервис. Больше 250 клиентов в месяц, 4500 позиций
-                            лобового, заднего, бокового стекла и аксессуаров для монтажа в наличии.
+                        <p class="animate__animated animate__fadeInUp">Ми пропонуємо якісне автоскло
+                            з Європи та відмінний вітчизняний сервіс. Більше 250 клієнтів на місяць, 4500 позицій
+                            лобового, заднього, бокового скла та аксесуарів для монтажу в наявності.
                             <br>
-                            Для удобного подбора предлагаем наш онлайн-каталог.
+                            Для зручного підбору пропонуємо наш онлайн-каталог.
                         </p>
-                        <a href="{{ route('new-client.catalog') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Перейти в каталог</a>
+                        <a href="{{ route('new-client.catalog') }}" class="btn-get-started animate__animated animate__fadeInUp scrollto">Перейти до каталогу</a>
                     </div>
                 </div>
             </div>
@@ -27,10 +27,10 @@
             <div class="carousel-item" style="background-image: url({{ asset('landing_img/hero/header2.jpg') }})">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">При оформлении заказа на сайте -3%</h2>
-                        <p class="animate__animated animate__fadeInUp">При оформлении заказа на покупку стекла онлайн на
-                            сайте Вас ждёт скидка 3%, и при дополнительном оформлении замены стекла (работа по установке),
-                            скидка 5% на всю сумму (стекло + работа)!
+                        <h2 class="animate__animated animate__fadeInDown">При оформленні замовлення на сайті -3%</h2>
+                        <p class="animate__animated animate__fadeInUp">При оформленні замовлення
+                            на сайті на Вас чекає знижка 3%, і при додатковому оформленні заміни скла (робота
+                            з заміни), знижка 5% на всю суму (скло + робота)!
                         </p>
                     </div>
                 </div>
@@ -40,10 +40,10 @@
             <div class="carousel-item" style="background-image: url({{ asset('landing_img/hero/header3.jpg') }}">
                 <div class="carousel-container">
                     <div class="container">
-                        <h2 class="animate__animated animate__fadeInDown">Помощь в подборе по фото</h2>
-                        <p class="animate__animated animate__fadeInUp">Современное автостекло часто имеет много
-                            функций. Вы можете сделать несколько фотографий стекла Вашего авто с нескольких ракурсов и
-                            мы сможем помочь в подборе подходящего.
+                        <h2 class="animate__animated animate__fadeInDown">Допомога у підборі по фото</h2>
+                        <p class="animate__animated animate__fadeInUp">Сучасне автоскло часто має багато функцій.
+                            Ви можете зробити кілька фотографій скла Вашого авто з кількох ракурсів,
+                            і ми зможемо допомогти у підборі відповідного.
                         </p>
                     </div>
                 </div>
@@ -53,12 +53,12 @@
 
         <a class="carousel-control-prev" href="#heroCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon icofont-simple-left" aria-hidden="true"></span>
-            <span class="sr-only">Предыдущий</span>
+            <span class="sr-only">Попередній</span>
         </a>
 
         <a class="carousel-control-next" href="#heroCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon icofont-simple-right" aria-hidden="true"></span>
-            <span class="sr-only">Следующий</span>
+            <span class="sr-only">Наступний</span>
         </a>
 
     </div>

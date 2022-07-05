@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h2>{{ $pageData['breadcrumbs']['title'] }}</h2>
             <ol>
-                <li><a href="{{ route('new-client.landing') }}">Главная</a></li>
+                <li><a href="{{ route('new-client.landing') }}">Головна</a></li>
                 <li>{{ $pageData['breadcrumbs']['title'] }}</li>
             </ol>
         </div>

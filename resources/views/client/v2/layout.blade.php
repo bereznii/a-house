@@ -18,10 +18,10 @@
 
         <meta name="google-site-verification" content="WKXewrjaaWNauMFAmJYGPl0te_wzYwKwAmYIdBgq9gE">
 
-        <title>{{ $metaData['title'] ?? 'Интернет-магазин Autoglass House' }}</title>
+        <title>{{ $metaData['title'] ?? 'Інтернет-магазин Autoglass House' }}</title>
         <link rel="icon" href="{{ asset('storage/icon-sm.ico') }}" type="image/icon type">
         <link rel="apple-touch-icon" href="{{ asset('storage/icon-big-white.ico') }}" type="image/icon type">
-        <meta name="description" content="{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}">
+        <meta name="description" content="{{ $metaData['description'] ?? 'Інтернет-магазин Autoglass House' }}">
         <meta name="keywords" content="{{ $metaData['keywords'] ?? '' }}">
         <meta name="robots" content="index, follow">
 

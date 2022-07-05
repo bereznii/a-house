@@ -103,8 +103,8 @@ class ClientService
             $action = Arr::last(explode('/', $currentUrl));
 
             switch ($action) {
-                case 'about':
-                    $title = 'О нас';
+                case 'about-us':
+                    $title = 'Про нас';
                     break;
                 case 'contact':
                     $title = 'Контакты';

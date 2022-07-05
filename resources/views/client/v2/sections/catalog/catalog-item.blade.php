@@ -43,7 +43,7 @@
       "@type": "Product",
       "name": "{{ $product->type->translation ?? '' }} на {{ $product->model->name }}",
       "image": "{{ asset('storage/'. $product->type->code .'.png') }}",
-      "description": "{{ $metaData['description'] ?? 'Интернет-магазин Autoglass House' }}",
+      "description": "{{ $metaData['description'] ?? 'Інтернет-магазин Autoglass House' }}",
       "brand": {
         "@type": "Thing",
         "name": "{{ $product->manufacture }}"

@@ -27,7 +27,7 @@
        "item":
        {
         "@id": "https://autoglasshouse.com.ua/",
-        "name": "Интернет-магазин Autoglass House"
+        "name": "Інтернет-магазин Autoglass House"
         }
       },
       {
