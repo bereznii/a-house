@@ -19,7 +19,7 @@ $(document).ready(function() {
                 $("#models option").remove();
                 $("#types option").remove();
 
-                var select = "<option value=''>Модель автомобиля</option>";
+                var select = "<option value=''>Модель автомобіля</option>";
 
                 $.each(data, function (key, value) {
                     select += "<option value='" + value.id + "'>" + value.name + "</option>";
@@ -52,7 +52,7 @@ $(document).ready(function() {
 
                 $("#types option").remove();
 
-                var select = "<option value=''>Тип стекла</option>";
+                var select = "<option value=''>Тип скла</option>";
 
                 $.each(data, function (key, value) {
                     select += "<option value='" + value.id + "'>" + value.translation + "</option>";
@@ -145,7 +145,7 @@ $(document).ready(function() {
                 $('#formCard').removeClass('d-flex align-items-stretch');
                 $('.php-email-form')
                     .append('<h5 class="d-flex justify-content-center" id="formMessage" hidden>' +
-                        'Спасибо! Ваш запрос отправлен.<br> Менеджер свяжется с Вами в ближайшее время.' +
+                        "Дякую! Ваш запит відправлений.<br> Менеджер зв'яжеться з Вами найближчим часом." +
                         '</h5>');
             }
         });
