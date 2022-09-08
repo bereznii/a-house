@@ -55,7 +55,7 @@ class ImportService
                 'existingTypes' => self::$types,
                 'badType' => $index,
             ]);
-            throw new \RuntimeException();
+            throw new \RuntimeException($e->getMessage());
         }
 
         return $res;

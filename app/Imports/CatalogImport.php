@@ -123,6 +123,7 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
                     $productCount = Cache::get('productCount', 0);
                     Cache::put('productCount', $productCount+1, 10);
                 } catch (\Throwable $e) {
+                    \Log::error($e);
                     break;
                 }
 
