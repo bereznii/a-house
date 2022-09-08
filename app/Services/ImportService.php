@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Entities\Product;
 use App\Entities\Shortcut;
 use App\Entities\Type;
+use Illuminate\Support\Facades\Cache;
 
 class ImportService
 {
@@ -46,7 +47,18 @@ class ImportService
             }
         }
 
-        return self::$types[$index];
+        try {
+            $res = self::$types[$index];
+        } catch (\Throwable $e) {
+            Cache::put('errors', [
+                'badValue' => $row,
+                'existingTypes' => self::$types,
+                'badType' => $index,
+            ]);
+            throw new \RuntimeException();
+        }
+
+        return $res;
     }
 
     /**

@@ -39,10 +39,11 @@ class HomeController extends Controller
      * @param array|null $countedRows
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(array $countedRows = null)
+    public function index(array $countedRows = null, ?array $importErrors = null)
     {
         return view('admin.pages.import')->with([
-            'countedRows' => $countedRows
+            'countedRows' => $countedRows,
+            'importErrors' => $importErrors
         ]);
     }
 
@@ -154,13 +155,16 @@ class HomeController extends Controller
         $countedRows['productCount'] = Cache::get('productCount', 0);
         Cache::forget('productCount');
 
+        $importErrors = Cache::get('errors');
+        Cache::forget('errors');
+
         //Soft delete products, that were last updated more than 5 min ago
         $oldProductsTime = Carbon::now()
             ->subMinutes(5)
             ->format('Y-m-d H:i:s');
         Product::where('updated_at', '<', $oldProductsTime)->delete();
 
-        return $this->index($countedRows);
+        return $this->index($countedRows,$importErrors);
     }
 
     /**

@@ -13,7 +13,15 @@
               <button type="submit" class="btn btn-primary">Импортировать</button>
           </div>
       </form>
-      @if(isset($countedRows))
+      @if(isset($importErrors))
+          <div class="alert alert-danger" role="alert">
+              <p> Ошибка при импорте. Обнаружена неправильная ячейка
+                  "{{ $importErrors['badValue'] ?? '-' }}". Список существующих типов:
+                  {{ implode(', ', array_keys($importErrors['existingTypes'] ?? [])) }}. Тип в ячейке
+                  "{{ $importErrors['badType'] ?? '-' }}".
+              </p>
+          </div>
+      @elseif(isset($countedRows))
           <p>Обновлено
               {{ $countedRows['makeCount'] ?? '-' }} марок,
               {{ $countedRows['modelCount'] ?? '-' }} моделей,

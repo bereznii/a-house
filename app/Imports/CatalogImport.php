@@ -23,7 +23,7 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
 
     /**
      * @param array $rows
-     * @return mixed
+     * @return void
      */
     public function array(array $rows)
     {
@@ -97,30 +97,34 @@ class CatalogImport implements ToArray, WithChunkReading, WithBatchInserts
 
                 $model = MakeModel::where('name', Cache::get('model'))->first();
 
-                Product::withTrashed()->updateOrCreate(
-                    [
-                        'barcode' => $row[0],
-                        'manufacture' => $row[6]
-                    ],
-                    [
-                        'stock_code' => $row[1],
-                        'make_id' => Cache::get('make_id'),
-                        'model_id' => $model->id,
-                        'type_id' => ImportService::getProductTypeId($row[2]),
-                        'nomenclature' => $row[2],
-                        'original_description' => ImportService::getOriginalDescription($row[2]),
-                        'detailed_description' => $row[7],
-                        'translated_description' => ImportService::getTranslatedDescription($row[2]),
-                        'in_stock' => $row[4],
-                        'dealer_price' => $row[5],
-                        'retail_price' => ImportService::calculateRetailPriceWithCharge($row),
-                        'original_code' => !empty(trim($row[8], ',- ')) ? trim($row[8], ',- ') : null,
-                        'deleted_at' => null
-                    ]
-                );
+                try {
+                    Product::withTrashed()->updateOrCreate(
+                        [
+                            'barcode' => $row[0],
+                            'manufacture' => $row[6]
+                        ],
+                        [
+                            'stock_code' => $row[1],
+                            'make_id' => Cache::get('make_id'),
+                            'model_id' => $model->id,
+                            'type_id' => ImportService::getProductTypeId($row[2]),
+                            'nomenclature' => $row[2],
+                            'original_description' => ImportService::getOriginalDescription($row[2]),
+                            'detailed_description' => $row[7],
+                            'translated_description' => ImportService::getTranslatedDescription($row[2]),
+                            'in_stock' => $row[4],
+                            'dealer_price' => $row[5],
+                            'retail_price' => ImportService::calculateRetailPriceWithCharge($row),
+                            'original_code' => !empty(trim($row[8], ',- ')) ? trim($row[8], ',- ') : null,
+                            'deleted_at' => null
+                        ]
+                    );
 
-                $productCount = Cache::get('productCount', 0);
-                Cache::put('productCount', $productCount+1, 10);
+                    $productCount = Cache::get('productCount', 0);
+                    Cache::put('productCount', $productCount+1, 10);
+                } catch (\Throwable $e) {
+                    break;
+                }
 
                 continue;
             }
