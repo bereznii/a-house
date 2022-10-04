@@ -124,23 +124,23 @@ class ImportService
     public static function calculateRetailPriceWithCharge($row)
     {
         if (preg_match('/WS.*/', $row[0])) { //переднее
-            if (trim($row[6]) == 'SafeGlass') {
+            if (strtolower(trim($row[6])) === strtolower('SafeGlass')) {
                 $percent = 34.88;
-            } elseif (trim($row[6]) == 'Glaspo') {
+            } elseif (strtolower(trim($row[6])) === strtolower('Glaspo')) {
                 $percent = 30;
-            } elseif (trim($row[6]) == 'XINYI') {
+            } elseif (strtolower(trim($row[6])) === strtolower('XINYI')) {
                 $percent = 30;
-            } elseif (trim($row[6]) == 'YESGLASS') {
+            } elseif (strtolower(trim($row[6])) === strtolower('YESGLASS')) {
                 $percent = 30;
             } else {
                 $percent = 20;
             }
         } elseif (preg_match('/RW.*/', $row[0])) { //заднее
-            if (trim($row[6]) == 'SafeGlass') {
+            if (strtolower(trim($row[6])) === strtolower('SafeGlass')) {
                 $percent = 34.87;
-            } elseif (trim($row[6]) == 'XINYI') {
+            } elseif (strtolower(trim($row[6])) === strtolower('XINYI')) {
                 $percent = 34.87;
-            } elseif (trim($row[6]) == 'YESGLASS') {
+            } elseif (strtolower(trim($row[6])) === strtolower('YESGLASS')) {
                 $percent = 30;
             } else {
                 $percent = 25.17;
