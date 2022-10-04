@@ -130,6 +130,8 @@ class ImportService
                 $percent = 30;
             } elseif (trim($row[6]) == 'XINYI') {
                 $percent = 30;
+            } elseif (trim($row[6]) == 'YESGLASS') {
+                $percent = 30;
             } else {
                 $percent = 20;
             }
@@ -138,6 +140,8 @@ class ImportService
                 $percent = 34.87;
             } elseif (trim($row[6]) == 'XINYI') {
                 $percent = 34.87;
+            } elseif (trim($row[6]) == 'YESGLASS') {
+                $percent = 30;
             } else {
                 $percent = 25.17;
             }
